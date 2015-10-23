@@ -22,7 +22,7 @@ export default class MetadataForm extends React.Component {
     }
 
     //update local memory for items
-    this.props.addItem()
+    this.props.updateItem(this.slider.selectedIndex, metaData)
 
     //send data to salesforce
 

@@ -19,6 +19,10 @@ class UploaderContainer extends React.Component {
     this.setState({ items: this.state.items.concat([item]) })
   }
 
+  updateItem(index, data) {
+    //merge data with this.items[index]
+  }
+
   render() {
     return (
       <section id="uploadContainer">
@@ -30,7 +34,9 @@ class UploaderContainer extends React.Component {
         </UploadedList>
         {this.state.showModal ?
         <UploaderModal hideModal={() => this.setState({ showModal: false })}
-                       addItem={this.addItem.bind(this)}>
+                       items={this.state.items}
+                       addItem={this.addItem.bind(this)}
+                       updateItem={this.updateItem.bind(this)}>
         </UploaderModal>
         : null
         }
