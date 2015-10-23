@@ -24,7 +24,7 @@ export default class UploaderModal extends React.Component {
 
     Array.prototype.forEach.call(e.target.files, function(file) {
       S3Service.upload(file).then((res) => {
-        this.props.updateItems(res)
+        this.props.addItem(res)
         this.setState({ files: this.state.files.concat(res) })
       })
     }.bind(this))
@@ -52,7 +52,7 @@ export default class UploaderModal extends React.Component {
           {this.state.isAddingCaptions ?
           <MetadataForm files={this.state.files}
                         hideModal={this.props.hideModal}
-                        updateItems={this.props.updateItems}>
+                        addItem={this.props.addItem}>
           </MetadataForm>
             :
           <FileTransfer fileProgresses={this.state.fileProgresses}

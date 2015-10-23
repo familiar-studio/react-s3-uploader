@@ -15,7 +15,7 @@ class UploaderContainer extends React.Component {
     }
   }
 
-  updateItems(item) {
+  addItem(item) {
     this.setState({ items: this.state.items.concat([item]) })
   }
 
@@ -30,7 +30,7 @@ class UploaderContainer extends React.Component {
         </UploadedList>
         {this.state.showModal ?
         <UploaderModal hideModal={() => this.setState({ showModal: false })}
-                       updateItems={this.updateItems.bind(this)}>
+                       addItem={this.addItem.bind(this)}>
         </UploaderModal>
         : null
         }
