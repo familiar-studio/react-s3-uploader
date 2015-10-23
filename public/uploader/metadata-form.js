@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 
 export default class MetadataForm extends React.Component {
   constructor() {
@@ -12,12 +13,24 @@ export default class MetadataForm extends React.Component {
   }
 
   saveContinue() {
+    const metaData = {
+      title: ReactDOM.findDOMNode(this.refs.title).value,
+      media: ReactDOM.findDOMNode(this.refs.media).value,
+      date: ReactDOM.findDOMNode(this.refs.date).value,
+      artistName: ReactDOM.findDOMNode(this.refs.artistName).value,
+      description: ReactDOM.findDOMNode(this.refs.description).value
+    }
+
+    //update local memory for items
+    this.props.updateItems()
+
+    //send data to salesforce
+
     if (this.slider.selectedIndex + 1 === this.slider.cells.length) {
       this.props.hideModal()
     } else {
       this.slider.next()
     }
-
   }
 
   render() {
@@ -45,23 +58,23 @@ export default class MetadataForm extends React.Component {
             <legend>Legend</legend>
             <div className="field">
               <label>Title</label>
-              <input type="text" />
+              <input type="text" ref="title" />
             </div>
             <div className="field">
               <label>Media</label>
-              <input type="text" />
+              <input type="text" ref="media" />
             </div>
             <div className="field">
               <label>Artist Name</label>
-              <input type="text" />
+              <input type="text" ref="artistName" />
             </div>
             <div className="field">
               <label>Year</label>
-              <input type="text" />
+              <input type="text" ref="date" />
             </div>
             <div className="field textarea">
               <label>Description</label>
-              <textarea></textarea>
+              <textarea ref="description"></textarea>
             </div>
           </fieldset>
         </form>
