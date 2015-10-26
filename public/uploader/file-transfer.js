@@ -64,7 +64,6 @@ export default class FileTransfer extends React.Component {
               onFinish={this.onUploadFinish}
               signingUrlHeaders={{ additional: 'headers' }}
               signingUrlQueryParams={{ additional: 'query-params' }}
-
               contentDisposition="auto" />
           <button onClick={this.props.addCaptions}>Add Captions</button>
         </div>

@@ -24,8 +24,6 @@ export default class MetadataForm extends React.Component {
     //update local memory for items
     this.props.updateItem(this.slider.selectedIndex, metaData)
 
-    //send data to salesforce
-
     if (this.slider.selectedIndex + 1 === this.slider.cells.length) {
       this.props.hideModal()
     } else {

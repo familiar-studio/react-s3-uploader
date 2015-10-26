@@ -20,7 +20,11 @@ class UploaderContainer extends React.Component {
   }
 
   updateItem(index, data) {
-    //merge data with this.items[index]
+    const updatedItem = Object.assign(this.state.items[index], data)
+    console.log(updatedItem)
+    this.setState({
+      items: this.state.items.splice(index, 1, updatedItem)
+    })
   }
 
   render() {
