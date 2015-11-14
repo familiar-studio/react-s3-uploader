@@ -1,30 +1,41 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import UploadedList from './uploaded-list.js'
-import UploaderModal from './uploader-modal.js'
+import List from './list.js'
+import Modal from './modal.js'
 import Slideshow from './slideshow.js'
+
 
 class UploaderContainer extends React.Component {
   constructor() {
     super()
     this.state = {
+      items: [],
+      editing: [],
+      editingIndex: null,
       showModal: false,
-      showSlideshow: false,
-      items: []
+      showSlideshow: false
     }
   }
 
-  addItem(item) {
-    this.setState({ items: this.state.items.concat([item]) })
-  }
+  saveItems(data) {
+    const toSave = Array.isArray(data) ? data : [data]
+    if (this.state.editingIndex || this.state.editingIndex === 0) {
+      this.state.items.splice(this.state.editingIndex, 1, toSave[0])
+      this.setState({
+        items: this.state.items,
+        showModal: false,
+        editing: [],
+        editingIndex: null
+      })
 
-  updateItem(index, data) {
-    const updatedItem = Object.assign(this.state.items[index], data)
-    console.log(updatedItem)
-    this.setState({
-      items: this.state.items.splice(index, 1, updatedItem)
-    })
+    } else {
+      this.setState({
+        items: this.state.items.concat(toSave),
+        showModal: false,
+        editing: []
+      })
+    }
   }
 
   render() {
@@ -32,21 +43,37 @@ class UploaderContainer extends React.Component {
       <section id="uploadContainer">
         <h1>Images</h1>
         <p>Click <span>Upload Artwork</span> to add up to 10 images. Acceptable file types are JPEG, GIF, and PNG. Images will be projected in the order selected and should be no larger than 2500 pixels in either width or height. Be sure to indicate for each artwork: title, artist name, year, media, and a brief description. (300 characters max in each description field)</p>
-        <UploadedList items={this.state.items}
-                      showModal={() => this.setState({ showModal: true })}
-                      showSlideshow={() => this.setState({ showSlideshow: true })}>
-        </UploadedList>
+        <List
+          items={this.state.items}
+          showModal={() => this.setState({ showModal: true })}
+          showSlideshow={() => this.setState({ showSlideshow: true })}
+          startEditing={(itemsToEdit, index) => this.setState({
+            editing: [itemsToEdit],
+            editingIndex: index,
+            showModal: true
+          })}>
+        </List>
+
         {this.state.showModal ?
-        <UploaderModal hideModal={() => this.setState({ showModal: false })}
-                       items={this.state.items}
-                       addItem={this.addItem.bind(this)}
-                       updateItem={this.updateItem.bind(this)}>
-        </UploaderModal>
+        <Modal
+          items={this.state.items}
+          saveItems={this.saveItems.bind(this)}
+          editing={this.state.editing}
+          editPickedFiles={pickedFiles => this.setState({
+            editing: pickedFiles
+          })}
+          cancelModal={() => this.setState({
+            showModal: false,
+            editing: []
+          })}>
+        </Modal>
         : null
         }
+
         {this.state.showSlideshow ?
-        <Slideshow hideSlideshow={() => this.setState({ showSlideshow: false })}
-                   items={this.state.items}>
+        <Slideshow
+          hideSlideshow={() => this.setState({ showSlideshow: false })}
+          items={this.state.items}>
         </Slideshow>
         : null
         }
@@ -55,5 +82,4 @@ class UploaderContainer extends React.Component {
   }
 }
 
-
-ReactDOM.render( <UploaderContainer />, document.getElementsByTagName('uploader')[0] )
+var uploader = ReactDOM.render( <UploaderContainer />, document.getElementsByTagName('uploader')[0] )

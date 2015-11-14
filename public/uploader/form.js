@@ -4,6 +4,9 @@ import ReactDOM from 'react-dom'
 export default class MetadataForm extends React.Component {
   constructor() {
     super()
+    this.state = {
+      itemsToSave: []
+    }
   }
 
   componentDidMount() {
@@ -18,21 +21,21 @@ export default class MetadataForm extends React.Component {
       media: ReactDOM.findDOMNode(this.refs.media).value,
       date: ReactDOM.findDOMNode(this.refs.date).value,
       artistName: ReactDOM.findDOMNode(this.refs.artistName).value,
-      description: ReactDOM.findDOMNode(this.refs.description).value
+      description: ReactDOM.findDOMNode(this.refs.description).value,
+      url: this.props.editing[this.slider.selectedIndex].url || this.props.items[this.slider.selectedIndex].url
     }
 
-    //update local memory for items
-    this.props.updateItem(this.slider.selectedIndex, metaData)
-
     if (this.slider.selectedIndex + 1 === this.slider.cells.length) {
-      this.props.hideModal()
+      this.props.saveItems(this.state.itemsToSave.concat([metaData]))
+      this.setState({ itemsToSave: [] })
     } else {
+      this.setState({ itemsToSave: this.state.itemsToSave.concat([metaData])})
       this.slider.next()
     }
   }
 
   render() {
-    const slides = this.props.files.map(function(item, index) {
+    const slides = this.props.editing.map(function(item, index) {
       return (
         <div className="gallery-cell" key={index}>
           <img src={item.url} height="300" style={{
@@ -78,7 +81,7 @@ export default class MetadataForm extends React.Component {
         </form>
 
         <div>
-          <button onClick={this.props.hideModal}>Cancel</button>
+          <button onClick={this.props.cancelModal}>Cancel</button>
           <button onClick={this.saveContinue.bind(this)}>Save and Continue</button>
         </div>
       </div>
