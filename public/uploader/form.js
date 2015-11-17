@@ -2,35 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 export default class MetadataForm extends React.Component {
-  constructor() {
+  constructor(props) {
     super()
     this.state = {
-      itemsToSave: []
-    }
-  }
-
-  componentDidMount() {
-    this.slider = new Flickity(document.getElementById('metaDataSlider'), {
-      prevNextButtons: false
-    })
-  }
-
-  saveContinue() {
-    const metaData = {
-      title: ReactDOM.findDOMNode(this.refs.title).value,
-      media: ReactDOM.findDOMNode(this.refs.media).value,
-      date: ReactDOM.findDOMNode(this.refs.date).value,
-      artistName: ReactDOM.findDOMNode(this.refs.artistName).value,
-      description: ReactDOM.findDOMNode(this.refs.description).value,
-      url: this.props.editing[this.slider.selectedIndex].url || this.props.items[this.slider.selectedIndex].url
-    }
-
-    if (this.slider.selectedIndex + 1 === this.slider.cells.length) {
-      this.props.saveItems(this.state.itemsToSave.concat([metaData]))
-      this.setState({ itemsToSave: [] })
-    } else {
-      this.setState({ itemsToSave: this.state.itemsToSave.concat([metaData])})
-      this.slider.next()
+      itemsToSave: props.editing,
+      selectedIndex: 0,
+      formValid: false
     }
   }
 
@@ -54,37 +31,110 @@ export default class MetadataForm extends React.Component {
           {slides}
         </div>
 
-        <form>
+        <form ref="form">
           <fieldset>
             <legend>Legend</legend>
             <div className="field">
               <label>Title</label>
-              <input type="text" ref="title" />
+              <input
+                ref="title"
+                type="text"
+                value={this.state.itemsToSave[this.state.selectedIndex].title || ''}
+                onChange={e => this.validateInput(e, 'title')}
+                required
+              />
             </div>
             <div className="field">
               <label>Media</label>
-              <input type="text" ref="media" />
+              <input
+                type="text"
+                value={this.state.itemsToSave[this.state.selectedIndex].media || ''}
+                onChange={e => this.validateInput(e, 'media')}
+              />
             </div>
             <div className="field">
               <label>Artist Name</label>
-              <input type="text" ref="artistName" />
+              <input
+                type="text"
+                value={this.state.itemsToSave[this.state.selectedIndex].artistName || ''}
+                onChange={e => this.validateInput(e, 'artistName')}
+              />
             </div>
             <div className="field">
               <label>Year</label>
-              <input type="text" ref="date" />
+              <input
+                type="text"
+                value={this.state.itemsToSave[this.state.selectedIndex].year || ''}
+                onChange={e => this.validateInput(e, 'year')}
+              />
             </div>
             <div className="field textarea">
               <label>Description</label>
-              <textarea ref="description"></textarea>
+              <textarea
+                value={this.state.itemsToSave[this.state.selectedIndex].description || ''}
+                onChange={e => this.validateInput(e, 'description')}>
+              </textarea>
             </div>
           </fieldset>
         </form>
 
         <div>
           <button onClick={this.props.cancelModal}>Cancel</button>
-          <button onClick={this.saveContinue.bind(this)}>Save and Continue</button>
+          {this.state.selectedIndex ?
+            <button onClick={() => this.slider.select(this.state.selectedIndex - 1)}>Back</button>
+            : null
+          }
+          <button
+            onClick={this.saveContinue.bind(this)}
+            disabled={!this.state.formValid}>
+            Save and Continue
+          </button>
         </div>
       </div>
     )
+  }
+
+  componentDidMount() {
+    if (this.refs.form.checkValidity()) {
+      this.setState({ formValid: true })
+    }
+
+    this.slider = new Flickity(document.getElementById('metaDataSlider'), {
+      prevNextButtons: false,
+      draggable: false,
+      selectedIndex: 0
+    })
+
+    this.slider.on('cellSelect', () => {
+      this.setState({ selectedIndex: this.slider.selectedIndex })
+    })
+  }
+
+  saveContinue() {
+    if (this.slider.selectedIndex + 1 === this.slider.cells.length) {
+      this.props.saveItems(this.state.itemsToSave)
+      this.setState({ itemsToSave: [] })
+    } else {
+      this.slider.next()
+    }
+  }
+
+  validateInput(e, field) {
+    let value = e.target.value
+
+    switch (field) {
+      case 'description':
+        value = value.length <= 100 ? value : value.slice(0, 100)
+        break;
+      default:
+        break;
+    }
+
+    this.state.itemsToSave[this.state.selectedIndex][field] = value
+
+    this.setState({
+      itemsToSave: this.state.itemsToSave,
+      formValid: this.refs.form.checkValidity()
+    })
   }
 }

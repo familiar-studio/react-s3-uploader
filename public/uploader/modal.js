@@ -50,7 +50,8 @@ export default class Modal extends React.Component {
             showUploadProgresses={this.state.showUploadProgresses}
             showPickedFiles={pickedFiles => {
               this.setState({ pickedFiles: this.state.pickedFiles.concat(pickedFiles) })
-            }}>
+            }}
+            cancelModal={this.props.cancelModal}>
           </FilePicker>
           }
         </div>

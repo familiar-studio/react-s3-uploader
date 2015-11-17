@@ -51,7 +51,8 @@ class UploaderContainer extends React.Component {
             editing: [itemsToEdit],
             editingIndex: index,
             showModal: true
-          })}>
+          })}
+          reOrderItems={items => this.setState({items: items})}>
         </List>
 
         {this.state.showModal ?
@@ -82,4 +83,4 @@ class UploaderContainer extends React.Component {
   }
 }
 
-var uploader = ReactDOM.render( <UploaderContainer />, document.getElementsByTagName('uploader')[0] )
+uploader = ReactDOM.render( <UploaderContainer />, document.getElementsByTagName('uploader')[0] )
