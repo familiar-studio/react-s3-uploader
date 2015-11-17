@@ -24,71 +24,87 @@ export default class MetadataForm extends React.Component {
     })
 
     return (
-      <div>
-        <h1>metadata form</h1>
-
+      <div className="form-slider-container">
+        <div className="upl-modal-header">
+          <h2>Edit Captions <span style={{fontWeight: 'normal'}}>({this.state.selectedIndex + 1}/{this.state.itemsToSave.length})</span></h2>
+        </div>
         <div id="metaDataSlider">
           {slides}
         </div>
-
-        <form ref="form">
-          <fieldset>
-            <legend>Legend</legend>
-            <div className="field">
-              <label>Title</label>
-              <input
-                ref="title"
-                type="text"
-                value={this.state.itemsToSave[this.state.selectedIndex].title || ''}
-                onChange={e => this.validateInput(e, 'title')}
-                required
-              />
-            </div>
-            <div className="field">
-              <label>Media</label>
-              <input
-                type="text"
-                value={this.state.itemsToSave[this.state.selectedIndex].media || ''}
-                onChange={e => this.validateInput(e, 'media')}
-              />
-            </div>
-            <div className="field">
-              <label>Artist Name</label>
-              <input
-                type="text"
-                value={this.state.itemsToSave[this.state.selectedIndex].artistName || ''}
-                onChange={e => this.validateInput(e, 'artistName')}
-              />
-            </div>
-            <div className="field">
-              <label>Year</label>
-              <input
-                type="text"
-                value={this.state.itemsToSave[this.state.selectedIndex].year || ''}
-                onChange={e => this.validateInput(e, 'year')}
-              />
-            </div>
-            <div className="field textarea">
-              <label>Description</label>
-              <textarea
-                value={this.state.itemsToSave[this.state.selectedIndex].description || ''}
-                onChange={e => this.validateInput(e, 'description')}>
-              </textarea>
-            </div>
-          </fieldset>
-        </form>
-
         <div>
-          <button onClick={this.props.cancelModal}>Cancel</button>
-          {this.state.selectedIndex ?
-            <button onClick={() => this.slider.select(this.state.selectedIndex - 1)}>Back</button>
-            : null
-          }
-          <button
-            onClick={this.saveContinue.bind(this)}
-            disabled={!this.state.formValid}>
-            Save and Continue
-          </button>
+          <form ref="form">
+            <fieldset>
+              <div className="field">
+                <label>Title</label>
+                <input
+                  ref="title"
+                  type="text"
+                  value={this.state.itemsToSave[this.state.selectedIndex].title || ''}
+                  onChange={e => this.validateInput(e, 'title')}
+                  required
+                />
+              </div>
+              <div className="field">
+                <label>Media</label>
+                <input
+                  type="text"
+                  value={this.state.itemsToSave[this.state.selectedIndex].media || ''}
+                  onChange={e => this.validateInput(e, 'media')}
+                />
+              </div>
+              <div className="field">
+                <label>Artist Name</label>
+                <input
+                  type="text"
+                  value={this.state.itemsToSave[this.state.selectedIndex].artistName || ''}
+                  onChange={e => this.validateInput(e, 'artistName')}
+                />
+              </div>
+              <div className="field">
+                <label>Year</label>
+                <input
+                  type="text"
+                  value={this.state.itemsToSave[this.state.selectedIndex].date || ''}
+                  onChange={e => this.validateInput(e, 'date')}
+                />
+              </div>
+              <div className="field textarea">
+                <label>Photo Credit</label>
+                <input
+                  type="text"
+                  value={this.state.itemsToSave[this.state.selectedIndex].description || ''}
+                  onChange={e => this.validateInput(e, 'description')}
+                />
+              </div>
+
+              <div className="upl-btn-group upl-btn-group-right">
+                <button
+                  type="button"
+                  className="upl-btn upl-btn-default"
+                  onClick={this.props.cancelModal}>
+                  Cancel
+                </button>
+                {this.state.selectedIndex ?
+                  <button
+                    type="button"
+                    className="upl-btn upl-btn-default"
+                    onClick={() => this.slider.select(this.state.selectedIndex - 1)}>
+                    Back
+                  </button>
+                  : null
+                }
+                <button
+                  type="button"
+                  className="upl-btn upl-btn-primary"
+                  onClick={this.saveContinue.bind(this)}
+                  disabled={!this.state.formValid}>
+                  Save and Continue
+                </button>
+              </div>
+
+            </fieldset>
+          </form>
+
         </div>
       </div>
     )
@@ -102,7 +118,8 @@ export default class MetadataForm extends React.Component {
     this.slider = new Flickity(document.getElementById('metaDataSlider'), {
       prevNextButtons: false,
       draggable: false,
-      selectedIndex: 0
+      selectedIndex: 0,
+      pageDots: false
     })
 
     this.slider.on('cellSelect', () => {

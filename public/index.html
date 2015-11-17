@@ -3,23 +3,12 @@
   <head>
     <link rel="stylesheet" href="./jspm_packages/github/metafizzy/flickity@1.1.1/dist/flickity.min.css" media="screen">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <style media="screen">
-      .gallery-cell {
-        width: 100%; /* full width */
-        height: 300px; /* height of gallery */
-        margin-right: 10px;
-        padding: 20px;
-      }
-      .gallery-cell.slideshow {
-        width: 100%; /* full width */
-        height: 600px; /* height of gallery */
-        margin-right: 10px;
-        padding: 20px;
-      }
-    </style>
+    <link rel="stylesheet" href="./uploader/style.css">
   </head>
   <body>
-    <uploader></uploader>
+    <div class="container" style="max-width: 800px; margin: 0 auto">
+      <uploader></uploader>
+    </div>
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="./jspm_packages/github/metafizzy/flickity@1.1.1/dist/flickity.pkgd.min.js"></script>

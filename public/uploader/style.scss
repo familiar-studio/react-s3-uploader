@@ -1,0 +1,328 @@
+/*****************
+
+  Global Elements
+
+*****************/
+
+$default: white;
+$primary: #337ab7;
+$highlight: #5bc0de;
+$danger: maroon;
+
+$lightergray: #EFEFEF;
+$lightgray: #EFEFEF;
+$translightgray: rgba(204,204,204, 0.5);
+$mediumgray: #D8D8D8;
+$darkgray: #666666;
+
+.upl-btn-group {
+  display: flex;
+  margin: 15px 0;
+  &.upl-btn-group-right {
+    justify-content: flex-end;
+    label {
+      @extend .uploader-btn;
+    }
+    .upl-btn:not(:last-of-type) {
+      margin-right: 5px;
+    }
+  }
+  .upl-btn:not(:first-of-type) {
+    margin-right: 5px;
+  }
+}
+
+.upl-btn {
+  cursor: pointer;
+  font-size: 14px;
+  color: white;
+  border: 1px solid transparent;
+  text-align: center;
+  padding: 6px 12px;
+  border-radius: 4px;
+  margin-right: 5px;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  outline: none;
+  &.upl-btn-default {
+    background-color: $default;
+    border: 1px solid $lightgray;
+    color: gray;
+    &:hover {
+      background-color: $lightgray;
+    }
+  }
+  &.upl-btn-primary {
+    background-color: $primary;
+    &:hover {
+      background-color: $highlight;
+    }
+  }
+  &.upl-btn-danger {
+    background-color: white;
+    border: 1px solid $danger;
+    color: $danger;
+    &:hover {
+      background-color: $danger;
+      color: white;
+    }
+  }
+}
+
+.dropzone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+	width: 100%;
+	height: 100px;
+  border: 1px dotted $darkgray;
+  overflow: hidden;
+  div {
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+    align-self: stretch;
+    pointer-events: none;
+    p {
+      text-align: center;
+      color: $primary;
+    }
+  }
+  .input-file-as-droppable {
+    position: absolute;
+    top: -20px;
+    left: 0;
+    background-color: $lightgray;
+    height: calc(100% + 20px);
+    width: 100%;
+  }
+}
+
+
+form fieldset {
+  border: none;
+  padding: 15px 50px 0 15px;
+  .field {
+    display: flex;
+    margin: 15px 0;
+    input, label {
+      font-size: 14px;
+      line-height: 16px;
+      padding: 6px 12px;
+    }
+    input {
+      width: calc(100% - 100px);
+    }
+    label {
+      width: 100px;
+      margin-right: 5px;
+      text-align: right;
+      text-transform: uppercase;
+      color: $darkgray;
+      white-space: nowrap;
+      overflow: hidden;
+      font-size: 10px;
+      font-weight: bold;
+      padding-top: 11px;
+    }
+  }
+}
+.gallery-cell {
+  width: 100%; /* full width */
+  height: 300px; /* height of gallery */
+  margin-right: 10px;
+  padding: 20px;
+}
+.gallery-cell.slideshow {
+  width: 100%; /* full width */
+  height: 600px; /* height of gallery */
+  margin-right: 10px;
+  padding: 20px;
+}
+
+
+
+
+/*****************
+
+  Components
+
+*****************/
+
+#uploader {
+  font-family: Helvetica, sans-serif;
+}
+
+#uploaderModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(255,255,255,0.9);
+  display: flex;
+  justify-content: center;
+  .upl-modal-inner {
+    position: relative;
+    align-self: center;
+    width: 350px;
+    max-height: 100vh;
+    overflow: scroll;
+    padding: 60px 50px 10px 50px;
+    background-color: $default;
+    box-shadow: -2px 2px 14px 4px rgba(0,0,0,0.1);
+    .upl-modal-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: $mediumgray;
+      h2 {
+        line-height: 50px;
+        font-size: 20px;
+        margin: 0;
+        padding-left: 15px;
+        color: $darkgray;
+      }
+    }
+  }
+}
+
+#pickedFiles {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 15px;
+  .picked-item {
+    flex-basis: calc(50% - 22px);
+    padding: 10px 10px 0 10px;
+    height: 200px;
+    border: 1px solid $translightgray;
+    margin-top: -1px;
+    display: flex;
+    flex-direction: column;
+    .img-preview {
+      flex: 2;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+    }
+    &:nth-child(even) {
+      margin-left: -1px;
+    }
+    h4, h6 {
+      font-weight: normal;
+    }
+    h4 {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      font-size: 12px;
+      line-height: 16px;
+      margin: 0;
+    }
+    h6 {
+      font-size: 12px;
+      line-height: 26px;
+      margin: 0;
+      color: $darkgray;
+    }
+  }
+}
+
+.form-slider-container {
+  margin: -10px -50px 0 -50px;
+  #metaDataSlider {
+    padding: 0 50px;
+    background-color: $lightgray;
+  }
+}
+
+#uploaderListContainer {
+  margin-top: 15px;
+  .uploader-list-header {
+    display: flex;
+    justify-content: space-between;
+    background-color: $mediumgray;
+    color: $darkgray;
+    padding: 0 15px;
+  }
+}
+
+ul#uploaderList {
+  background-color: $lightergray;
+  padding: 15px;
+  list-style: none;
+  margin: 0 auto;
+  border: 1px solid $mediumgray;
+  li {
+    margin: 0 -15px;
+    padding: 15px;
+    background-color: $lightergray;
+    display: flex;
+    border-bottom: 1px solid $mediumgray;
+    &:last-of-type {
+      border-bottom: none;
+    }
+    .upl-list-img {
+      width: 15%;
+      img {
+        max-width: 100%;
+      }
+      a {
+        display: block;
+        font-size: 10px;
+        text-align: center;
+        color: black;
+        &:hover {
+          color: $danger;
+        }
+      }
+    }
+    .upl-list-metadata {
+      width: 65%;
+      padding: 15px;
+      padding-top: 0;
+      .field {
+        display: flex;
+        margin: 10px 0;
+        label {
+          margin-right: 5px;
+          text-transform: uppercase;
+          font-weight: bold;
+          font-size: 10px;
+          line-height: 16px;
+          padding: 6px 12px;
+        }
+        p {
+          margin: 0;
+          padding-right: 5px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          color: $darkgray;
+          font-size: 10px;
+          padding: 8px 0;
+        }
+      }
+      .upl-list-row-2c {
+        display: flex;
+        border-bottom: 1px solid $translightgray;
+        .field { width: 50% }
+      }
+    }
+    .upl-list-btn-group {
+      width: 20%;
+      padding-top: 20px;
+      display: flex;
+      justify-content: flex-end;
+      .upl-btn {
+        height: 36px;
+        width: 110px;
+      }
+      img.upl-list-item-handle {
+        height: 36px;
+        cursor: move;
+      }
+    }
+  }
+}

@@ -13,31 +13,13 @@ export default class Modal extends React.Component {
 
   render() {
     return (
-      <section id="uploaderModal"
-               style={{
-                position: 'fixed',
-                top: 0,
-                bottom: 0,
-                width: '100%',
-                backgroundColor: 'rgba(255,255,255,0.9)',
-                display: 'flex',
-                overflow: 'scroll'
-               }}>
-        <div style={{
-              margin: 'auto',
-              width: 400
-             }}>
-          <div>
-            <h2>File Uploader</h2>
-          </div>
-
+      <section id="uploaderModal">
+        <div className="upl-modal-inner">
           {this.props.editing.length ?
           <MetadataForm
             items={this.props.items}
             editing={this.props.editing}
             saveItems={this.props.saveItems}
-            isEditing={this.props.isEditing}
-            editingExistingItems={this.props.editingExistingItems}
             cancelModal={this.props.cancelModal}>
           </MetadataForm>
             :
