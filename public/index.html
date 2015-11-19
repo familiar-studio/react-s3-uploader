@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <link rel="stylesheet" href="./jspm_packages/github/metafizzy/flickity@1.1.1/dist/flickity.min.css" media="screen">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.1.1/flickity.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="./uploader/style.css">
   </head>
@@ -9,14 +9,20 @@
     <div class="container" style="max-width: 800px; margin: 0 auto">
       <uploader></uploader>
     </div>
+
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script src="./jspm_packages/github/metafizzy/flickity@1.1.1/dist/flickity.pkgd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.1.1/flickity.pkgd.min.js"></script>
+
+    <!-- <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="./jspm_packages/system.js"></script>
-    <script src="./config.js"></script>
-    <script>
+    <script src="./config.js"></script> -->
+     <script>
       var uploader;
-      System.import('uploader/index')
+      //System.import('uploader/index')
     </script>
+    <script src="./app.js"></script>
+
   </body>
 </html>
