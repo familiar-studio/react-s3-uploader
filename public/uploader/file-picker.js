@@ -16,7 +16,8 @@ export default class FilePicker extends React.Component {
       return reader.onload = e => this.props.showPickedFiles({
         url: e.target.result,
         title: file.name,
-        size: file.size
+        size: file.size,
+        file: file
       })
     })
   }
