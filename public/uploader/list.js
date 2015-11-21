@@ -12,8 +12,10 @@ export default class List extends React.Component {
             data-id={index}
             draggable="true">
 
-          <div className="upl-list-img">
-            <img height="100" src={item.url} />
+          <div className="upl-list-img ">
+            <div className="img-center">
+              <img height="" src={item.url} />
+            </div>
             <a  href
                 onClick={(e) => {
                   e.preventDefault()

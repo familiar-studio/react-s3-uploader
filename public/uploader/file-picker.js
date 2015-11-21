@@ -9,8 +9,18 @@ export default class FilePicker extends React.Component {
     return false
   }
 
+  constructor() {
+    super()
+    this.state = {
+      fileCount:0,
+      limit: 4
+    }
+  }
+
   handlesFilesChange(e) {
-    return Array.prototype.map.call(e.target.files, (file) => {
+
+    return Array.prototype.map.call(e.target.files, (file, index) => {
+      console.log(this.state.fileCount,this.state.limit );
       var reader = new FileReader();
       setTimeout(() => reader.readAsDataURL(file))
       return reader.onload = e => this.props.showPickedFiles({
@@ -19,6 +29,7 @@ export default class FilePicker extends React.Component {
         size: file.size,
         file: file
       })
+
     })
   }
 

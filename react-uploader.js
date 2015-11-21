@@ -556,12 +556,6 @@ $__System.register("8", ["3", "4", "5", "6", "7"], function (_export) {
       FilePicker = (function (_React$Component) {
         _inherits(FilePicker, _React$Component);
 
-        function FilePicker() {
-          _classCallCheck(this, FilePicker);
-
-          _get(Object.getPrototypeOf(FilePicker.prototype), "constructor", this).apply(this, arguments);
-        }
-
         _createClass(FilePicker, [{
           key: "preventRedirect",
           value: function preventRedirect(e) {
@@ -569,12 +563,25 @@ $__System.register("8", ["3", "4", "5", "6", "7"], function (_export) {
             e.stopPropagation();
             return false;
           }
-        }, {
+        }]);
+
+        function FilePicker() {
+          _classCallCheck(this, FilePicker);
+
+          _get(Object.getPrototypeOf(FilePicker.prototype), "constructor", this).call(this);
+          this.state = {
+            fileCount: 0,
+            limit: 4
+          };
+        }
+
+        _createClass(FilePicker, [{
           key: "handlesFilesChange",
           value: function handlesFilesChange(e) {
             var _this = this;
 
-            return Array.prototype.map.call(e.target.files, function (file) {
+            return Array.prototype.map.call(e.target.files, function (file, index) {
+              console.log(_this.state.fileCount, _this.state.limit);
               var reader = new FileReader();
               setTimeout(function () {
                 return reader.readAsDataURL(file);
@@ -727,8 +734,8 @@ $__System.register('9', ['3', '4', '5', '6', '7', 'a'], function (_export) {
             var slides = this.props.editing.map(function (item, index) {
               return React.createElement(
                 'div',
-                { className: 'gallery-cell', key: index },
-                React.createElement('img', { src: item.url, height: '300', style: {
+                { className: 'gallery-cell img-center', key: index },
+                React.createElement('img', { src: item.url, style: {
                     margin: '0 auto',
                     display: 'block'
                   } })
@@ -5388,8 +5395,12 @@ $__System.register('f', ['3', '4', '5', '6', '7', 'a', 'e'], function (_export) 
                   draggable: 'true' },
                 React.createElement(
                   'div',
-                  { className: 'upl-list-img' },
-                  React.createElement('img', { height: '100', src: item.url }),
+                  { className: 'upl-list-img ' },
+                  React.createElement(
+                    'div',
+                    { className: 'img-center' },
+                    React.createElement('img', { height: '', src: item.url })
+                  ),
                   React.createElement(
                     'a',
                     { href: true,

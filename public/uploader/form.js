@@ -14,8 +14,8 @@ export default class MetadataForm extends React.Component {
   render() {
     const slides = this.props.editing.map(function(item, index) {
       return (
-        <div className="gallery-cell" key={index}>
-          <img src={item.url} height="300" style={{
+        <div className="gallery-cell img-center" key={index}>
+          <img src={item.url}  style={{
               margin: '0 auto',
               display: 'block'
             }} />
