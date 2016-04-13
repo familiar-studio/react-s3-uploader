@@ -9,28 +9,39 @@ export default class FilePicker extends React.Component {
     return false
   }
 
-  constructor() {
-    super()
-    this.state = {
-      fileCount:0,
-      limit: 4
-    }
-  }
 
   handlesFilesChange(e) {
 
-    return Array.prototype.map.call(e.target.files, (file, index) => {
-      console.log(this.state.fileCount,this.state.limit );
-      var reader = new FileReader();
-      setTimeout(() => reader.readAsDataURL(file))
-      return reader.onload = e => this.props.showPickedFiles({
-        url: e.target.result,
-        title: file.name,
-        size: file.size,
-        file: file
-      })
+    console.log('items', this.props.items.length,e.target.files.length)
+    if (this.props.items.length + e.target.files.length + this.props.pickedFiles.length <= 4) {
 
-    })
+      return Array.prototype.map.call(e.target.files, (file, index) => {
+
+          if (file.type == 'image/jpeg' || file.type == 'image/gif' || file.type == 'image/png') {
+
+            var title = file.name.split('-').join(' ').split('_').join(' ').replace(/\..+$/, '');
+
+
+            var reader = new FileReader();
+            setTimeout(() => reader.readAsDataURL(file))
+            return reader.onload = e => this.props.showPickedFiles({
+              url: e.target.result,
+              title: title,
+              size: file.size,
+              file: file
+            })
+          } else {
+            alert ('Must be either jpg, pngs or gif files');
+            return null;
+
+          }
+
+
+      })
+    } else {
+      alert ('You can only upload up to 4 images');
+      return null
+    }
   }
 
   render() {

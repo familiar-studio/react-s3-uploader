@@ -5,37 +5,40 @@ $('#form').submit(function(e) {
   data.append('action','guestEntries/saveEntry');
   data.append('redirect','upload/index.json');
   data.append('sectionId','6');
+  data.append('entryId','8552');
+
+  
   data.append('fields[firstName]','keith');
   data.append('fields[lastName]','tester');
 
-  $.each(uploader.state.items,function (index, item) {
-
-    data.append('fields[artwork][new'+index+'][type]','artworkMatrix');
-    data.append('fields[artwork][new'+index+'][fields][image]', item.file, item.file.name);
-
-    if (item.title) {
-      data.append('fields[artwork][new'+index+'][fields][artworkTitle]', item.title);
-    }
-
-    if (item.description) {
-      data.append('fields[artwork][new'+index+'][fields][description]', item.description);
-    }
-
-    if (item.artistName) {
-      data.append('fields[artwork][new'+index+'][fields][artistName]', item.artistName);
-    }
-
-    if (item.media) {
-      data.append('fields[artwork][new'+index+'][fields][media]', item.media);
-    }
-
-    if (item.year) {
-      data.append('fields[artwork][new'+index+'][fields][year]', item.year);
-    }
-
-  });
+  // $.each(uploader.state.items,function (index, item) {
+  //
+  //   data.append('fields[artwork][new'+index+'][type]','artworkMatrix');
+  //   data.append('fields[artwork][new'+index+'][fields][image]', item.file, item.file.name);
+  //
+  //   if (item.title) {
+  //     data.append('fields[artwork][new'+index+'][fields][artworkTitle]', item.title);
+  //   }
+  //
+  //   if (item.description) {
+  //     data.append('fields[artwork][new'+index+'][fields][description]', item.description);
+  //   }
+  //
+  //   if (item.artistName) {
+  //     data.append('fields[artwork][new'+index+'][fields][artistName]', item.artistName);
+  //   }
+  //
+  //   if (item.media) {
+  //     data.append('fields[artwork][new'+index+'][fields][media]', item.media);
+  //   }
+  //
+  //   if (item.year) {
+  //     data.append('fields[artwork][new'+index+'][fields][year]', item.year);
+  //   }
+  //
+  // });
   var oReq = new XMLHttpRequest();
-  oReq.open("POST", "http://www.artmattersfoundation.org", true);
+  oReq.open("POST", "http://artmatters.craft.dev", true);
   oReq.onload = function(oEvent) {
     if (oReq.status == 200) {
       oOutput.innerHTML = "Uploaded!";

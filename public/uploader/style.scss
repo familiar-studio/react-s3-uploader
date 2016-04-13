@@ -172,7 +172,7 @@ form fieldset {
     align-self: center;
     width: 450px;
     max-height: 100vh;
-    overflow: scroll;
+    overflow: hidden;
     padding: 60px 50px 10px 50px;
     background-color: $default;
     box-shadow: -2px 2px 14px 4px rgba(0,0,0,0.1);

@@ -25,6 +25,8 @@ export default class Modal extends React.Component {
             :
           <FilePicker
             pickedFiles={this.state.pickedFiles}
+            items={this.props.items}
+            
             editPickedFiles={() => {
               this.props.editPickedFiles(this.state.pickedFiles)
               this.setState({pickedFilles: []})
