@@ -7,7 +7,7 @@ var cors = require('express-cors')
 var uuid = require('uuid');
 var multiparty = require('multiparty');
 var s3 = require('s3');
-var s3auth = require('./s3auth.js')
+//var s3auth = require('./s3auth.js')
 
 app.use(cors({
   allowedOrigins: ['localhost:7000']
@@ -20,12 +20,12 @@ app.get('/', function(req, res) {
 
 app.listen(5000);
 
-var s3Client = s3.createClient({
-  s3Options: {
-    accessKeyId: s3auth.accessKeyId,
-    secretAccessKey: s3auth.secretAccessKey
-  }
-});
+// var s3Client = s3.createClient({
+//   s3Options: {
+//     accessKeyId: s3auth.accessKeyId,
+//     secretAccessKey: s3auth.secretAccessKey
+//   }
+// });
 
 app.post('/s3upload', function(req, res) {
   var form = new multiparty.Form();
