@@ -5,7 +5,7 @@ var sass = require('gulp-sass');
 var browserSync = require('browser-sync');
 var nodemon = require('gulp-nodemon');
 
-gulp.task('default', ['sass', 'browser-sync', 'sass:watch'], function () {});
+gulp.task('default', ['sass', 'nodemon', 'sass:watch'], function () {});
 
 gulp.task('sass', function () {
   gulp.src('./public/uploader/*.scss')
