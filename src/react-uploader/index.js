@@ -5,7 +5,6 @@ import List from './list.js'
 import Modal from './modal.js'
 import Slideshow from './slideshow.js'
 
-
 class Uploader extends React.Component {
   constructor(props) {
     super()

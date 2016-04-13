@@ -5,7 +5,7 @@ var sass = require('gulp-sass');
 var browserSync = require('browser-sync');
 var nodemon = require('gulp-nodemon');
 
-gulp.task('default', ['sass', 'nodemon', 'sass:watch'], function () {});
+gulp.task('default', ['sass', 'sass:watch'], function () {});
 
 gulp.task('sass', function () {
   gulp.src('./public/uploader/*.scss')
@@ -24,20 +24,4 @@ gulp.task('browser-sync', ['nodemon'], function() {
     browser: "google chrome",
     port: 7000,
 	});
-});
-
-gulp.task('nodemon', function (cb) {
-	var started = false;
-	return nodemon({ script: 'server.js'})
-		.on('start', function () {
-			if (!started) { cb(); started = true; }
-		})
-	  .on('restart', function onRestart() {
-	    // reload connected browsers after a slight delay
-	    setTimeout(function reload() {
-	      browserSync.reload({
-	        stream: false
-	      });
-	    }, 500);
-		});
 });
