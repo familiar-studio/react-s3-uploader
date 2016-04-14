@@ -10,6 +10,7 @@ class Uploader extends React.Component {
     super()
     this.state = {
       items: props.items || [],
+      rollbackItemsState: [],
       editing: [],
       editingIndex: null,
       showModal: false,
@@ -38,23 +39,24 @@ class Uploader extends React.Component {
       })
 
     } else {
-      const rollbackState = _.cloneDeep(this.state.items)
+      const rollbackItemsState = _.cloneDeep(this.state.items)
 
       this.setState({
-        rollbackState: rollbackState,
+        rollbackItemsState: rollbackItemsState,
         items: this.state.items.concat(toSave),
         showModal: false,
         editing: []
       })
-
-      this.props.notifier(this.rollback.bind( this, rollbackState ))
     }
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    prevState.rollbackItemsState = this.state.rollbackItemsState || prevState.rollbackItemsState || null
+    this.props.notifier(this.rollback.bind( this, prevState ))
+  }
+
   rollback(prevState) {
-    this.setState({
-      items: prevState
-    })
+    this.setState(prevState)
   }
 
   render() {
