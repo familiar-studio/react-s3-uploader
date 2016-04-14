@@ -22,10 +22,12 @@
 
       System.import('react-uploader').then(function(ReactUploader) {
         var mockData = [{"cdnUrl":"https://awaw-applications.s3.amazonaws.com/a0f11000003HfzwAAC/artwork/portrait.jpg","artworkTitle":"aaa","artworkYear":"bbb","artworkMedia":"ccc","artworkDimensions":"ddd","description":"eee"},{"cdnUrl":"https://awaw-applications.s3.amazonaws.com/a0f11000003HfzwAAC/artwork/South-America-Patagonia-1-guanaco.jpg"},{"cdnUrl":"https://awaw-applications.s3.amazonaws.com/a0f11000003HfzwAAC/artwork/Torres-del-Paine-Photo-by-jakub-polomski-Latin-America-For-Less.jpg"}]
-        var uploader = new ReactUploader.default(mockData)
-        console.log(uploader)
+        var uploader = new ReactUploader.default(mockData, function(a, b) {
+          console.log(a)
+          console.log(b)
+          console.log(uploader.state.items.length)
+        })
       })
-
     </script>
   </body>
 </html>

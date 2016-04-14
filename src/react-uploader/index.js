@@ -48,6 +48,10 @@ class Uploader extends React.Component {
     }
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    this.props.notifier(prevProps, prevState)
+  }
+
   render() {
     return (
       <section id="uploader">
@@ -93,6 +97,6 @@ class Uploader extends React.Component {
   }
 }
 
-export default function ReactUploader(initialItems) {
-  return ReactDOM.render( <Uploader items={initialItems} />, document.getElementsByTagName('uploader')[0] )
+export default function ReactUploader(initialItems, notifier) {
+  return ReactDOM.render( <Uploader items={initialItems} notifier={notifier}  />, document.getElementsByTagName('uploader')[0] )
 }
