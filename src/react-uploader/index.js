@@ -22,9 +22,7 @@ class Uploader extends React.Component {
       multiple: true
     })
     .done( (file) => {
-      file.files().forEach(file => {
-        file.then(this.saveItems.bind(this))
-      })
+      Promise.all(file.files()).then(this.saveItems.bind(this))
     })
   }
 
@@ -40,16 +38,23 @@ class Uploader extends React.Component {
       })
 
     } else {
+      const rollbackState = _.cloneDeep(this.state.items)
+
       this.setState({
+        rollbackState: rollbackState,
         items: this.state.items.concat(toSave),
         showModal: false,
         editing: []
       })
+
+      this.props.notifier(this.rollback.bind( this, rollbackState ))
     }
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    this.props.notifier(prevProps, prevState)
+  rollback(prevState) {
+    this.setState({
+      items: prevState
+    })
   }
 
   render() {
