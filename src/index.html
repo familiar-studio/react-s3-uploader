@@ -2,22 +2,12 @@
 <html>
   <head>
     <link rel="shortcut icon" href="/favicon.ico"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.1.1/flickity.min.css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="./react-uploader/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
   </head>
   <body>
     <div class="container" style="max-width: 800px; margin: 0 auto">
       <uploader></uploader>
     </div>
-
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.1.1/flickity.pkgd.min.js"></script>
-
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
     <script charset="utf-8" src="//ucarecdn.com/widget/2.8.2/uploadcare/uploadcare.full.min.js"></script>
 
@@ -30,8 +20,12 @@
       UPLOADCARE_TABS = "file url facebook gdrive dropbox instagram evernote flickr skydrive";
       UPLOADCARE_PUBLIC_KEY = "38a39e1da7c78a598632";
 
-      var uploader;
-      System.import('react-uploader')
+      System.import('react-uploader').then(function(ReactUploader) {
+        var mockData = [{"cdnUrl":"https://awaw-applications.s3.amazonaws.com/a0f11000003HfzwAAC/artwork/portrait.jpg","artworkTitle":"aaa","artworkYear":"bbb","artworkMedia":"ccc","artworkDimensions":"ddd","description":"eee"},{"cdnUrl":"https://awaw-applications.s3.amazonaws.com/a0f11000003HfzwAAC/artwork/South-America-Patagonia-1-guanaco.jpg"},{"cdnUrl":"https://awaw-applications.s3.amazonaws.com/a0f11000003HfzwAAC/artwork/Torres-del-Paine-Photo-by-jakub-polomski-Latin-America-For-Less.jpg"}]
+        var uploader = new ReactUploader.default(mockData)
+        console.log(uploader)
+      })
+
     </script>
   </body>
 </html>

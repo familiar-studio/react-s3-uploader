@@ -1,11 +1,12 @@
 {
-  "name": "uploader",
-  "version": "1.0.0",
+  "name": "react-uploader",
+  "version": "1.0.1",
   "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "build": "jspm build react-uploader dist/react-uploader.js --format umd --global-name ReactUploader --skip-source-maps --minify"
   },
   "dependencies": {},
   "devDependencies": {
@@ -21,6 +22,8 @@
       "lib": "src"
     },
     "dependencies": {
+      "flickity": "npm:flickity@^1.2.1",
+      "jquery-ui": "github:components/jqueryui@^1.11.4",
       "lodash": "npm:lodash@^4.11.0",
       "react": "npm:react@^15.0.1",
       "react-dom": "npm:react-dom@^15.0.1"
@@ -55,6 +58,13 @@
       "zlib": "github:jspm/nodelibs-zlib@^0.2.0-alpha"
     },
     "overrides": {
+      "github:components/jqueryui@1.11.4": {
+        "main": "jquery-ui.js",
+        "registry": "jspm",
+        "dependencies": {
+          "jquery": "*"
+        }
+      },
       "npm:babel-runtime@5.8.38": {
         "main": false,
         "dependencies": {},
@@ -75,6 +85,9 @@
         "ignore": [
           "test.js"
         ]
+      },
+      "npm:jquery@2.2.3": {
+        "format": "amd"
       },
       "npm:readable-stream@1.0.34": {
         "map": {

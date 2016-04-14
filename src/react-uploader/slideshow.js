@@ -1,4 +1,5 @@
 import React from 'react'
+import Flickity from 'flickity'
 
 export default class Slideshow extends React.Component {
   constructor() {

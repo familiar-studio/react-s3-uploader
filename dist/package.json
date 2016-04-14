@@ -1,0 +1,23 @@
+{
+  "name": "react-uploader",
+  "version": "1.0.0",
+  "registry": "npm",
+  "jspmPackage": true,
+  "main": "react-uploader.js",
+  "format": "amd",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/familiar-studio/react-s3-uploader.git"
+  },
+  "author": "Jason Pearson <jason@familiar.com>",
+  "peerDependencies": {
+    "react": "^15.0.1",
+    "flickity": "^1.2.1",
+    "lodash": "^4.11.0"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/familiar-studio/react-s3-uploader/issues"
+  },
+  "homepage": "https://github.com/familiar-studio/react-s3-uploader#readme"
+}

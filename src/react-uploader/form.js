@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import Flickity from 'flickity'
 
 export default class MetadataForm extends React.Component {
   constructor(props) {

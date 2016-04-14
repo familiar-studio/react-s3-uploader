@@ -33,9 +33,11 @@ SystemJS.config({
     "crypto": "github:jspm/nodelibs-crypto@0.2.0-alpha",
     "domain": "github:jspm/nodelibs-domain@0.2.0-alpha",
     "events": "github:jspm/nodelibs-events@0.2.0-alpha",
+    "flickity": "npm:flickity@1.2.1",
     "fs": "github:jspm/nodelibs-fs@0.2.0-alpha",
     "http": "github:jspm/nodelibs-http@0.2.0-alpha",
     "https": "github:jspm/nodelibs-https@0.2.0-alpha",
+    "jquery-ui": "github:components/jqueryui@1.11.4",
     "lodash": "npm:lodash@4.11.0",
     "net": "github:jspm/nodelibs-net@0.2.0-alpha",
     "os": "github:jspm/nodelibs-os@0.2.0-alpha",
@@ -51,9 +53,62 @@ SystemJS.config({
     "url": "github:jspm/nodelibs-url@0.2.0-alpha",
     "util": "github:jspm/nodelibs-util@0.2.0-alpha",
     "vm": "github:jspm/nodelibs-vm@0.2.0-alpha",
-    "zlib": "github:jspm/nodelibs-zlib@0.2.0-alpha"
+    "zlib": "github:jspm/nodelibs-zlib@0.2.0-alpha",
+    "react-uploader": "src/react-uploader"
   },
   packages: {
+    "github:components/jqueryui@1.11.4": {
+      "map": {
+        "jquery": "npm:jquery@2.2.3"
+      }
+    },
+    "npm:doc-ready@1.0.3": {
+      "map": {
+        "eventie": "npm:eventie@1.0.6"
+      }
+    },
+    "npm:fizzy-ui-utils@1.0.1": {
+      "map": {
+        "desandro-matches-selector": "npm:desandro-matches-selector@1.0.3",
+        "doc-ready": "npm:doc-ready@1.0.3"
+      }
+    },
+    "npm:flickity@1.2.1": {
+      "map": {
+        "desandro-classie": "npm:desandro-classie@1.0.1",
+        "desandro-get-style-property": "npm:desandro-get-style-property@1.0.4",
+        "desandro-matches-selector": "npm:desandro-matches-selector@1.0.3",
+        "doc-ready": "npm:doc-ready@1.0.3",
+        "eventie": "npm:eventie@1.0.6",
+        "fizzy-ui-utils": "npm:fizzy-ui-utils@1.0.1",
+        "get-size": "npm:get-size@1.2.2",
+        "tap-listener": "npm:tap-listener@1.1.2",
+        "unidragger": "npm:unidragger@1.1.5",
+        "wolfy87-eventemitter": "npm:wolfy87-eventemitter@4.2.11"
+      }
+    },
+    "npm:get-size@1.2.2": {
+      "map": {
+        "desandro-get-style-property": "npm:desandro-get-style-property@1.0.4"
+      }
+    },
+    "npm:tap-listener@1.1.2": {
+      "map": {
+        "unipointer": "npm:unipointer@1.1.0"
+      }
+    },
+    "npm:unidragger@1.1.5": {
+      "map": {
+        "eventie": "npm:eventie@1.0.6",
+        "unipointer": "npm:unipointer@1.1.0"
+      }
+    },
+    "npm:unipointer@1.1.0": {
+      "map": {
+        "eventie": "npm:eventie@1.0.6",
+        "wolfy87-eventemitter": "npm:wolfy87-eventemitter@4.2.11"
+      }
+    },
     "npm:babel-code-frame@6.7.5": {
       "map": {
         "babel-runtime": "npm:babel-runtime@5.8.38",

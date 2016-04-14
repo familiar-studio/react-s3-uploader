@@ -1,0 +1,98 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/5.5.0/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'publish',
+1 verbose cli   '.' ]
+2 info using npm@3.5.3
+3 info using node@v5.5.0
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/jason/Sites/react-s3-uploader/dist',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/jason/.npm/react-uploader/1.0.0/package.tgz not in flight; packing
+9 info lifecycle react-uploader@1.0.0~prepublish: react-uploader@1.0.0
+10 silly lifecycle react-uploader@1.0.0~prepublish: no script for prepublish, continuing
+11 verbose tar pack [ '/Users/jason/.npm/react-uploader/1.0.0/package.tgz',
+11 verbose tar pack   '/Users/jason/Sites/react-s3-uploader/dist' ]
+12 verbose tarball /Users/jason/.npm/react-uploader/1.0.0/package.tgz
+13 verbose folder /Users/jason/Sites/react-s3-uploader/dist
+14 verbose addLocalTarball adding from inside cache /Users/jason/.npm/react-uploader/1.0.0/package.tgz
+15 silly cache afterAdd react-uploader@1.0.0
+16 verbose afterAdd /Users/jason/.npm/react-uploader/1.0.0/package/package.json not in flight; writing
+17 verbose afterAdd /Users/jason/.npm/react-uploader/1.0.0/package/package.json written
+18 silly publish { name: 'react-uploader',
+18 silly publish   version: '1.0.0',
+18 silly publish   registry: 'npm',
+18 silly publish   jspmPackage: true,
+18 silly publish   main: 'react-uploader.js',
+18 silly publish   format: 'amd',
+18 silly publish   repository:
+18 silly publish    { type: 'git',
+18 silly publish      url: 'git+https://github.com/familiar-studio/react-s3-uploader.git' },
+18 silly publish   author: { name: 'Jason Pearson', email: 'jason@familiar.com' },
+18 silly publish   peerDependencies: { react: '^15.0.1', flickity: '^1.2.1', lodash: '^4.11.0' },
+18 silly publish   license: 'ISC',
+18 silly publish   bugs: { url: 'https://github.com/familiar-studio/react-s3-uploader/issues' },
+18 silly publish   homepage: 'https://github.com/familiar-studio/react-s3-uploader#readme',
+18 silly publish   readme: 'ERROR: No README data found!',
+18 silly publish   _id: 'react-uploader@1.0.0',
+18 silly publish   scripts: {},
+18 silly publish   _shasum: '5bb7b9bfc4aecb5c26f8558770c7291f20f60821',
+18 silly publish   _from: '.' }
+19 verbose getPublishConfig undefined
+20 silly mapToRegistry name react-uploader
+21 silly mapToRegistry using default registry
+22 silly mapToRegistry registry https://registry.npmjs.org/
+23 silly mapToRegistry uri https://registry.npmjs.org/react-uploader
+24 verbose publish registryBase https://registry.npmjs.org/
+25 silly publish uploading /Users/jason/.npm/react-uploader/1.0.0/package.tgz
+26 verbose request uri https://registry.npmjs.org/react-uploader
+27 verbose request sending authorization for write operation
+28 info attempt registry request try #1 at 11:56:46 AM
+29 verbose request using bearer token for auth
+30 verbose request id e26fcaff03f52589
+31 http request PUT https://registry.npmjs.org/react-uploader
+32 http 403 https://registry.npmjs.org/react-uploader
+33 verbose headers { 'content-type': 'application/json',
+33 verbose headers   'cache-control': 'max-age=300',
+33 verbose headers   'content-length': '108',
+33 verbose headers   'accept-ranges': 'bytes',
+33 verbose headers   date: 'Thu, 14 Apr 2016 15:56:46 GMT',
+33 verbose headers   via: '1.1 varnish',
+33 verbose headers   connection: 'keep-alive',
+33 verbose headers   'x-served-by': 'cache-iad2132-IAD',
+33 verbose headers   'x-cache': 'MISS',
+33 verbose headers   'x-cache-hits': '0',
+33 verbose headers   'x-timer': 'S1460649406.475681,VS0,VE426',
+33 verbose headers   vary: 'Accept-Encoding' }
+34 verbose request invalidating /Users/jason/.npm/registry.npmjs.org/react-uploader on PUT
+35 error publish Failed PUT 403
+36 verbose stack Error: you do not have permission to publish "react-uploader". Are you logged in as the correct user? : react-uploader
+36 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+36 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+36 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+36 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:198:22)
+36 verbose stack     at emitTwo (events.js:100:13)
+36 verbose stack     at Request.emit (events.js:185:7)
+36 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1035:10)
+36 verbose stack     at emitOne (events.js:95:20)
+36 verbose stack     at Request.emit (events.js:182:7)
+36 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:962:12)
+37 verbose statusCode 403
+38 verbose pkgid react-uploader
+39 verbose cwd /Users/jason/Sites/react-s3-uploader/dist
+40 error Darwin 15.3.0
+41 error argv "/usr/local/Cellar/node/5.5.0/bin/node" "/usr/local/bin/npm" "publish" "."
+42 error node v5.5.0
+43 error npm  v3.5.3
+44 error code E403
+45 error you do not have permission to publish "react-uploader". Are you logged in as the correct user? : react-uploader
+46 error If you need help, you may report this error at:
+46 error     <https://github.com/npm/npm/issues>
+47 verbose exit [ 1, true ]
