@@ -96,13 +96,12 @@ export default class List extends React.Component {
   componentDidMount() {
     this.placeholder = document.createElement('li');
     this.placeholder.className = 'placeholder';
-
-    $('#uploaderList').sortable({
+    $(this.refs.list).sortable({
       start: (e, ui) => {
         this.draggedIndex = ui.item.index()
       },
       stop: (e, ui) => {
-        $('#uploaderList').sortable('cancel')
+        $(this.refs.list).sortable('cancel')
         const data = _.cloneDeep(this.props.items)
         const from = this.draggedIndex;
         const dragged = data.splice(this.draggedIndex, 1)[0]
