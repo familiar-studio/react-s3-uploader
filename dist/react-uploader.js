@@ -38473,16 +38473,17 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
           key: 'saveItems',
           value: function saveItems(data) {
             var toSave = Array.isArray(data) ? data : [data];
+            var rollbackItemsState = _.cloneDeep(this.state.items);
             if (this.state.editingIndex || this.state.editingIndex === 0) {
               this.state.items.splice(this.state.editingIndex, 1, toSave[0]);
               this.setState({
+                rollbackItemsState: rollbackItemsState,
                 items: this.state.items,
                 showModal: false,
                 editing: [],
                 editingIndex: null
               });
             } else {
-              var rollbackItemsState = _.cloneDeep(this.state.items);
               this.setState({
                 rollbackItemsState: rollbackItemsState,
                 items: this.state.items.concat(toSave),

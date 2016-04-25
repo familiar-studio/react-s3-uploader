@@ -29,19 +29,19 @@ class Uploader extends React.Component {
 
   saveItems(data) {
     const toSave = Array.isArray(data) ? data : [data]    
-
+    const rollbackItemsState = _.cloneDeep(this.state.items)
+    
     if (this.state.editingIndex || this.state.editingIndex === 0) {
       this.state.items.splice(this.state.editingIndex, 1, toSave[0])            
       
       this.setState({
+        rollbackItemsState: rollbackItemsState,
         items: this.state.items,
         showModal: false,
         editing: [],
         editingIndex: null
       })
-    } else {
-      const rollbackItemsState = _.cloneDeep(this.state.items)            
-      
+    } else {                        
       this.setState({
         rollbackItemsState: rollbackItemsState,
         items: this.state.items.concat(toSave),
