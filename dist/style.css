@@ -321,12 +321,6 @@ form fieldset {
       margin: 0;
       color: #666666; }
 
-.form-slider-container {
-  margin: -10px -50px 0 -50px; }
-  .form-slider-container #metaDataSlider {
-    padding: 0 50px;
-    background-color: #EFEFEF; }
-
 #uploaderListContainer {
   margin-top: 15px; }
   #uploaderListContainer .uploader-list-header {
