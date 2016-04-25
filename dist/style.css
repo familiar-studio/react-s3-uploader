@@ -240,10 +240,11 @@ form fieldset {
   margin-right: 10px;
   padding: 20px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center; }
   .gallery-cell img {
-    max-width: 100%; }
+    max-width: 100%;
+    max-height: 100%; }
 
 .gallery-cell.slideshow {
   width: 100%;
