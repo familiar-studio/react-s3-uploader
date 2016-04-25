@@ -105,7 +105,7 @@ export default class List extends React.Component {
         const data = _.cloneDeep(this.props.items)
         const from = this.draggedIndex;
         const dragged = data.splice(this.draggedIndex, 1)[0]
-        const to = this.draggedIndex < this.overIndex ? this.overIndex - 1 : this.overIndex
+        const to = this.overIndex
         data.splice(to, 0, dragged)
         this.props.reOrderItems(data)
       },
