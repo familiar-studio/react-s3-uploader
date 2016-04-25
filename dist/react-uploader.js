@@ -38196,10 +38196,7 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
                 key: index,
                 'data-id': index,
                 draggable: 'true'
-              }, React.createElement('div', {className: 'upl-list-img'}, React.createElement('div', {className: 'img-center'}, React.createElement('img', {
-                height: '100',
-                src: item.cdnUrl
-              })), React.createElement('a', {
+              }, React.createElement('div', {className: 'upl-list-img'}, React.createElement('div', {className: 'img-center'}, React.createElement('img', {src: item.cdnUrl})), React.createElement('a', {
                 href: true,
                 onClick: function onClick(e) {
                   e.preventDefault();
@@ -38282,14 +38279,7 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
               return React.createElement('div', {
                 className: 'gallery-cell',
                 key: index
-              }, React.createElement('img', {
-                src: item.cdnUrl,
-                height: '300',
-                style: {
-                  margin: '0 auto',
-                  display: 'block'
-                }
-              }));
+              }, React.createElement('img', {src: item.cdnUrl}));
             });
             return React.createElement('div', {className: 'form-slider-container'}, React.createElement('div', {className: 'upl-modal-header'}, React.createElement('h2', null, 'Edit Captions ', React.createElement('span', {style: {fontWeight: 'normal'}}, '(', this.state.selectedIndex + 1, '/', this.state.itemsToSave.length, ')'))), React.createElement('div', {id: 'metaDataSlider'}, slides), React.createElement('div', null, React.createElement('form', {ref: 'form'}, React.createElement('fieldset', null, React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Title'), React.createElement('input', {
               ref: 'title',

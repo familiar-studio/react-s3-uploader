@@ -14,7 +14,7 @@ export default class List extends React.Component {
 
           <div className="upl-list-img">
             <div className="img-center">
-              <img height="100" src={item.cdnUrl} />
+              <img src={item.cdnUrl} />
             </div>
             <a  href
                 onClick={(e) => {
