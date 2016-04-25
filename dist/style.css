@@ -161,6 +161,8 @@ http://flickity.metafizzy.co
   margin-right: 5px;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
   outline: none; }
+  .upl-btn[disabled] {
+    opacity: 0.6; }
   .upl-btn.upl-btn-default {
     background-color: white;
     border: 1px solid #EFEFEF;

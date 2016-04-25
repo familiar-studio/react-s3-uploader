@@ -51,6 +51,7 @@ export default class MetadataForm extends React.Component {
                   type="text"
                   value={this.state.itemsToSave[this.state.selectedIndex].media || ''}
                   onChange={e => this.validateInput(e, 'media')}
+                  required
                 />
               </div>
               <div className="field">
@@ -59,6 +60,7 @@ export default class MetadataForm extends React.Component {
                   type="text"
                   value={this.state.itemsToSave[this.state.selectedIndex].artistName || ''}
                   onChange={e => this.validateInput(e, 'artistName')}
+                  required
                 />
               </div>
               <div className="field">
@@ -67,6 +69,7 @@ export default class MetadataForm extends React.Component {
                   type="text"
                   value={this.state.itemsToSave[this.state.selectedIndex].date || ''}
                   onChange={e => this.validateInput(e, 'date')}
+                  required
                 />
               </div>
               <div className="field textarea">
@@ -75,6 +78,7 @@ export default class MetadataForm extends React.Component {
                   type="text"
                   value={this.state.itemsToSave[this.state.selectedIndex].description || ''}
                   onChange={e => this.validateInput(e, 'description')}
+                  required
                 />
               </div>
 

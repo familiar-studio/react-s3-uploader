@@ -51,6 +51,9 @@ $darkgray: #666666;
   margin-right: 5px;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
   outline: none;
+  &[disabled] {
+    opacity: 0.6;
+  }
   &.upl-btn-default {
     background-color: $default;
     border: 1px solid $lightgray;

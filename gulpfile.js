@@ -8,7 +8,7 @@ gulp.task('default', ['sass', 'sass:watch'], function () {});
 gulp.task('sass', function () {
   gulp.src('./src/sass/*.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./dist'));
+    .pipe(gulp.dest('./src'));
 });
 
 gulp.task('sass:watch', function () {
