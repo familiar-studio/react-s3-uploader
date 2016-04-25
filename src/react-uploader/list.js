@@ -28,14 +28,10 @@ export default class List extends React.Component {
           </div>
 
           <div className="upl-list-metadata">
-            <div className="upl-list-row-2c">
+            <div className="upl-list-row-1c">
               <div className="field">
                 <label>Title</label>
                 <p>{item.title}</p>
-              </div>
-              <div className="field">
-                <label>Media</label>
-                <p>{item.media}</p>
               </div>
             </div>
 
@@ -50,7 +46,11 @@ export default class List extends React.Component {
               </div>
             </div>
 
-            <div className="upl-list-row-1c">
+            <div className="upl-list-row-2c">
+              <div className="field">
+                <label>Media</label>
+                <p>{item.media}</p>
+              </div>
               <div className="field">
                 <label>Photo Credit</label>
                 <p>{item.description}</p>

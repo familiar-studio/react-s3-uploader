@@ -10,7 +10,7 @@ class Uploader extends React.Component {
     super()
     this.state = {
       items: props.items || [],
-      rollbackItemsState: [],
+      rollbackItemsState: props.items || [],
       editing: [],
       editingIndex: null,
       showModal: false,
@@ -28,14 +28,10 @@ class Uploader extends React.Component {
   }
 
   saveItems(data) {
-    const toSave = Array.isArray(data) ? data : [data]
-    
-    console.log(toSave)
+    const toSave = Array.isArray(data) ? data : [data]    
 
     if (this.state.editingIndex || this.state.editingIndex === 0) {
-      this.state.items.splice(this.state.editingIndex, 1, toSave[0])
-      
-      console.log('splice edited')
+      this.state.items.splice(this.state.editingIndex, 1, toSave[0])            
       
       this.setState({
         items: this.state.items,
@@ -44,9 +40,7 @@ class Uploader extends React.Component {
         editingIndex: null
       })
     } else {
-      const rollbackItemsState = _.cloneDeep(this.state.items)
-      
-      console.log('concat new')
+      const rollbackItemsState = _.cloneDeep(this.state.items)            
       
       this.setState({
         rollbackItemsState: rollbackItemsState,
@@ -64,7 +58,14 @@ class Uploader extends React.Component {
   }
 
   rollback(prevState) {
-    this.setState(prevState)
+    if ( Array.isArray(prevState) ) {
+      this.setState({
+        items: prevState
+      })
+    } else {
+      this.setState(prevState)  
+    }
+    
   }
 
   render() {
@@ -92,10 +93,13 @@ class Uploader extends React.Component {
           editPickedFiles={pickedFiles => this.setState({
             editing: pickedFiles
           })}
-          cancelModal={() => this.setState({
-            showModal: false,
-            editing: []
-          })}>
+          cancelModal={() => { 
+            this.setState({
+              showModal: false,
+              editing: [],
+              editingIndex: null
+            }, () => this.rollback(this.state.rollbackItemsState))              
+          }}>
         </Modal>
         : null
         }
