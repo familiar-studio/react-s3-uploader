@@ -38304,25 +38304,29 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
               value: this.state.itemsToSave[this.state.selectedIndex].media || '',
               onChange: function onChange(e) {
                 return _this2.validateInput(e, 'media');
-              }
+              },
+              required: true
             })), React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Artist Name'), React.createElement('input', {
               type: 'text',
               value: this.state.itemsToSave[this.state.selectedIndex].artistName || '',
               onChange: function onChange(e) {
                 return _this2.validateInput(e, 'artistName');
-              }
+              },
+              required: true
             })), React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Year'), React.createElement('input', {
               type: 'text',
               value: this.state.itemsToSave[this.state.selectedIndex].date || '',
               onChange: function onChange(e) {
                 return _this2.validateInput(e, 'date');
-              }
+              },
+              required: true
             })), React.createElement('div', {className: 'field textarea'}, React.createElement('label', null, 'Photo Credit'), React.createElement('input', {
               type: 'text',
               value: this.state.itemsToSave[this.state.selectedIndex].description || '',
               onChange: function onChange(e) {
                 return _this2.validateInput(e, 'description');
-              }
+              },
+              required: true
             })), React.createElement('div', {className: 'upl-btn-group upl-btn-group-right'}, React.createElement('button', {
               type: 'button',
               className: 'upl-btn upl-btn-default',
@@ -38459,7 +38463,7 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
           var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Uploader).call(this));
           _this.state = {
             items: props.items || [],
-            rollbackItemsState: [],
+            rollbackItemsState: props.items || [],
             editing: [],
             editingIndex: null,
             showModal: false,
@@ -38479,10 +38483,8 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
           key: 'saveItems',
           value: function saveItems(data) {
             var toSave = Array.isArray(data) ? data : [data];
-            console.log(toSave);
             if (this.state.editingIndex || this.state.editingIndex === 0) {
               this.state.items.splice(this.state.editingIndex, 1, toSave[0]);
-              console.log('splice edited');
               this.setState({
                 items: this.state.items,
                 showModal: false,
@@ -38491,7 +38493,6 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
               });
             } else {
               var rollbackItemsState = _.cloneDeep(this.state.items);
-              console.log('concat new');
               this.setState({
                 rollbackItemsState: rollbackItemsState,
                 items: this.state.items.concat(toSave),
@@ -38510,7 +38511,11 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
         }, {
           key: 'rollback',
           value: function rollback(prevState) {
-            this.setState(prevState);
+            if (Array.isArray(prevState)) {
+              this.setState({items: prevState});
+            } else {
+              this.setState(prevState);
+            }
           }
         }, {
           key: 'render',
@@ -38540,9 +38545,12 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
                 return _this3.setState({editing: pickedFiles});
               },
               cancelModal: function cancelModal() {
-                return _this3.setState({
+                _this3.setState({
                   showModal: false,
-                  editing: []
+                  editing: [],
+                  editingIndex: null
+                }, function() {
+                  return _this3.rollback(_this3.state.rollbackItemsState);
                 });
               }
             }) : null, this.state.showSlideshow ? React.createElement(Slideshow, {
