@@ -38539,9 +38539,8 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
                 _this3.setState({
                   showModal: false,
                   editing: [],
-                  editingIndex: null
-                }, function() {
-                  return _this3.rollback(_this3.state.rollbackItemsState);
+                  editingIndex: null,
+                  items: _this3.state.rollbackItemsState
                 });
               }
             }) : null, this.state.showSlideshow ? React.createElement(Slideshow, {
