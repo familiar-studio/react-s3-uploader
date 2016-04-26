@@ -28,12 +28,12 @@ class Uploader extends React.Component {
   }
 
   saveItems(data) {
-    const toSave = Array.isArray(data) ? data : [data]    
+    const toSave = Array.isArray(data) ? data : [data]
     const rollbackItemsState = _.cloneDeep(this.state.items)
-    
+
     if (this.state.editingIndex || this.state.editingIndex === 0) {
-      this.state.items.splice(this.state.editingIndex, 1, toSave[0])            
-      
+      this.state.items.splice(this.state.editingIndex, 1, toSave[0])
+
       this.setState({
         rollbackItemsState: rollbackItemsState,
         items: this.state.items,
@@ -41,7 +41,7 @@ class Uploader extends React.Component {
         editing: [],
         editingIndex: null
       })
-    } else {                        
+    } else {
       this.setState({
         rollbackItemsState: rollbackItemsState,
         items: this.state.items.concat(toSave),
@@ -63,9 +63,9 @@ class Uploader extends React.Component {
         items: prevState
       })
     } else {
-      this.setState(prevState)  
+      this.setState(prevState)
     }
-    
+
   }
 
   render() {
@@ -93,12 +93,13 @@ class Uploader extends React.Component {
           editPickedFiles={pickedFiles => this.setState({
             editing: pickedFiles
           })}
-          cancelModal={() => { 
+          cancelModal={() => {
             this.setState({
               showModal: false,
               editing: [],
-              editingIndex: null
-            }, () => this.rollback(this.state.rollbackItemsState))              
+              editingIndex: null,
+              items: this.state.rollbackItemsState
+            })
           }}>
         </Modal>
         : null
