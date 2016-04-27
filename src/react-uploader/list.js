@@ -37,10 +37,6 @@ export default class List extends React.Component {
 
             <div className="upl-list-row-2c">
               <div className="field">
-                <label>Artist Name</label>
-                <p>{item.artistName}</p>
-              </div>
-              <div className="field">
                 <label>Year</label>
                 <p>{item.artworkYear}</p>
               </div>
