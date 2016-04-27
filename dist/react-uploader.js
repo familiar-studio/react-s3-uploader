@@ -38310,10 +38310,10 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
                 return _this2.validateInput(e, 'artworkDimensions');
               },
               required: true
-            })), React.createElement('div', {className: 'field textarea'}, React.createElement('label', null, 'Description'), React.createElement('input', {
+            })), React.createElement('div', {className: 'field textarea'}, React.createElement('label', null, 'Description (250 characters max)'), React.createElement('input', {
               type: 'text',
               value: this.state.itemsToSave[this.state.selectedIndex].description || '',
-              maxLength: 10,
+              maxLength: 250,
               onChange: function onChange(e) {
                 return _this2.validateInput(e, 'description');
               },

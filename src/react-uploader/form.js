@@ -70,11 +70,11 @@ export default class MetadataForm extends React.Component {
                 />
               </div>
               <div className="field textarea">
-                <label>Description</label>
+                <label>Description (250 characters max)</label>
                 <input
                   type="text"
                   value={this.state.itemsToSave[this.state.selectedIndex].description || ''}
-                  maxLength={10}
+                  maxLength={250}
                   onChange={e => this.validateInput(e, 'description')}
                   required
                 />
