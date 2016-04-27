@@ -38284,23 +38284,9 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
             return React.createElement('div', {className: 'form-slider-container'}, React.createElement('div', {className: 'upl-modal-header'}, React.createElement('h2', null, 'Edit Captions ', React.createElement('span', {style: {fontWeight: 'normal'}}, '(', this.state.selectedIndex + 1, '/', this.state.itemsToSave.length, ')'))), React.createElement('div', {id: 'metaDataSlider'}, slides), React.createElement('div', null, React.createElement('form', {ref: 'form'}, React.createElement('fieldset', null, React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Title'), React.createElement('input', {
               ref: 'title',
               type: 'text',
-              value: this.state.itemsToSave[this.state.selectedIndex].title || '',
+              value: this.state.itemsToSave[this.state.selectedIndex].artworkTitle || '',
               onChange: function onChange(e) {
-                return _this2.validateInput(e, 'title');
-              },
-              required: true
-            })), React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Media'), React.createElement('input', {
-              type: 'text',
-              value: this.state.itemsToSave[this.state.selectedIndex].media || '',
-              onChange: function onChange(e) {
-                return _this2.validateInput(e, 'media');
-              },
-              required: true
-            })), React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Artist Name'), React.createElement('input', {
-              type: 'text',
-              value: this.state.itemsToSave[this.state.selectedIndex].artistName || '',
-              onChange: function onChange(e) {
-                return _this2.validateInput(e, 'artistName');
+                return _this2.validateInput(e, 'artworkTitle');
               },
               required: true
             })), React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Year'), React.createElement('input', {
@@ -38310,9 +38296,24 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
                 return _this2.validateInput(e, 'date');
               },
               required: true
-            })), React.createElement('div', {className: 'field textarea'}, React.createElement('label', null, 'Photo Credit'), React.createElement('input', {
+            })), React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Media'), React.createElement('input', {
+              type: 'text',
+              value: this.state.itemsToSave[this.state.selectedIndex].artworkMedia || '',
+              onChange: function onChange(e) {
+                return _this2.validateInput(e, 'artworkMedia');
+              },
+              required: true
+            })), React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Dimensions'), React.createElement('input', {
+              type: 'text',
+              value: this.state.itemsToSave[this.state.selectedIndex].artworkDimensions || '',
+              onChange: function onChange(e) {
+                return _this2.validateInput(e, 'artworkDimensions');
+              },
+              required: true
+            })), React.createElement('div', {className: 'field textarea'}, React.createElement('label', null, 'Description'), React.createElement('input', {
               type: 'text',
               value: this.state.itemsToSave[this.state.selectedIndex].description || '',
+              maxLength: 10,
               onChange: function onChange(e) {
                 return _this2.validateInput(e, 'description');
               },
@@ -38366,9 +38367,6 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
           value: function validateInput(e, field) {
             var value = e.target.value;
             switch (field) {
-              case 'description':
-                value = value.length <= 100 ? value : value.slice(0, 100);
-                break;
               default:
                 break;
             }

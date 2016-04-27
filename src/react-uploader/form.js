@@ -37,26 +37,8 @@ export default class MetadataForm extends React.Component {
                 <input
                   ref="title"
                   type="text"
-                  value={this.state.itemsToSave[this.state.selectedIndex].title || ''}
-                  onChange={e => this.validateInput(e, 'title')}
-                  required
-                />
-              </div>
-              <div className="field">
-                <label>Media</label>
-                <input
-                  type="text"
-                  value={this.state.itemsToSave[this.state.selectedIndex].media || ''}
-                  onChange={e => this.validateInput(e, 'media')}
-                  required
-                />
-              </div>
-              <div className="field">
-                <label>Artist Name</label>
-                <input
-                  type="text"
-                  value={this.state.itemsToSave[this.state.selectedIndex].artistName || ''}
-                  onChange={e => this.validateInput(e, 'artistName')}
+                  value={this.state.itemsToSave[this.state.selectedIndex].artworkTitle || ''}
+                  onChange={e => this.validateInput(e, 'artworkTitle')}
                   required
                 />
               </div>
@@ -69,11 +51,30 @@ export default class MetadataForm extends React.Component {
                   required
                 />
               </div>
+              <div className="field">
+                <label>Media</label>
+                <input
+                  type="text"
+                  value={this.state.itemsToSave[this.state.selectedIndex].artworkMedia || ''}
+                  onChange={e => this.validateInput(e, 'artworkMedia')}
+                  required
+                />
+              </div>
+              <div className="field">
+                <label>Dimensions</label>
+                <input
+                  type="text"
+                  value={this.state.itemsToSave[this.state.selectedIndex].artworkDimensions || ''}
+                  onChange={e => this.validateInput(e, 'artworkDimensions')}
+                  required
+                />
+              </div>
               <div className="field textarea">
-                <label>Photo Credit</label>
+                <label>Description</label>
                 <input
                   type="text"
                   value={this.state.itemsToSave[this.state.selectedIndex].description || ''}
+                  maxLength={10}
                   onChange={e => this.validateInput(e, 'description')}
                   required
                 />
@@ -142,9 +143,9 @@ export default class MetadataForm extends React.Component {
     let value = e.target.value
 
     switch (field) {
-      case 'description':
-        value = value.length <= 100 ? value : value.slice(0, 100)
-        break;
+      // case 'description':
+      //   value = value.length <= 100 ? value : value.slice(0, 100)
+      //   break;
       default:
         break;
     }
