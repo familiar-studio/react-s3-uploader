@@ -46,8 +46,8 @@ export default class MetadataForm extends React.Component {
                 <label>Year</label>
                 <input
                   type="text"
-                  value={this.state.itemsToSave[this.state.selectedIndex].date || ''}
-                  onChange={e => this.validateInput(e, 'date')}
+                  value={this.state.itemsToSave[this.state.selectedIndex].artworkYear || ''}
+                  onChange={e => this.validateInput(e, 'artworkYear')}
                   required
                 />
               </div>

@@ -38205,7 +38205,7 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
                     _this2.props.reOrderItems(_this2.props.items);
                   }
                 }
-              }, 'delete item')), React.createElement('div', {className: 'upl-list-metadata'}, React.createElement('div', {className: 'upl-list-row-1c'}, React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Title'), React.createElement('p', null, item.artworkTitle))), React.createElement('div', {className: 'upl-list-row-2c'}, React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Year'), React.createElement('p', null, item.artworkYear))), React.createElement('div', {className: 'upl-list-row-2c'}, React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Media'), React.createElement('p', null, item.artworkMedia)), React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Artwork Dimensions'), React.createElement('p', null, item.artworkDimensions))), React.createElement('div', {className: 'upl-list-row-1c'}, React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Description'), React.createElement('p', null, item.description)))), React.createElement('div', {className: 'upl-list-btn-group'}, React.createElement('button', {
+              }, 'delete item')), React.createElement('div', {className: 'upl-list-metadata'}, React.createElement('div', {className: 'upl-list-row-1c lg'}, React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Title'), React.createElement('p', null, item.artworkTitle))), React.createElement('div', {className: 'upl-list-row-2c'}, React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Year'), React.createElement('p', null, item.artworkYear)), React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Media'), React.createElement('p', null, item.artworkMedia))), React.createElement('div', {className: 'upl-list-row-2c'}, React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Artwork Dimensions'), React.createElement('p', null, item.artworkDimensions))), React.createElement('div', {className: 'upl-list-row-1c'}, React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Description'), React.createElement('p', null, item.description)))), React.createElement('div', {className: 'upl-list-btn-group'}, React.createElement('button', {
                 className: 'upl-btn upl-btn-default',
                 onClick: function onClick() {
                   return _this2.props.startEditing(item, index);
@@ -38291,9 +38291,9 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
               required: true
             })), React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Year'), React.createElement('input', {
               type: 'text',
-              value: this.state.itemsToSave[this.state.selectedIndex].date || '',
+              value: this.state.itemsToSave[this.state.selectedIndex].artworkYear || '',
               onChange: function onChange(e) {
-                return _this2.validateInput(e, 'date');
+                return _this2.validateInput(e, 'artworkYear');
               },
               required: true
             })), React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Media'), React.createElement('input', {

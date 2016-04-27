@@ -28,7 +28,7 @@ export default class List extends React.Component {
           </div>
 
           <div className="upl-list-metadata">
-            <div className="upl-list-row-1c">
+            <div className="upl-list-row-1c lg">
               <div className="field">
                 <label>Title</label>
                 <p>{item.artworkTitle}</p>
@@ -40,13 +40,14 @@ export default class List extends React.Component {
                 <label>Year</label>
                 <p>{item.artworkYear}</p>
               </div>
-            </div>
 
-            <div className="upl-list-row-2c">
               <div className="field">
                 <label>Media</label>
                 <p>{item.artworkMedia}</p>
               </div>
+            </div>
+
+            <div className="upl-list-row-2c">
               <div className="field">
                 <label>Artwork Dimensions</label>
                 <p>{item.artworkDimensions}</p>
