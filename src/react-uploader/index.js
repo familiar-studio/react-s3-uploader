@@ -20,7 +20,8 @@ class Uploader extends React.Component {
 
   showUploadcare() {
     uploadcare.openDialog(null, {
-      multiple: true
+      multiple: true,
+      imagesOnly: true
     })
     .done( (file) => {
       Promise.all(file.files()).then(this.saveItems.bind(this))

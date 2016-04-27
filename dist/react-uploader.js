@@ -38464,7 +38464,10 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
           key: 'showUploadcare',
           value: function showUploadcare() {
             var _this2 = this;
-            uploadcare.openDialog(null, {multiple: true}).done(function(file) {
+            uploadcare.openDialog(null, {
+              multiple: true,
+              imagesOnly: true
+            }).done(function(file) {
               Promise.all(file.files()).then(_this2.saveItems.bind(_this2));
             });
           }
