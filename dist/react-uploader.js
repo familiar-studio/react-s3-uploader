@@ -38303,15 +38303,16 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
                 return _this2.validateInput(e, 'artworkMedia');
               },
               required: true
-            })), React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Artwork Dimensions'), React.createElement('input', {
+            })), React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Dimensions'), React.createElement('input', {
               type: 'text',
               value: this.state.itemsToSave[this.state.selectedIndex].artworkDimensions || '',
               onChange: function onChange(e) {
                 return _this2.validateInput(e, 'artworkDimensions');
               },
               required: true
-            })), React.createElement('div', {className: 'field textarea'}, React.createElement('label', null, 'Description (250 characters max)'), React.createElement('input', {
+            })), React.createElement('div', {className: 'field textarea'}, React.createElement('label', null, 'Description'), React.createElement('input', {
               type: 'text',
+              placeholder: '(250 characters max)',
               value: this.state.itemsToSave[this.state.selectedIndex].description || '',
               maxLength: 250,
               onChange: function onChange(e) {
