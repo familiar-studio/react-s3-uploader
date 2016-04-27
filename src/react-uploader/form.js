@@ -61,7 +61,7 @@ export default class MetadataForm extends React.Component {
                 />
               </div>
               <div className="field">
-                <label>Dimensions</label>
+                <label>Artwork Dimensions</label>
                 <input
                   type="text"
                   value={this.state.itemsToSave[this.state.selectedIndex].artworkDimensions || ''}

@@ -31,7 +31,7 @@ export default class List extends React.Component {
             <div className="upl-list-row-1c">
               <div className="field">
                 <label>Title</label>
-                <p>{item.title}</p>
+                <p>{item.artworkTitle}</p>
               </div>
             </div>
 
@@ -42,17 +42,24 @@ export default class List extends React.Component {
               </div>
               <div className="field">
                 <label>Year</label>
-                <p>{item.date}</p>
+                <p>{item.artworkYear}</p>
               </div>
             </div>
 
             <div className="upl-list-row-2c">
               <div className="field">
                 <label>Media</label>
-                <p>{item.media}</p>
+                <p>{item.artworkMedia}</p>
               </div>
               <div className="field">
-                <label>Photo Credit</label>
+                <label>Artwork Dimensions</label>
+                <p>{item.artworkDimensions}</p>
+              </div>
+            </div>
+
+            <div className="upl-list-row-1c">
+              <div className="field">
+                <label>Description</label>
                 <p>{item.description}</p>
               </div>
             </div>
