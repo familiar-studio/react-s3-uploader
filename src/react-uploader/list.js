@@ -80,10 +80,10 @@ export default class List extends React.Component {
         {items.length ?
           <div>
             <div className="uploader-list-header">
-              <h3>Uploaded Artwork ({items.length})</h3>
+              <h3>Uploaded Images ({items.length})</h3>
               <div className="upl-btn-group upl-btn-group-right" style={{float: 'right'}}>
                 {/*<button className="upl-btn upl-btn-default" onClick={this.props.showSlideshow}>View Slideshow</button>*/}
-                <button className="upl-btn upl-btn-default" onClick={this.props.showModal} type="button">Upload More items</button>
+                <button className="upl-btn upl-btn-default" onClick={this.props.showModal} type="button">Upload More Images</button>
               </div>
             </div>
               <ul id="uploaderList" ref="list">
@@ -91,7 +91,7 @@ export default class List extends React.Component {
               </ul>
           </div>
         :
-          <button className="upl-btn upl-btn-primary" onClick={this.props.showModal} type="button">Upload Artwork</button>
+          <button className="upl-btn upl-btn-primary" onClick={this.props.showModal} type="button">Upload Images</button>
         }
       </section>
     )

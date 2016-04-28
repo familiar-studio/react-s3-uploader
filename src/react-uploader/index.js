@@ -73,7 +73,7 @@ class Uploader extends React.Component {
     return (
       <section id="uploader">
         <h1>Images</h1>
-        <p>Click <span>Upload Artwork</span> to add up to 10 images. Acceptable file types are JPEG, GIF, and PNG. Images will be projected in the order selected and should be no larger than 2500 pixels in either width or height. Be sure to indicate for each artwork: title, artist name, year, media, and a brief description. (300 characters max in each description field)</p>
+        <p>Click <span>Upload Images</span> to add up to 10 images. Acceptable file types are JPEG, GIF, and PNG. Images will be projected in the order selected and should be no larger than 2500 pixels in either width or height. Be sure to indicate for each artwork: title, artist name, year, media, and a brief description. (300 characters max in each description field)</p>
         <List
           items={this.state.items}
           showModal={this.showUploadcare.bind(this)}
