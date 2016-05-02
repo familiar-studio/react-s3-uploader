@@ -100,22 +100,24 @@ export default class List extends React.Component {
   componentDidMount() {
     this.placeholder = document.createElement('li');
     this.placeholder.className = 'placeholder';
-    $(this.refs.list).sortable({
-      start: (e, ui) => {
-        this.draggedIndex = ui.item.index()
-      },
-      stop: (e, ui) => {
-        $(this.refs.list).sortable('cancel')
-        const data = _.cloneDeep(this.props.items)
-        const from = this.draggedIndex;
-        const dragged = data.splice(this.draggedIndex, 1)[0]
-        const to = this.overIndex
-        data.splice(to, 0, dragged)
-        this.props.reOrderItems(data)
-      },
-      update: (event, ui) => {
-        this.overIndex = ui.item.index()
-      }
-    });
+    setTimeout(function() {
+      $(this.refs.list).sortable({
+        start: (e, ui) => {
+          this.draggedIndex = ui.item.index()
+        },
+        stop: (e, ui) => {
+          $(this.refs.list).sortable('cancel')
+          const data = _.cloneDeep(this.props.items)
+          const from = this.draggedIndex;
+          const dragged = data.splice(this.draggedIndex, 1)[0]
+          const to = this.overIndex
+          data.splice(to, 0, dragged)
+          this.props.reOrderItems(data)
+        },
+        update: (event, ui) => {
+          this.overIndex = ui.item.index()
+        }
+      });
+    }.bind(this), 1000)
   }
 }

@@ -38235,26 +38235,28 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
         }, {
           key: 'componentDidMount',
           value: function componentDidMount() {
-            var _this3 = this;
             this.placeholder = document.createElement('li');
             this.placeholder.className = 'placeholder';
-            $(this.refs.list).sortable({
-              start: function start(e, ui) {
-                _this3.draggedIndex = ui.item.index();
-              },
-              stop: function stop(e, ui) {
-                $(_this3.refs.list).sortable('cancel');
-                var data = _$1.cloneDeep(_this3.props.items);
-                var from = _this3.draggedIndex;
-                var dragged = data.splice(_this3.draggedIndex, 1)[0];
-                var to = _this3.overIndex;
-                data.splice(to, 0, dragged);
-                _this3.props.reOrderItems(data);
-              },
-              update: function update(event, ui) {
-                _this3.overIndex = ui.item.index();
-              }
-            });
+            setTimeout(function() {
+              var _this3 = this;
+              $(this.refs.list).sortable({
+                start: function start(e, ui) {
+                  _this3.draggedIndex = ui.item.index();
+                },
+                stop: function stop(e, ui) {
+                  $(_this3.refs.list).sortable('cancel');
+                  var data = _$1.cloneDeep(_this3.props.items);
+                  var from = _this3.draggedIndex;
+                  var dragged = data.splice(_this3.draggedIndex, 1)[0];
+                  var to = _this3.overIndex;
+                  data.splice(to, 0, dragged);
+                  _this3.props.reOrderItems(data);
+                },
+                update: function update(event, ui) {
+                  _this3.overIndex = ui.item.index();
+                }
+              });
+            }.bind(this), 1000);
           }
         }]);
         return List;
