@@ -38514,7 +38514,7 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
           key: 'render',
           value: function render() {
             var _this3 = this;
-            return React.createElement('section', {id: 'uploader'}, React.createElement('h1', null, 'Images'), React.createElement('p', null, 'Click ', React.createElement('span', null, 'Upload Images'), ' to add up to 20 images. Acceptable file types are JPEG, GIF, and PNG. Images will be projected in the order selected and should be no larger than 2500 pixels in either width or height. Be sure to indicate for each artwork: title, artist name, year, media, and a brief description. (300 characters max in each description field)'), React.createElement('p', null, 'Please make sure your images have the correct orientation before uploading. You may have to give Uploadcare.com permission to access your account in order to upload images from Facebook or Instagram. If you prefer, you can always upload images directly from your computer.'), React.createElement(List, {
+            return React.createElement('section', {id: 'uploader'}, React.createElement(List, {
               items: this.state.items,
               showModal: this.showUploadcare.bind(this),
               showSlideshow: function showSlideshow() {

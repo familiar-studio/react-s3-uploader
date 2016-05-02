@@ -72,9 +72,6 @@ class Uploader extends React.Component {
   render() {
     return (
       <section id="uploader">
-        <h1>Images</h1>
-        <p>Click <span>Upload Images</span> to add up to 20 images. Acceptable file types are JPEG, GIF, and PNG. Images will be projected in the order selected and should be no larger than 2500 pixels in either width or height. Be sure to indicate for each artwork: title, artist name, year, media, and a brief description. (300 characters max in each description field)</p>
-        <p>Please make sure your images have the correct orientation before uploading. You may have to give Uploadcare.com permission to access your account in order to upload images from Facebook or Instagram. If you prefer, you can always upload images directly from your computer.</p>
         <List
           items={this.state.items}
           showModal={this.showUploadcare.bind(this)}
