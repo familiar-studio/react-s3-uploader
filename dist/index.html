@@ -6,13 +6,17 @@
   </head>
   <body>
     <div class="container" style="max-width: 800px; margin: 0 auto">
+
+      <h1>Test this out</h1>
       <uploader></uploader>
     </div>
 
     <script charset="utf-8" src="//ucarecdn.com/widget/2.8.2/uploadcare/uploadcare.full.min.js"></script>
     <script src="/react-uploader.js"></script>
     <script>
-      var mockData = [{"cdnUrl":"https://awaw-applications.s3.amazonaws.com/a0f11000003HfzwAAC/artwork/portrait.jpg","artworkTitle":"aaa","artworkYear":"bbb","artworkMedia":"ccc","artworkDimensions":"ddd","description":"eee"},{"cdnUrl":"https://awaw-applications.s3.amazonaws.com/a0f11000003HfzwAAC/artwork/South-America-Patagonia-1-guanaco.jpg"},{"cdnUrl":"https://awaw-applications.s3.amazonaws.com/a0f11000003HfzwAAC/artwork/Torres-del-Paine-Photo-by-jakub-polomski-Latin-America-For-Less.jpg"}]
+    //  var mockData = [{"cdnUrl":"https://awaw-applications.s3.amazonaws.com/a0f11000003HfzwAAC/artwork/portrait.jpg","artworkTitle":"aaa","artworkYear":"bbb","artworkMedia":"ccc","artworkDimensions":"ddd","description":"eee"},{"cdnUrl":"https://awaw-applications.s3.amazonaws.com/a0f11000003HfzwAAC/artwork/South-America-Patagonia-1-guanaco.jpg"},{"cdnUrl":"https://awaw-applications.s3.amazonaws.com/a0f11000003HfzwAAC/artwork/Torres-del-Paine-Photo-by-jakub-polomski-Latin-America-For-Less.jpg"}]
+
+      var mockData = [];
       var uploader = new ReactUploader.default(mockData)
 
       UPLOADCARE_LOCALE = "en";

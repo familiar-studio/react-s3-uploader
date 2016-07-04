@@ -8,7 +8,7 @@ app.use('/jspm.browser.js', express.static('jspm.browser.js'))
 app.use('/jspm.config.js', express.static('jspm.config.js'))
 
 app.get('*', function(req, res) {
-  res.sendfile('index.html')
+  res.sendfile('dist/index.html')
 })
 
 app.listen(8000)

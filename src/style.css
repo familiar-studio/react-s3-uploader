@@ -403,6 +403,11 @@ ul#uploaderList {
         height: 36px;
         cursor: move; }
 
+ul#uploaderList:empty {
+  background-color: none;
+  padding: 0px;
+  border: none; }
+
 .img-center {
   display: flex;
   align-items: center;

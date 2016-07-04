@@ -1,7 +1,7 @@
-!function(e){function r(e,r,o){return 4===arguments.length?t.apply(this,arguments):void n(e,{declarative:!0,deps:r,declare:o})}function t(e,r,t,o){n(e,{declarative:!1,deps:r,executingRequire:t,execute:o})}function n(e,r){r.name=e,e in p||(p[e]=r),r.normalizedDeps=r.deps}function o(e,r){if(r[e.groupIndex]=r[e.groupIndex]||[],-1==v.call(r[e.groupIndex],e)){r[e.groupIndex].push(e);for(var t=0,n=e.normalizedDeps.length;n>t;t++){var a=e.normalizedDeps[t],u=p[a];if(u&&!u.evaluated){var d=e.groupIndex+(u.declarative!=e.declarative);if(void 0===u.groupIndex||u.groupIndex<d){if(void 0!==u.groupIndex&&(r[u.groupIndex].splice(v.call(r[u.groupIndex],u),1),0==r[u.groupIndex].length))throw new TypeError("Mixed dependency cycle detected");u.groupIndex=d}o(u,r)}}}}function a(e){var r=p[e];r.groupIndex=0;var t=[];o(r,t);for(var n=!!r.declarative==t.length%2,a=t.length-1;a>=0;a--){for(var u=t[a],i=0;i<u.length;i++){var s=u[i];n?d(s):l(s)}n=!n}}function u(e){return x[e]||(x[e]={name:e,dependencies:[],exports:{},importers:[]})}function d(r){if(!r.module){var t=r.module=u(r.name),n=r.module.exports,o=r.declare.call(e,function(e,r){if(t.locked=!0,"object"==typeof e)for(var o in e)n[o]=e[o];else n[e]=r;for(var a=0,u=t.importers.length;u>a;a++){var d=t.importers[a];if(!d.locked)for(var i=0;i<d.dependencies.length;++i)d.dependencies[i]===t&&d.setters[i](n)}return t.locked=!1,r},r.name);t.setters=o.setters,t.execute=o.execute;for(var a=0,i=r.normalizedDeps.length;i>a;a++){var l,s=r.normalizedDeps[a],c=p[s],v=x[s];v?l=v.exports:c&&!c.declarative?l=c.esModule:c?(d(c),v=c.module,l=v.exports):l=f(s),v&&v.importers?(v.importers.push(t),t.dependencies.push(v)):t.dependencies.push(null),t.setters[a]&&t.setters[a](l)}}}function i(e){var r,t=p[e];if(t)t.declarative?c(e,[]):t.evaluated||l(t),r=t.module.exports;else if(r=f(e),!r)throw new Error("Unable to load dependency "+e+".");return(!t||t.declarative)&&r&&r.__useDefault?r["default"]:r}function l(r){if(!r.module){var t={},n=r.module={exports:t,id:r.name};if(!r.executingRequire)for(var o=0,a=r.normalizedDeps.length;a>o;o++){var u=r.normalizedDeps[o],d=p[u];d&&l(d)}r.evaluated=!0;var c=r.execute.call(e,function(e){for(var t=0,n=r.deps.length;n>t;t++)if(r.deps[t]==e)return i(r.normalizedDeps[t]);throw new TypeError("Module "+e+" not declared as a dependency.")},t,n);c&&(n.exports=c),t=n.exports,t&&t.__esModule?r.esModule=t:r.esModule=s(t)}}function s(r){if(r===e)return r;var t={};if("object"==typeof r||"function"==typeof r)if(g){var n;for(var o in r)(n=Object.getOwnPropertyDescriptor(r,o))&&h(t,o,n)}else{var a=r&&r.hasOwnProperty;for(var o in r)(!a||r.hasOwnProperty(o))&&(t[o]=r[o])}return t["default"]=r,h(t,"__useDefault",{value:!0}),t}function c(r,t){var n=p[r];if(n&&!n.evaluated&&n.declarative){t.push(r);for(var o=0,a=n.normalizedDeps.length;a>o;o++){var u=n.normalizedDeps[o];-1==v.call(t,u)&&(p[u]?c(u,t):f(u))}n.evaluated||(n.evaluated=!0,n.module.execute.call(e))}}function f(e){if(D[e])return D[e];if("@node/"==e.substr(0,6))return y(e.substr(6));var r=p[e];if(!r)throw"Module "+e+" not present.";return a(e),c(e,[]),p[e]=void 0,r.declarative&&h(r.module.exports,"__esModule",{value:!0}),D[e]=r.declarative?r.module.exports:r.esModule}var p={},v=Array.prototype.indexOf||function(e){for(var r=0,t=this.length;t>r;r++)if(this[r]===e)return r;return-1},g=!0;try{Object.getOwnPropertyDescriptor({a:0},"a")}catch(m){g=!1}var h;!function(){try{Object.defineProperty({},"a",{})&&(h=Object.defineProperty)}catch(e){h=function(e,r,t){try{e[r]=t.value||t.get.call(e)}catch(n){}}}}();var x={},y="undefined"!=typeof System&&System._nodeRequire||"undefined"!=typeof require&&require.resolve&&"undefined"!=typeof process&&require,D={"@empty":{}};return function(e,n,o){return function(a){a(function(a){for(var u={_nodeRequire:y,register:r,registerDynamic:t,get:f,set:function(e,r){D[e]=r},newModule:function(e){return e}},d=0;d<n.length;d++)(function(e,r){r&&r.__esModule?D[e]=r:D[e]=s(r)})(n[d],arguments[d]);o(u);var i=f(e[0]);if(e.length>1)for(var d=1;d<e.length;d++)f(e[d]);return i.__useDefault?i["default"]:i})}}}("undefined"!=typeof self?self:global)
+!function(e){function r(e,r,o){return 4===arguments.length?t.apply(this,arguments):void n(e,{declarative:!0,deps:r,declare:o})}function t(e,r,t,o){n(e,{declarative:!1,deps:r,executingRequire:t,execute:o})}function n(e,r){r.name=e,e in v||(v[e]=r),r.normalizedDeps=r.deps}function o(e,r){if(r[e.groupIndex]=r[e.groupIndex]||[],-1==g.call(r[e.groupIndex],e)){r[e.groupIndex].push(e);for(var t=0,n=e.normalizedDeps.length;n>t;t++){var a=e.normalizedDeps[t],u=v[a];if(u&&!u.evaluated){var d=e.groupIndex+(u.declarative!=e.declarative);if(void 0===u.groupIndex||u.groupIndex<d){if(void 0!==u.groupIndex&&(r[u.groupIndex].splice(g.call(r[u.groupIndex],u),1),0==r[u.groupIndex].length))throw new TypeError("Mixed dependency cycle detected");u.groupIndex=d}o(u,r)}}}}function a(e){var r=v[e];r.groupIndex=0;var t=[];o(r,t);for(var n=!!r.declarative==t.length%2,a=t.length-1;a>=0;a--){for(var u=t[a],i=0;i<u.length;i++){var s=u[i];n?d(s):l(s)}n=!n}}function u(e){return y[e]||(y[e]={name:e,dependencies:[],exports:{},importers:[]})}function d(r){if(!r.module){var t=r.module=u(r.name),n=r.module.exports,o=r.declare.call(e,function(e,r){if(t.locked=!0,"object"==typeof e)for(var o in e)n[o]=e[o];else n[e]=r;for(var a=0,u=t.importers.length;u>a;a++){var d=t.importers[a];if(!d.locked)for(var i=0;i<d.dependencies.length;++i)d.dependencies[i]===t&&d.setters[i](n)}return t.locked=!1,r},r.name);t.setters=o.setters,t.execute=o.execute;for(var a=0,i=r.normalizedDeps.length;i>a;a++){var l,s=r.normalizedDeps[a],c=v[s],f=y[s];f?l=f.exports:c&&!c.declarative?l=c.esModule:c?(d(c),f=c.module,l=f.exports):l=p(s),f&&f.importers?(f.importers.push(t),t.dependencies.push(f)):t.dependencies.push(null),t.setters[a]&&t.setters[a](l)}}}function i(e){var r,t=v[e];if(t)t.declarative?f(e,[]):t.evaluated||l(t),r=t.module.exports;else if(r=p(e),!r)throw new Error("Unable to load dependency "+e+".");return(!t||t.declarative)&&r&&r.__useDefault?r["default"]:r}function l(r){if(!r.module){var t={},n=r.module={exports:t,id:r.name};if(!r.executingRequire)for(var o=0,a=r.normalizedDeps.length;a>o;o++){var u=r.normalizedDeps[o],d=v[u];d&&l(d)}r.evaluated=!0;var c=r.execute.call(e,function(e){for(var t=0,n=r.deps.length;n>t;t++)if(r.deps[t]==e)return i(r.normalizedDeps[t]);throw new TypeError("Module "+e+" not declared as a dependency.")},t,n);c&&(n.exports=c),t=n.exports,t&&t.__esModule?r.esModule=t:r.esModule=s(t)}}function s(r){var t={};if(("object"==typeof r||"function"==typeof r)&&r!==e)if(m)for(var n in r)"default"!==n&&c(t,r,n);else{var o=r&&r.hasOwnProperty;for(var n in r)"default"===n||o&&!r.hasOwnProperty(n)||(t[n]=r[n])}return t["default"]=r,x(t,"__useDefault",{value:!0}),t}function c(e,r,t){try{var n;(n=Object.getOwnPropertyDescriptor(r,t))&&x(e,t,n)}catch(o){return e[t]=r[t],!1}}function f(r,t){var n=v[r];if(n&&!n.evaluated&&n.declarative){t.push(r);for(var o=0,a=n.normalizedDeps.length;a>o;o++){var u=n.normalizedDeps[o];-1==g.call(t,u)&&(v[u]?f(u,t):p(u))}n.evaluated||(n.evaluated=!0,n.module.execute.call(e))}}function p(e){if(I[e])return I[e];if("@node/"==e.substr(0,6))return D(e.substr(6));var r=v[e];if(!r)throw"Module "+e+" not present.";return a(e),f(e,[]),v[e]=void 0,r.declarative&&x(r.module.exports,"__esModule",{value:!0}),I[e]=r.declarative?r.module.exports:r.esModule}var v={},g=Array.prototype.indexOf||function(e){for(var r=0,t=this.length;t>r;r++)if(this[r]===e)return r;return-1},m=!0;try{Object.getOwnPropertyDescriptor({a:0},"a")}catch(h){m=!1}var x;!function(){try{Object.defineProperty({},"a",{})&&(x=Object.defineProperty)}catch(e){x=function(e,r,t){try{e[r]=t.value||t.get.call(e)}catch(n){}}}}();var y={},D="undefined"!=typeof System&&System._nodeRequire||"undefined"!=typeof require&&require.resolve&&"undefined"!=typeof process&&require,I={"@empty":{}};return function(e,n,o,a){return function(u){u(function(u){for(var d={_nodeRequire:D,register:r,registerDynamic:t,get:p,set:function(e,r){I[e]=r},newModule:function(e){return e}},i=0;i<n.length;i++)(function(e,r){r&&r.__esModule?I[e]=r:I[e]=s(r)})(n[i],arguments[i]);a(d);var l=p(e[0]);if(e.length>1)for(var i=1;i<e.length;i++)p(e[i]);return o?l["default"]:l})}}}("undefined"!=typeof self?self:global)
 
-(["1"], [], function($__System) {
-
+(["1"], [], false, function($__System) {
+var require = this.require, exports = this.exports, module = this.module;
 !function(e){function n(e,n){e=e.replace(l,"");var r=e.match(u),t=(r[1].split(",")[n]||"require").replace(s,""),i=p[t]||(p[t]=new RegExp(a+t+f,"g"));i.lastIndex=0;for(var o,c=[];o=i.exec(e);)c.push(o[2]||o[3]);return c}function r(e,n,t,o){if("object"==typeof e&&!(e instanceof Array))return r.apply(null,Array.prototype.splice.call(arguments,1,arguments.length-1));if("string"==typeof e&&"function"==typeof n&&(e=[e]),!(e instanceof Array)){if("string"==typeof e){var l=i.get(e);return l.__useDefault?l["default"]:l}throw new TypeError("Invalid require")}for(var a=[],f=0;f<e.length;f++)a.push(i["import"](e[f],o));Promise.all(a).then(function(e){n&&n.apply(null,e)},t)}function t(t,l,a){"string"!=typeof t&&(a=l,l=t,t=null),l instanceof Array||(a=l,l=["require","exports","module"].splice(0,a.length)),"function"!=typeof a&&(a=function(e){return function(){return e}}(a)),void 0===l[l.length-1]&&l.pop();var f,u,s;-1!=(f=o.call(l,"require"))&&(l.splice(f,1),t||(l=l.concat(n(a.toString(),f)))),-1!=(u=o.call(l,"exports"))&&l.splice(u,1),-1!=(s=o.call(l,"module"))&&l.splice(s,1);var p={name:t,deps:l,execute:function(n,t,o){for(var p=[],c=0;c<l.length;c++)p.push(n(l[c]));o.uri=o.id,o.config=function(){},-1!=s&&p.splice(s,0,o),-1!=u&&p.splice(u,0,t),-1!=f&&p.splice(f,0,function(e,t,l){return"string"==typeof e&&"function"!=typeof t?n(e):r.call(i,e,t,l,o.id)});var d=a.apply(-1==u?e:t,p);return"undefined"==typeof d&&o&&(d=o.exports),"undefined"!=typeof d?d:void 0}};if(t)c.anonDefine||c.isBundle?c.anonDefine&&c.anonDefine.name&&(c.anonDefine=null):c.anonDefine=p,c.isBundle=!0,i.registerDynamic(p.name,p.deps,!1,p.execute);else{if(c.anonDefine&&!c.anonDefine.name)throw new Error("Multiple anonymous defines in module "+t);c.anonDefine=p}}var i=$__System,o=Array.prototype.indexOf||function(e){for(var n=0,r=this.length;r>n;n++)if(this[n]===e)return n;return-1},l=/(\/\*([\s\S]*?)\*\/|([^:]|^)\/\/(.*)$)/gm,a="(?:^|[^$_a-zA-Z\\xA0-\\uFFFF.])",f="\\s*\\(\\s*(\"([^\"]+)\"|'([^']+)')\\s*\\)",u=/\(([^\)]*)\)/,s=/^\s+|\s+$/g,p={};t.amd={};var c={isBundle:!1,anonDefine:null};i.amdDefine=t,i.amdRequire=r}("undefined"!=typeof self?self:global);
 $__System.registerDynamic("2", ["3"], true, function($__require, exports, module) {
   "use strict";
@@ -11032,9 +11032,9 @@ $__System.registerDynamic("6f", ["3"], true, function($__require, exports, modul
   return module.exports;
 });
 
-$__System.registerDynamic("15", ["3"], true, function($__require, exports, module) {
+$__System.registerDynamic("15", [], true, function($__require, exports, module) {
   "use strict";
-  var process = $__require("3");
+  ;
   var define,
       global = this,
       GLOBAL = this;
@@ -23041,7 +23041,7 @@ var define = $__System.amdDefine;
   if (typeof define === "function" && define.amd) {
     define("a8", [], function() {
       return jQuery;
-    }), define("jquery", ["a8"], function(m) {
+    }) && define("jquery", ["a8"], function(m) {
       return m;
     });
   }
@@ -37993,7 +37993,9 @@ $__System.registerDynamic("@system-env", [], false, function() {
   return {
     "production": true,
     "browser": true,
-    "node": false
+    "node": false,
+    "dev": false,
+    "default": true
   };
 });
 
@@ -38107,138 +38109,120 @@ $__System.registerDynamic("be", ["ae", "ad", "b1", "b4", "b5", "b6", "bd", "3"],
   return module.exports;
 });
 
-$__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
+$__System.register('1', ['16', 'a6', 'a7', 'a9', 'be'], function (_export, _context) {
   "use strict";
-  var React,
-      ReactDOM,
-      _$1,
-      Flickity,
-      _classCallCheck,
-      _possibleConstructorReturn,
-      _inherits,
-      List,
-      MetadataForm,
-      Modal,
-      Slideshow,
-      Uploader;
+
+  var React, ReactDOM, _$1, Flickity, _classCallCheck, _possibleConstructorReturn, _inherits, List, MetadataForm, Modal, Slideshow, Uploader;
+
   function defineProperties(target, props) {
     for (var i = 0; i < props.length; i++) {
       var descriptor = props[i];
       descriptor.enumerable = descriptor.enumerable || false;
       descriptor.configurable = true;
-      if ("value" in descriptor)
-        descriptor.writable = true;
+      if ("value" in descriptor) descriptor.writable = true;
       Object.defineProperty(target, descriptor.key, descriptor);
     }
   }
+
   function _createClass(Constructor, protoProps, staticProps) {
-    if (protoProps)
-      defineProperties(Constructor.prototype, protoProps);
-    if (staticProps)
-      defineProperties(Constructor, staticProps);
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
     return Constructor;
   }
+
   function ReactUploader(initialItems, notifier) {
-    return ReactDOM.render(React.createElement(Uploader, {
-      items: initialItems,
-      notifier: notifier
-    }), document.getElementsByTagName('uploader')[0]);
+    return ReactDOM.render(React.createElement(Uploader, { items: initialItems, notifier: notifier }), document.getElementsByTagName('uploader')[0]);
   }
+
   return {
-    setters: [function($__m) {
-      React = $__m.default;
-    }, function($__m) {
-      ReactDOM = $__m.default;
-    }, function($__m) {
-      _$1 = $__m.default;
-    }, function($__m) {}, function($__m) {
-      Flickity = $__m.default;
+    setters: [function (_2) {
+      React = _2.default;
+    }, function (_a) {
+      ReactDOM = _a.default;
+    }, function (_a2) {
+      _$1 = _a2.default;
+    }, function (_a3) {}, function (_be) {
+      Flickity = _be.default;
     }],
-    execute: function() {
-      _classCallCheck = (function(instance, Constructor) {
+    execute: function () {
+      _classCallCheck = function (instance, Constructor) {
         if (!(instance instanceof Constructor)) {
           throw new TypeError("Cannot call a class as a function");
         }
-      });
+      };
+
       ;
-      _possibleConstructorReturn = (function(self, call) {
+
+      _possibleConstructorReturn = function (self, call) {
         if (!self) {
           throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
         }
+
         return call && (typeof call === "object" || typeof call === "function") ? call : self;
-      });
-      _inherits = (function(subClass, superClass) {
+      };
+
+      _inherits = function (subClass, superClass) {
         if (typeof superClass !== "function" && superClass !== null) {
           throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
         }
-        subClass.prototype = Object.create(superClass && superClass.prototype, {constructor: {
+
+        subClass.prototype = Object.create(superClass && superClass.prototype, {
+          constructor: {
             value: subClass,
             enumerable: false,
             writable: true,
             configurable: true
-          }});
-        if (superClass)
-          Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-      });
-      List = function(_React$Component) {
+          }
+        });
+        if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+      };
+
+      List = function (_React$Component) {
         _inherits(List, _React$Component);
+
         function List() {
           _classCallCheck(this, List);
+
           return _possibleConstructorReturn(this, Object.getPrototypeOf(List).apply(this, arguments));
         }
+
         _createClass(List, [{
           key: 'render',
           value: function render() {
             var _this2 = this;
-            var items = this.props.items.map(function(item, index) {
-              return React.createElement('li', {
-                className: 'uploaded-item',
+
+            var items = this.props.items.map(function (item, index) {
+              return React.createElement('li', { className: 'uploaded-item',
                 key: index,
                 'data-id': index,
-                draggable: 'true'
-              }, React.createElement('div', {className: 'upl-list-img'}, React.createElement('div', {className: 'img-center'}, React.createElement('img', {src: item.cdnUrl || item.url})), React.createElement('a', {
-                href: true,
+                draggable: 'true' }, React.createElement('div', { className: 'upl-list-img' }, React.createElement('div', { className: 'img-center' }, React.createElement('img', { src: item.cdnUrl || item.url })), React.createElement('a', { href: true,
                 onClick: function onClick(e) {
                   e.preventDefault();
                   if (confirm('Are you sure you want to delete this item?')) {
                     _this2.props.items.splice(index, 1);
                     _this2.props.reOrderItems(_this2.props.items);
                   }
-                }
-              }, 'delete item')), React.createElement('div', {className: 'upl-list-metadata'}, React.createElement('div', {className: 'upl-list-row-1c lg'}, React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Title'), React.createElement('p', null, item.artworkTitle))), React.createElement('div', {className: 'upl-list-row-2c'}, React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Year'), React.createElement('p', null, item.artworkYear)), React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Media'), React.createElement('p', null, item.artworkMedia))), React.createElement('div', {className: 'upl-list-row-2c'}, React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Artwork Dimensions'), React.createElement('p', null, item.artworkDimensions))), React.createElement('div', {className: 'upl-list-row-1c'}, React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Description'), React.createElement('p', null, item.description)))), React.createElement('div', {className: 'upl-list-btn-group'}, React.createElement('button', {
+                } }, 'delete item')), React.createElement('div', { className: 'upl-list-metadata' }, React.createElement('div', { className: 'upl-list-row-1c lg' }, React.createElement('div', { className: 'field' }, React.createElement('label', null, 'Title'), React.createElement('p', null, item.artworkTitle))), React.createElement('div', { className: 'upl-list-row-2c' }, React.createElement('div', { className: 'field' }, React.createElement('label', null, 'Year'), React.createElement('p', null, item.artworkYear)), React.createElement('div', { className: 'field' }, React.createElement('label', null, 'Media'), React.createElement('p', null, item.artworkMedia))), React.createElement('div', { className: 'upl-list-row-2c' }, React.createElement('div', { className: 'field' }, React.createElement('label', null, 'Artwork Dimensions'), React.createElement('p', null, item.artworkDimensions))), React.createElement('div', { className: 'upl-list-row-1c' }, React.createElement('div', { className: 'field' }, React.createElement('label', null, 'Description'), React.createElement('p', null, item.description)))), React.createElement('div', { className: 'upl-list-btn-group' }, React.createElement('button', {
                 className: 'upl-btn upl-btn-default',
                 onClick: function onClick() {
                   return _this2.props.startEditing(item, index);
                 },
-                type: 'button'
-              }, 'Edit info'), React.createElement('img', {
-                src: 'data:image/png;base64,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',
-                className: 'upl-list-item-handle'
-              })));
+                type: 'button' }, 'Edit info'), React.createElement('img', { src: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAZCAYAAADXPsWXAAAKo2lDQ1BJQ0MgUHJvZmlsZQAASImVlwdQU9kax8+96Y0WCB1Cb4L0Kr2GIr2KSkgghBJCIKDYkUUF1oKKCFhAV5oCa6GtBRHFwiKg2HVBFgFlXSzYUNkLPMLb9+a9N+8/8835zXfP/c53T86Z+QcA8nUmn58MSwCQwssQBHm60CMio+i43wARyAIq0AIYJiud7xwQ4AsQLYx/14d7AJod7xjO1vr35/9Vkuy4dBYAUADCsex0VgrCZ5FoZPEFGQCg2EheIyuDP8vbEZYWIA0iXD7LnHlunOXYee6cmxMS5IrwAwDwZCZTwAGA9DuSp2eyOEgdMhphYx6by0PYHGEHVgITWYeMPANLUlJSZ/kowrqx/1SH87easaKaTCZHxPPfMie8Gzedn8xc+39ux/9WSrJwYQ11JMgJAq+g2fWQPatOSvURMS92uf8Cc9nzPc1ygtArdIFZ6a5RC8xmuvkssDAp1HmBmYLFd7kZjJAFFqQGierzkpf7iurHMUQcl+4evMDxXA/GAmcnhIQvcCY3bPkCpycF+yzOcRXlBcIgUc/xAg/RN6akL/bGYi6ulZEQ4rXYQ4SoH3acm7sozwsVzednuIhq8pMDFvtP9hTl0zODRe9mIAdsgROZ3gGLdQJE+wO4wA8wASsjbs3suQKuqfy1Ai4nIYPujNySODqDxzJaQjc1NrEAYPbOzf+k72hzdwmi3VzMpbUDYJOPJDmLOaYGAK0vAKB+WMxpvEWOw24ALvSyhILM+dzsUQcY5DaLA2kgD1SABtAFhsAUWAI74ATcgTfwByEgEqwCLJAAUoAAZIH1YAvIAwVgN9gPSsERcAxUg1PgNGgG58FlcA3cAr1gADwGg2AEvAKT4AOYhiAIB1EgKiQPqUJakAFkCllDDpA75AsFQZFQDMSBeJAQWg9thQqgIqgUqoBqoJ+hVugydAPqgx5CQ9A49Bb6AqNgMiwNK8Pa8FLYGnaGfeAQeCXMgdPgbDgX3gmXwJXwSbgJvgzfggfgQfgVPIUCKBKKhlJDGaKsUa4of1QUKh4lQG1E5aOKUZWoelQbqgt1BzWImkB9RmPRVDQdbYi2Q3uhQ9EsdBp6I7oQXYquRjehO9F30EPoSfR3DAWjhDHA2GIYmAgMB5OFycMUY05gzmGuYgYwI5gPWCyWhtXBWmG9sJHYROw6bCH2ELYB247tww5jp3A4nDzOAGeP88cxcRm4PNxB3EncJVw/bgT3CU/Cq+JN8R74KDwPn4MvxtfiL+L78aP4aYIEQYtgS/AnsAlrCbsIxwlthNuEEcI0UZKoQ7QnhhATiVuIJcR64lXiE+I7EomkTrIhBZK4pM2kElIj6TppiPSZLEXWJ7uSo8lC8k5yFbmd/JD8jkKhaFOcKFGUDMpOSg3lCuUZ5ZMYVcxIjCHGFtskVibWJNYv9lqcIK4l7iy+SjxbvFj8jPht8QkJgoS2hKsEU2KjRJlEq8R9iSlJqqSJpL9kimShZK3kDckxKZyUtpS7FFsqV+qY1BWpYSqKqkF1pbKoW6nHqVepI9JYaR1phnSidIH0Keke6UkZKRlzmTCZNTJlMhdkBmkomjaNQUum7aKdpt2jfZFVlnWWjZPdIVsv2y/7UU5RzkkuTi5frkFuQO6LPF3eXT5Jfo98s/xTBbSCvkKgQpbCYYWrChOK0op2iizFfMXTio+UYCV9pSCldUrHlLqVppRVlD2V+coHla8oT6jQVJxUElX2qVxUGVelqjqoclX3qV5SfUmXoTvTk+kl9E76pJqSmpeaUK1CrUdtWl1HPVQ9R71B/akGUcNaI15jn0aHxqSmqqaf5nrNOs1HWgQta60ErQNaXVoftXW0w7W3aTdrj+nI6TB0snXqdJ7oUnQdddN0K3Xv6mH1rPWS9A7p9erD+hb6Cfpl+rcNYANLA67BIYO+JZglNkt4SyqX3DckGzobZhrWGQ4Z0Yx8jXKMmo1eL9VcGrV0z9Kupd+NLYyTjY8bPzaRMvE2yTFpM3lrqm/KMi0zvWtGMfMw22TWYvbG3MA8zvyw+QMLqoWfxTaLDotvllaWAst6y3ErTasYq3Kr+9bS1gHWhdbXbTA2LjabbM7bfLa1tM2wPW37p52hXZJdrd3YMp1lccuOLxu2V7dn2lfYDzrQHWIcjjoMOqo5Mh0rHZ87aTixnU44jTrrOSc6n3R+7WLsInA55/LR1dZ1g2u7G8rN0y3frcddyj3UvdT9mYe6B8ejzmPS08JznWe7F8bLx2uP132GMoPFqGFMelt5b/Du9CH7BPuU+jz31fcV+Lb5wX7efnv9nizXWs5b3uwP/Bn+e/2fBugEpAX8EogNDAgsC3wRZBK0PqgrmBq8Org2+EOIS8iukMehuqHC0I4w8bDosJqwj+Fu4UXhgxFLIzZE3IpUiORGtkThosKiTkRNrXBfsX/FSLRFdF70vZU6K9esvLFKYVXyqgurxVczV5+JwcSEx9TGfGX6MyuZU7GM2PLYSZYr6wDrFduJvY89HmcfVxQ3Gm8fXxQ/xrHn7OWMJzgmFCdMcF25pdw3iV6JRxI/JvknVSXNJIcnN6TgU2JSWnlSvCReZ6pK6prUPr4BP48/mGabtj9tUuAjOJEOpa9Mb8mQRsxNt1BX+INwKNMhsyzzU1ZY1pk1kmt4a7rX6q/dsXY02yP7p3Xodax1HevV1m9ZP7TBeUPFRmhj7MaOTRqbcjeNbPbcXL2FuCVpy685xjlFOe+3hm9ty1XO3Zw7/IPnD3V5YnmCvPvb7LYd2Y7ezt3es8Nsx8Ed3/PZ+TcLjAuKC74Wsgpv/mjyY8mPMzvjd/bsstx1eDd2N2/3vT2Oe6qLJIuyi4b3+u1t2kffl7/v/f7V+28UmxcfOUA8IDwwWOJb0nJQ8+Dug19LE0oHylzKGsqVyneUfzzEPtR/2Olw/RHlIwVHvhzlHn1Q4VnRVKldWXwMeyzz2IvjYce7frL+qeaEwomCE9+qeFWD1UHVnTVWNTW1SrW76uA6Yd34yeiTvafcTrXUG9ZXNNAaChpBo7Dx5c8xP9877XO644z1mfqzWmfLz1HP5TdBTWubJpsTmgdbIlv6Wr1bO9rs2s79YvRL1Xm182UXZC7suki8mHtx5lL2pal2fvvEZc7l4Y7VHY+vRFy52xnY2XPV5+r1ax7XrnQ5d126bn/9/A3bG603rW8237K81dRt0X3uV4tfz/VY9jTdtrrd0mvT29a3rO9iv2P/5Ttud67dZdy9NbB8oO9e6L0H96PvDz5gPxh7mPzwzaPMR9OPNz/BPMl/KvG0+JnSs8rf9H5rGLQcvDDkNtT9PPj542HW8Kvf03//OpL7gvKieFR1tGbMdOz8uMd478sVL0de8V9NT+T9IflH+Wvd12f/dPqzezJicuSN4M3M28J38u+q3pu/75gKmHr2IeXD9Mf8T/Kfqj9bf+76Ev5ldDrrK+5ryTe9b23ffb4/mUmZmeEzBcw5K4BCAo6PB+BtFQCUSMQ79AJAFJv3xHOC5n38HIH/xPO+eU6WAFQ5ARC6GQBfxKMcRkILYTIyzlqiECcAm5mJ4h9Kjzczna9FRpwl5tPMzDtlAHBtAHwTzMxMH5qZ+XYcafYhAO1p8158VljkH0ojZpa6VTaCf9VfX8EBVoxjgdUAAAGbaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJYTVAgQ29yZSA1LjQuMCI+CiAgIDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+CiAgICAgIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICAgICAgICAgIHhtbG5zOmV4aWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vZXhpZi8xLjAvIj4KICAgICAgICAgPGV4aWY6UGl4ZWxYRGltZW5zaW9uPjE3PC9leGlmOlBpeGVsWERpbWVuc2lvbj4KICAgICAgICAgPGV4aWY6UGl4ZWxZRGltZW5zaW9uPjI1PC9leGlmOlBpeGVsWURpbWVuc2lvbj4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+Ckq5hL4AAAKASURBVDgRpVQ7T2pBEJ4DmGBClEeoLE3oDCYmWlARwh+wghIaGhJ+ihBLxJ7YU9ASCgkkoB2JJS0iooIC4/kGZ3lciPfmbrJnd3Znvnl8O8caj8dM/zkcu+yZF9iWZYmKytv010CgqBPGs9mM+v0+TadTgrwLaA1EvShAuVymy8tLur29pa+vr91AqInOj48P2b+9vfHNzQ0Hg0He399nn8/H+XyeX19f5V711I70QNf393culUoCcHFxwXY0HIvF2Ov1/gGkNgICARMRKMD5+Tnf39+znQY/Pj5yNBo1QMPhcC0iA/L5+cl3d3ccCAQYAI1GgyeTiYBjVaDDw0O2ayR3SAfOpbBa+efnZ4pEInR9fU2np6c0n8+l1lhDoRAVCgWKx+M0GAzkTtmygKSs2NEICx6PR+h0Op2GEdDtcDhoNBoRzt1ut6HcQkgGceVh4cxOiZrNJp2cnEiELpdL/QkAMpChNOmKyFCfWq3Gx8fHiJKPjo64UqnIOe4xVR/r2mNbjajdbtPT05M46vV61Gq1JDUcmAjklsihhj+yqUE4HCY7Ejm2I6GzszNTA7XBiimFVXZgoXtc/lYT4xg5QYDRb+zAgf0gDTtqZ2oC+tBw6XSaHh4ehE7Qig5WervdLmUyGWlIOMUAsIBIXrbg9/upXq9TNpulTqcjQFCEAwDkcjmqVqtk95GcKRAhHaVss3fw9P+qd5RvBfrXLoadRLIJtBoR/if4DVxdXa39T2Csc/mOf4qEPNEbiURCilYsFimZTFIqlaK9vT3zVlArDBRWemchLr9aaHTvy8sLHRwcCLCeLzUXu60guFKD1ceH/bZh3snmpRoADEPlTT3I32WDz/qAYJ+BAAAAAElFTkSuQmCC', className: 'upl-list-item-handle' })));
             });
-            return React.createElement('section', {id: 'uploaderListContainer'}, items.length ? React.createElement('div', null, React.createElement('div', {className: 'uploader-list-header'}, React.createElement('h3', null, 'Uploaded Images (', items.length, ')'), React.createElement('div', {
-              className: 'upl-btn-group upl-btn-group-right',
-              style: {float: 'right'}
-            }, React.createElement('button', {
-              className: 'upl-btn upl-btn-default',
-              onClick: this.props.showModal,
-              type: 'button'
-            }, 'Upload More Images'))), React.createElement('ul', {
-              id: 'uploaderList',
-              ref: 'list'
-            }, items)) : React.createElement('button', {
-              className: 'upl-btn upl-btn-primary',
-              onClick: this.props.showModal,
-              type: 'button'
-            }, 'Upload Images'));
+
+            return React.createElement('section', { id: 'uploaderListContainer' }, React.createElement('div', null, items.length ? React.createElement('div', { className: 'uploader-list-header' }, React.createElement('h3', null, 'Uploaded Images (', items.length, ')'), React.createElement('div', { className: 'upl-btn-group upl-btn-group-right', style: { float: 'right' } }, React.createElement('button', { className: 'upl-btn upl-btn-default', onClick: this.props.showModal, type: 'button' }, 'Upload More Images'))) : null, React.createElement('ul', { id: 'uploaderList', ref: 'list' }, items)), items.length ? null : React.createElement('button', { className: 'upl-btn upl-btn-primary', onClick: this.props.showModal, type: 'button' }, 'Upload Images'));
           }
         }, {
           key: 'componentDidMount',
           value: function componentDidMount() {
             this.placeholder = document.createElement('li');
             this.placeholder.className = 'placeholder';
-            setTimeout(function() {
+            console.log('mounted', this, this.refs.list);
+            setTimeout(function () {
               var _this3 = this;
+
+              console.log('timeout', this, this.refs.list);
+
               $(this.refs.list).sortable({
                 start: function start(e, ui) {
                   _this3.draggedIndex = ui.item.index();
@@ -38256,16 +38240,21 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
                   _this3.overIndex = ui.item.index();
                 }
               });
-            }.bind(this), 1000);
+            }.bind(this), 5000);
           }
         }]);
+
         return List;
       }(React.Component);
-      MetadataForm = function(_React$Component) {
+
+      MetadataForm = function (_React$Component) {
         _inherits(MetadataForm, _React$Component);
+
         function MetadataForm(props) {
           _classCallCheck(this, MetadataForm);
+
           var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(MetadataForm).call(this));
+
           _this.state = {
             itemsToSave: props.editing,
             selectedIndex: 0,
@@ -38273,17 +38262,17 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
           };
           return _this;
         }
+
         _createClass(MetadataForm, [{
           key: 'render',
           value: function render() {
             var _this2 = this;
-            var slides = this.props.editing.map(function(item, index) {
-              return React.createElement('div', {
-                className: 'gallery-cell',
-                key: index
-              }, React.createElement('img', {src: item.cdnUrl || item.url}));
+
+            var slides = this.props.editing.map(function (item, index) {
+              return React.createElement('div', { className: 'gallery-cell', key: index }, React.createElement('img', { src: item.cdnUrl || item.url }));
             });
-            return React.createElement('div', {className: 'form-slider-container'}, React.createElement('div', {className: 'upl-modal-header'}, React.createElement('h2', null, 'Edit Captions ', React.createElement('span', {style: {fontWeight: 'normal'}}, '(', this.state.selectedIndex + 1, '/', this.state.itemsToSave.length, ')'))), React.createElement('div', {id: 'metaDataSlider'}, slides), React.createElement('div', null, React.createElement('form', {ref: 'form'}, React.createElement('fieldset', null, React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Title'), React.createElement('input', {
+
+            return React.createElement('div', { className: 'form-slider-container' }, React.createElement('div', { className: 'upl-modal-header' }, React.createElement('h2', null, 'Edit Captions ', React.createElement('span', { style: { fontWeight: 'normal' } }, '(', this.state.selectedIndex + 1, '/', this.state.itemsToSave.length, ')'))), React.createElement('div', { id: 'metaDataSlider' }, slides), React.createElement('div', null, React.createElement('form', { ref: 'form' }, React.createElement('fieldset', null, React.createElement('div', { className: 'field' }, React.createElement('label', null, 'Title'), React.createElement('input', {
               ref: 'title',
               type: 'text',
               value: this.state.itemsToSave[this.state.selectedIndex].artworkTitle || '',
@@ -38291,28 +38280,28 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
                 return _this2.validateInput(e, 'artworkTitle');
               },
               required: true
-            })), React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Year'), React.createElement('input', {
+            })), React.createElement('div', { className: 'field' }, React.createElement('label', null, 'Year'), React.createElement('input', {
               type: 'text',
               value: this.state.itemsToSave[this.state.selectedIndex].artworkYear || '',
               onChange: function onChange(e) {
                 return _this2.validateInput(e, 'artworkYear');
               },
               required: true
-            })), React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Media'), React.createElement('input', {
+            })), React.createElement('div', { className: 'field' }, React.createElement('label', null, 'Media'), React.createElement('input', {
               type: 'text',
               value: this.state.itemsToSave[this.state.selectedIndex].artworkMedia || '',
               onChange: function onChange(e) {
                 return _this2.validateInput(e, 'artworkMedia');
               },
               required: true
-            })), React.createElement('div', {className: 'field'}, React.createElement('label', null, 'Dimensions'), React.createElement('input', {
+            })), React.createElement('div', { className: 'field' }, React.createElement('label', null, 'Dimensions'), React.createElement('input', {
               type: 'text',
               value: this.state.itemsToSave[this.state.selectedIndex].artworkDimensions || '',
               onChange: function onChange(e) {
                 return _this2.validateInput(e, 'artworkDimensions');
               },
               required: true
-            })), React.createElement('div', {className: 'field textarea'}, React.createElement('label', null, 'Description'), React.createElement('input', {
+            })), React.createElement('div', { className: 'field textarea' }, React.createElement('label', null, 'Description'), React.createElement('input', {
               type: 'text',
               placeholder: '(250 characters max)',
               value: this.state.itemsToSave[this.state.selectedIndex].description || '',
@@ -38321,38 +38310,38 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
                 return _this2.validateInput(e, 'description');
               },
               required: true
-            })), React.createElement('div', {className: 'upl-btn-group upl-btn-group-right'}, React.createElement('button', {
+            })), React.createElement('div', { className: 'upl-btn-group upl-btn-group-right' }, React.createElement('button', {
               type: 'button',
               className: 'upl-btn upl-btn-default',
-              onClick: this.props.cancelModal
-            }, 'Cancel'), this.state.selectedIndex ? React.createElement('button', {
+              onClick: this.props.cancelModal }, 'Cancel'), this.state.selectedIndex ? React.createElement('button', {
               type: 'button',
               className: 'upl-btn upl-btn-default',
               onClick: function onClick() {
                 return _this2.slider.select(_this2.state.selectedIndex - 1);
-              }
-            }, 'Back') : null, React.createElement('button', {
+              } }, 'Back') : null, React.createElement('button', {
               type: 'button',
               className: 'upl-btn upl-btn-primary',
               onClick: this.saveContinue.bind(this),
-              disabled: !this.state.formValid
-            }, 'Save and Continue'))))));
+              disabled: !this.state.formValid }, 'Save and Continue'))))));
           }
         }, {
           key: 'componentDidMount',
           value: function componentDidMount() {
             var _this3 = this;
+
             if (this.refs.form.checkValidity()) {
-              this.setState({formValid: true});
+              this.setState({ formValid: true });
             }
+
             this.slider = new Flickity(document.getElementById('metaDataSlider'), {
               prevNextButtons: false,
               draggable: false,
               selectedIndex: 0,
               pageDots: false
             });
-            this.slider.on('cellSelect', function() {
-              _this3.setState({selectedIndex: _this3.slider.selectedIndex});
+
+            this.slider.on('cellSelect', function () {
+              _this3.setState({ selectedIndex: _this3.slider.selectedIndex });
             });
           }
         }, {
@@ -38360,7 +38349,7 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
           value: function saveContinue() {
             if (this.slider.selectedIndex + 1 === this.slider.cells.length) {
               this.props.saveItems(this.state.itemsToSave);
-              this.setState({itemsToSave: []});
+              this.setState({ itemsToSave: [] });
             } else {
               this.slider.next();
             }
@@ -38369,48 +38358,69 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
           key: 'validateInput',
           value: function validateInput(e, field) {
             var value = e.target.value;
+
             switch (field) {
+              // case 'description':
+              //   value = value.length <= 100 ? value : value.slice(0, 100)
+              //   break;
               default:
                 break;
             }
+
             this.state.itemsToSave[this.state.selectedIndex][field] = value;
+
             this.setState({
               itemsToSave: this.state.itemsToSave,
               formValid: this.refs.form.checkValidity()
             });
           }
         }]);
+
         return MetadataForm;
       }(React.Component);
-      Modal = function(_React$Component) {
+
+      Modal = function (_React$Component) {
         _inherits(Modal, _React$Component);
+
         function Modal() {
           _classCallCheck(this, Modal);
+
           var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Modal).call(this));
-          _this.state = {pickedFiles: []};
+
+          _this.state = {
+            pickedFiles: []
+          };
           return _this;
         }
+
         _createClass(Modal, [{
           key: 'render',
           value: function render() {
-            return React.createElement('section', {id: 'uploaderModal'}, React.createElement('div', {className: 'upl-modal-inner'}, React.createElement(MetadataForm, {
+            return React.createElement('section', { id: 'uploaderModal' }, React.createElement('div', { className: 'upl-modal-inner' }, React.createElement(MetadataForm, {
               items: this.props.items,
               editing: this.props.editing,
               saveItems: this.props.saveItems,
-              cancelModal: this.props.cancelModal
-            })));
+              cancelModal: this.props.cancelModal })));
           }
         }]);
+
         return Modal;
       }(React.Component);
-      Slideshow = function(_React$Component) {
+
+      Slideshow = function (_React$Component) {
         _inherits(Slideshow, _React$Component);
+
         function Slideshow() {
           _classCallCheck(this, Slideshow);
+
           var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Slideshow).call(this));
-          _this.state = {fullscreen: false};
+
+          _this.state = {
+            fullscreen: false
+          };
           return _this;
         }
+
         _createClass(Slideshow, [{
           key: 'componentDidMount',
           value: function componentDidMount() {
@@ -38420,38 +38430,38 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
           key: 'render',
           value: function render() {
             var _this2 = this;
-            var slides = this.props.items.map(function(slide, index) {
-              return React.createElement('div', {
-                className: 'gallery-cell slideshow',
-                key: index
-              }, React.createElement('img', {
-                src: slide.url,
-                height: '600',
+
+            var slides = this.props.items.map(function (slide, index) {
+              return React.createElement('div', { className: 'gallery-cell slideshow', key: index }, React.createElement('img', { src: slide.url, height: '600',
                 style: {
                   margin: '0 auto',
                   display: 'block'
-                }
-              }));
+                } }));
             });
-            return React.createElement('section', {style: {
+            return React.createElement('section', { style: {
                 position: 'fixed',
                 top: 0,
                 bottom: 0,
                 width: '100%',
                 backgroundColor: '#000000',
                 color: '#ffffff'
-              }}, React.createElement('button', {onClick: function onClick() {
-                return _this2.setState({fullscreen: true});
-              }}, 'Fullscreen'), React.createElement('button', {onClick: this.props.hideSlideshow}, 'Exit'), React.createElement('div', {id: 'slideshowSlider'}, slides));
+              } }, React.createElement('button', { onClick: function onClick() {
+                return _this2.setState({ fullscreen: true });
+              } }, 'Fullscreen'), React.createElement('button', { onClick: this.props.hideSlideshow }, 'Exit'), React.createElement('div', { id: 'slideshowSlider' }, slides));
           }
         }]);
+
         return Slideshow;
       }(React.Component);
-      Uploader = function(_React$Component) {
+
+      Uploader = function (_React$Component) {
         _inherits(Uploader, _React$Component);
+
         function Uploader(props) {
           _classCallCheck(this, Uploader);
+
           var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Uploader).call(this));
+
           _this.state = {
             items: props.items || [],
             rollbackItemsState: props.items || [],
@@ -38462,14 +38472,16 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
           };
           return _this;
         }
+
         _createClass(Uploader, [{
           key: 'showUploadcare',
           value: function showUploadcare() {
             var _this2 = this;
+
             uploadcare.openDialog(null, {
               multiple: true,
               imagesOnly: true
-            }).done(function(file) {
+            }).done(function (file) {
               Promise.all(file.files()).then(_this2.saveItems.bind(_this2));
             });
           }
@@ -38478,8 +38490,10 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
           value: function saveItems(data) {
             var toSave = Array.isArray(data) ? data : [data];
             var rollbackItemsState = _.cloneDeep(this.state.items);
+
             if (this.state.editingIndex || this.state.editingIndex === 0) {
               this.state.items.splice(this.state.editingIndex, 1, toSave[0]);
+
               this.setState({
                 rollbackItemsState: rollbackItemsState,
                 items: this.state.items,
@@ -38507,7 +38521,9 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
           key: 'rollback',
           value: function rollback(prevState) {
             if (Array.isArray(prevState)) {
-              this.setState({items: prevState});
+              this.setState({
+                items: prevState
+              });
             } else {
               this.setState(prevState);
             }
@@ -38516,11 +38532,12 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
           key: 'render',
           value: function render() {
             var _this3 = this;
-            return React.createElement('section', {id: 'uploader'}, React.createElement(List, {
+
+            return React.createElement('section', { id: 'uploader' }, React.createElement(List, {
               items: this.state.items,
               showModal: this.showUploadcare.bind(this),
               showSlideshow: function showSlideshow() {
-                return _this3.setState({showSlideshow: true});
+                return _this3.setState({ showSlideshow: true });
               },
               startEditing: function startEditing(itemsToEdit, index) {
                 return _this3.setState({
@@ -38530,14 +38547,15 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
                 });
               },
               reOrderItems: function reOrderItems(items) {
-                return _this3.setState({items: items});
-              }
-            }), this.state.showModal ? React.createElement(Modal, {
+                return _this3.setState({ items: items });
+              } }), this.state.showModal ? React.createElement(Modal, {
               items: this.state.items,
               saveItems: this.saveItems.bind(this),
               editing: this.state.editing,
               editPickedFiles: function editPickedFiles(pickedFiles) {
-                return _this3.setState({editing: pickedFiles});
+                return _this3.setState({
+                  editing: pickedFiles
+                });
               },
               cancelModal: function cancelModal() {
                 _this3.setState({
@@ -38546,22 +38564,21 @@ $__System.register("1", ["16", "a6", "a7", "a9", "be"], function($__export) {
                   editingIndex: null,
                   items: _this3.state.rollbackItemsState
                 });
-              }
-            }) : null, this.state.showSlideshow ? React.createElement(Slideshow, {
+              } }) : null, this.state.showSlideshow ? React.createElement(Slideshow, {
               hideSlideshow: function hideSlideshow() {
-                return _this3.setState({showSlideshow: false});
+                return _this3.setState({ showSlideshow: false });
               },
-              items: this.state.items
-            }) : null);
+              items: this.state.items }) : null);
           }
         }]);
+
         return Uploader;
       }(React.Component);
-      $__export('default', ReactUploader);
+
+      _export('default', ReactUploader);
     }
   };
 });
-
 })
 (function(factory) {
   if (typeof define == 'function' && define.amd)
