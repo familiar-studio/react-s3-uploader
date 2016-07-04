@@ -38240,7 +38240,7 @@ $__System.register('1', ['16', 'a6', 'a7', 'a9', 'be'], function (_export, _cont
                   _this3.overIndex = ui.item.index();
                 }
               });
-            }.bind(this), 5000);
+            }.bind(this), 1000);
           }
         }]);
 

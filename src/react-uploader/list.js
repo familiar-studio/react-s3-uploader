@@ -124,6 +124,6 @@ export default class List extends React.Component {
           this.overIndex = ui.item.index()
         }
       });
-    }.bind(this), 5000)
+    }.bind(this), 1000)
   }
 }
