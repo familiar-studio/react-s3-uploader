@@ -14,6 +14,7 @@ export default class Modal extends React.Component {
       <section id="uploaderModal">
         <div className="upl-modal-inner">
           <MetadataForm
+            options ={this.props.options}
             items={this.props.items}
             editing={this.props.editing}
             saveItems={this.props.saveItems}

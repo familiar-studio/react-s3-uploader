@@ -38130,8 +38130,8 @@ $__System.register('1', ['16', 'a6', 'a7', 'a9', 'be'], function (_export, _cont
     return Constructor;
   }
 
-  function ReactUploader(initialItems, notifier) {
-    return ReactDOM.render(React.createElement(Uploader, { items: initialItems, notifier: notifier }), document.getElementsByTagName('uploader')[0]);
+  function ReactUploader(initialItems, options, notifier) {
+    return ReactDOM.render(React.createElement(Uploader, { options: options, items: initialItems, notifier: notifier }), document.getElementsByTagName('uploader')[0]);
   }
 
   return {
@@ -38299,13 +38299,13 @@ $__System.register('1', ['16', 'a6', 'a7', 'a9', 'be'], function (_export, _cont
               value: this.state.itemsToSave[this.state.selectedIndex].artworkDimensions || '',
               onChange: function onChange(e) {
                 return _this2.validateInput(e, 'artworkDimensions');
-              },
-              required: true
+              }
+
             })), React.createElement('div', { className: 'field textarea' }, React.createElement('label', null, 'Description'), React.createElement('input', {
               type: 'text',
-              placeholder: '(250 characters max)',
+              placeholder: '( ' + (this.props.options.descriptionMaxLength || 250) + ' characters max)',
               value: this.state.itemsToSave[this.state.selectedIndex].description || '',
-              maxLength: 250,
+              maxLength: this.props.options.descriptionMaxLength || 250,
               onChange: function onChange(e) {
                 return _this2.validateInput(e, 'description');
               },
@@ -38397,6 +38397,7 @@ $__System.register('1', ['16', 'a6', 'a7', 'a9', 'be'], function (_export, _cont
           key: 'render',
           value: function render() {
             return React.createElement('section', { id: 'uploaderModal' }, React.createElement('div', { className: 'upl-modal-inner' }, React.createElement(MetadataForm, {
+              options: this.props.options,
               items: this.props.items,
               editing: this.props.editing,
               saveItems: this.props.saveItems,
@@ -38550,6 +38551,7 @@ $__System.register('1', ['16', 'a6', 'a7', 'a9', 'be'], function (_export, _cont
                 return _this3.setState({ items: items });
               } }), this.state.showModal ? React.createElement(Modal, {
               items: this.state.items,
+              options: this.props.options,
               saveItems: this.saveItems.bind(this),
               editing: this.state.editing,
               editPickedFiles: function editPickedFiles(pickedFiles) {

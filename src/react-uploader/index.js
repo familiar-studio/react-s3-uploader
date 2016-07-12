@@ -7,6 +7,8 @@ import Slideshow from './slideshow.js'
 
 class Uploader extends React.Component {
   constructor(props) {
+
+
     super()
     this.state = {
       items: props.items || [],
@@ -87,6 +89,7 @@ class Uploader extends React.Component {
         {this.state.showModal ?
         <Modal
           items={this.state.items}
+          options={this.props.options}
           saveItems={this.saveItems.bind(this)}
           editing={this.state.editing}
           editPickedFiles={pickedFiles => this.setState({
@@ -116,6 +119,6 @@ class Uploader extends React.Component {
   }
 }
 
-export default function ReactUploader(initialItems, notifier) {
-  return ReactDOM.render( <Uploader items={initialItems} notifier={notifier}  />, document.getElementsByTagName('uploader')[0] )
+export default function ReactUploader(initialItems, options, notifier) {
+  return ReactDOM.render( <Uploader options={options}  items={initialItems} notifier={notifier}  />, document.getElementsByTagName('uploader')[0] )
 }
