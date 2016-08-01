@@ -47,7 +47,9 @@ export default class List extends React.Component {
               </div>
             </div>
 
-            <div className="upl-list-row-2c">
+            <div className="upl-list-row-2c" style={{
+              display: item.type === 'video' ? 'none' : 'block'
+            }}>
               <div className="field">
                 <label>Artwork Dimensions</label>
                 <p>{item.artworkDimensions}</p>
@@ -84,7 +86,8 @@ export default class List extends React.Component {
                 <h3>Uploaded Images ({items.length})</h3>
                 <div className="upl-btn-group upl-btn-group-right" style={{float: 'right'}}>
                   {/*<button className="upl-btn upl-btn-default" onClick={this.props.showSlideshow}>View Slideshow</button>*/}
-                  <button className="upl-btn upl-btn-default" onClick={this.props.showModal} type="button">Upload More Images</button>
+                  <button className="upl-btn upl-btn-default" onClick={this.props.uploadVideo} type="button">Upload Video Link</button>
+                  <button className="upl-btn upl-btn-default" onClick={this.props.showUploadcare} type="button">Upload More Images</button>
                 </div>
               </div>
             : null }
@@ -93,7 +96,10 @@ export default class List extends React.Component {
               </ul>
           </div>
         {items.length ? null :
-          <button className="upl-btn upl-btn-primary" onClick={this.props.showModal} type="button">Upload Images</button>
+          <span>          
+            <button className="upl-btn upl-btn-primary" onClick={this.props.showUploadcare} type="button">Upload Images</button>
+            <button className="upl-btn upl-btn-primary" onClick={this.props.uploadVideo} type="button">Upload Video</button>
+          </span>
         }
       </section>
     )
@@ -102,10 +108,7 @@ export default class List extends React.Component {
   componentDidMount() {
     this.placeholder = document.createElement('li');
     this.placeholder.className = 'placeholder';
-    console.log('mounted', this, this.refs.list);
     setTimeout(function() {
-
-      console.log('timeout', this, this.refs.list);
 
       $(this.refs.list).sortable({
         start: (e, ui) => {

@@ -6,14 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js & gulp",
-    "build": "jspm build react-uploader dist/react-uploader.js --format umd --global-name ReactUploader --skip-source-maps"
+    "build": "jspm build dist/react-uploader.js --format umd --global-name ReactUploader --skip-source-maps"
   },
   "dependencies": {},
   "devDependencies": {
     "express": "^4.13.4",
     "gulp": "^3.9.0",
     "gulp-sass": "^2.2.0",
-    "jspm": "^0.17.0-beta.13"
+    "jspm": "^0.17.0-beta.13",
+    "node-sass": "^3.8.0"
   },
   "jspm": {
     "main": "uploader.js",

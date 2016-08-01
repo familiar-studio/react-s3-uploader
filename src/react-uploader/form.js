@@ -60,13 +60,14 @@ export default class MetadataForm extends React.Component {
                   required
                 />
               </div>
-              <div className="field">
+              <div className="field" style={{
+                display: this.state.itemsToSave[this.state.selectedIndex].type === 'video' ? 'none' : 'flex'
+              }}>
                 <label>Dimensions</label>
                 <input
                   type="text"
                   value={this.state.itemsToSave[this.state.selectedIndex].artworkDimensions || ''}
                   onChange={e => this.validateInput(e, 'artworkDimensions')}
-
                 />
               </div>
               <div className="field textarea">

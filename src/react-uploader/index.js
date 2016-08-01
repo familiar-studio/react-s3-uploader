@@ -4,10 +4,11 @@ import ReactDOM from 'react-dom'
 import List from './list.js'
 import Modal from './modal.js'
 import Slideshow from './slideshow.js'
+import UploadVideoForm from './upload-video-form.js'
+
 
 class Uploader extends React.Component {
   constructor(props) {
-
 
     super()
     this.state = {
@@ -15,8 +16,9 @@ class Uploader extends React.Component {
       rollbackItemsState: props.items || [],
       editing: [],
       editingIndex: null,
-      showModal: false,
-      showSlideshow: false
+      showFormModal: false,
+      showSlideshow: false,
+      uploadingVideo: false
     }
   }
 
@@ -30,6 +32,42 @@ class Uploader extends React.Component {
     })
   }
 
+  uploadVideo() {
+    this.setState({
+      uploadingVideo: true
+    })
+  }
+
+  submitVideoUrl(url) {    
+    let id, endpoint
+
+    if ( url.includes('you') ) {
+      id = url.slice( url.lastIndexOf('v=') + 2 )
+      endpoint = `http://img.youtube.com/vi/${id}/0.jpg`
+      updateState.call(this, endpoint)
+    } else if ( url.includes('vimeo') ) {
+      id = url.slice( url.lastIndexOf('/') + 1 )
+      endpoint = `http://vimeo.com/api/v2/video/${id}.json`
+      getVimeoThumbnail(endpoint).then(updateState.bind(this))
+    }
+    
+    function updateState(thumbnailUrl) {
+      console.log(thumbnailUrl)
+      this.saveItems({
+        srcUrl: url, // vimeo or youtube page url
+        cdnUrl: thumbnailUrl, //thumbnail of video frame
+        type: 'video'
+      })
+    }
+    
+    function getVimeoThumbnail(endpoint) {
+      return fetch(endpoint).then(res => res.json()).then(res => {
+        return res[0].thumbnail_large
+      })
+    }
+  }
+
+
   saveItems(data) {
     const toSave = Array.isArray(data) ? data : [data]
     const rollbackItemsState = _.cloneDeep(this.state.items)
@@ -40,17 +78,19 @@ class Uploader extends React.Component {
       this.setState({
         rollbackItemsState: rollbackItemsState,
         items: this.state.items,
-        showModal: false,
+        showFormModal: false,
         editing: [],
-        editingIndex: null
+        editingIndex: null,
+        uploadingVideo: false
       })
     } else {
       this.setState({
         rollbackItemsState: rollbackItemsState,
         items: this.state.items.concat(toSave),
-        showModal: true,
+        showFormModal: true,
         editing: toSave,
         editingIndex: this.state.items.length,
+        uploadingVideo: false
       })
     }
   }
@@ -76,17 +116,18 @@ class Uploader extends React.Component {
       <section id="uploader">
         <List
           items={this.state.items}
-          showModal={this.showUploadcare.bind(this)}
+          showUploadcare={this.showUploadcare.bind(this)}
+          uploadVideo={this.uploadVideo.bind(this)}
           showSlideshow={() => this.setState({ showSlideshow: true })}
           startEditing={(itemsToEdit, index) => this.setState({
             editing: [itemsToEdit],
             editingIndex: index,
-            showModal: true
+            showFormModal: true
           })}
           reOrderItems={items => this.setState({items: items})}>
         </List>
 
-        {this.state.showModal ?
+        {this.state.showFormModal ?
         <Modal
           items={this.state.items}
           options={this.props.options}
@@ -97,13 +138,23 @@ class Uploader extends React.Component {
           })}
           cancelModal={() => {
             this.setState({
-              showModal: false,
+              showFormModal: false,
               editing: [],
               editingIndex: null,
               items: this.state.rollbackItemsState
             })
           }}>
         </Modal>
+        : null
+        }
+
+        {this.state.uploadingVideo ? 
+        <UploadVideoForm
+          submitVideoUrl={this.submitVideoUrl.bind(this)}
+          cancelVideoUpload={() => {
+            this.setState({ uploadingVideo: false })
+          }}>
+        </UploadVideoForm>  
         : null
         }
 
