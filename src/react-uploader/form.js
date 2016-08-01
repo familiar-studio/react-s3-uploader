@@ -70,7 +70,19 @@ export default class MetadataForm extends React.Component {
                   onChange={e => this.validateInput(e, 'artworkDimensions')}
                 />
               </div>
-              <div className="field textarea">
+              <div className="field" style={{
+                display: this.state.itemsToSave[this.state.selectedIndex].type !== 'video' ? 'none' : 'flex'
+              }}>
+                <label>Artist Name</label>
+                <input
+                  type="text"
+                  value={this.state.itemsToSave[this.state.selectedIndex].artistName || ''}
+                  onChange={e => this.validateInput(e, 'artistName')}
+                />
+              </div>              
+              <div className="field textarea" style={{
+                display: this.state.itemsToSave[this.state.selectedIndex].type === 'video' ? 'none' : 'flex'
+              }}>
                 <label>Description</label>
                 <input
                   type="text"
@@ -78,7 +90,7 @@ export default class MetadataForm extends React.Component {
                   value={this.state.itemsToSave[this.state.selectedIndex].description || ''}
                   maxLength={this.props.options.descriptionMaxLength || 250}
                   onChange={e => this.validateInput(e, 'description')}
-                  required
+                  required={this.state.itemsToSave[this.state.selectedIndex].type !== 'video'}
                 />
               </div>
 

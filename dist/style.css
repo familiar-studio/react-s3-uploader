@@ -425,7 +425,7 @@ ul#uploaderList:empty {
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.95);
   display: flex;
   justify-content: center;
   align-items: center; }
@@ -433,7 +433,8 @@ ul#uploaderList:empty {
     width: 100%;
     max-width: 600px;
     padding: 50px;
-    box-shadow: -2px 2px 14px 4px rgba(0, 0, 0, 0.1); }
+    box-shadow: -2px 2px 14px 4px rgba(0, 0, 0, 0.1);
+    background-color: white; }
     #uploadVideoForm .content fieldset {
       padding: 0; }
       #uploadVideoForm .content fieldset .field {
@@ -441,4 +442,5 @@ ul#uploaderList:empty {
         #uploadVideoForm .content fieldset .field input {
           width: 100%; }
         #uploadVideoForm .content fieldset .field label {
-          padding-left: 0; }
+          padding-left: 0;
+          width: auto !important; }

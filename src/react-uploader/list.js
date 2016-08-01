@@ -56,10 +56,20 @@ export default class List extends React.Component {
               </div>
             </div>
 
-            <div className="upl-list-row-1c">
+            <div className="upl-list-row-1c" style={{
+              display: item.type === 'video' ? 'none' : 'block'
+            }}>
               <div className="field">
                 <label>Description</label>
                 <p>{item.description}</p>
+              </div>
+            </div>
+            <div className="upl-list-row-1c" style={{
+              display: item.type !== 'video' ? 'none' : 'block'
+            }}>
+              <div className="field">
+                <label>Artist Name</label>
+                <p>{item.artistName}</p>
               </div>
             </div>
           </div>

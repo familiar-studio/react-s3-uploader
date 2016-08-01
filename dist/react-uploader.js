@@ -38204,7 +38204,11 @@ $__System.register('1', ['16', 'a6', 'a7', 'a9', 'be'], function (_export, _cont
                   }
                 } }, 'delete item')), React.createElement('div', { className: 'upl-list-metadata' }, React.createElement('div', { className: 'upl-list-row-1c lg' }, React.createElement('div', { className: 'field' }, React.createElement('label', null, 'Title'), React.createElement('p', null, item.artworkTitle))), React.createElement('div', { className: 'upl-list-row-2c' }, React.createElement('div', { className: 'field' }, React.createElement('label', null, 'Year'), React.createElement('p', null, item.artworkYear)), React.createElement('div', { className: 'field' }, React.createElement('label', null, 'Media'), React.createElement('p', null, item.artworkMedia))), React.createElement('div', { className: 'upl-list-row-2c', style: {
                   display: item.type === 'video' ? 'none' : 'block'
-                } }, React.createElement('div', { className: 'field' }, React.createElement('label', null, 'Artwork Dimensions'), React.createElement('p', null, item.artworkDimensions))), React.createElement('div', { className: 'upl-list-row-1c' }, React.createElement('div', { className: 'field' }, React.createElement('label', null, 'Description'), React.createElement('p', null, item.description)))), React.createElement('div', { className: 'upl-list-btn-group' }, React.createElement('button', {
+                } }, React.createElement('div', { className: 'field' }, React.createElement('label', null, 'Artwork Dimensions'), React.createElement('p', null, item.artworkDimensions))), React.createElement('div', { className: 'upl-list-row-1c', style: {
+                  display: item.type === 'video' ? 'none' : 'block'
+                } }, React.createElement('div', { className: 'field' }, React.createElement('label', null, 'Description'), React.createElement('p', null, item.description))), React.createElement('div', { className: 'upl-list-row-1c', style: {
+                  display: item.type !== 'video' ? 'none' : 'block'
+                } }, React.createElement('div', { className: 'field' }, React.createElement('label', null, 'Artist Name'), React.createElement('p', null, item.artistName)))), React.createElement('div', { className: 'upl-list-btn-group' }, React.createElement('button', {
                 className: 'upl-btn upl-btn-default',
                 onClick: function onClick() {
                   return _this2.props.startEditing(item, index);
@@ -38313,7 +38317,17 @@ $__System.register('1', ['16', 'a6', 'a7', 'a9', 'be'], function (_export, _cont
               onChange: function onChange(e) {
                 return _this2.validateInput(e, 'artworkDimensions');
               }
-            })), React.createElement('div', { className: 'field textarea' }, React.createElement('label', null, 'Description'), React.createElement('input', {
+            })), React.createElement('div', { className: 'field', style: {
+                display: this.state.itemsToSave[this.state.selectedIndex].type !== 'video' ? 'none' : 'flex'
+              } }, React.createElement('label', null, 'Artist Name'), React.createElement('input', {
+              type: 'text',
+              value: this.state.itemsToSave[this.state.selectedIndex].artistName || '',
+              onChange: function onChange(e) {
+                return _this2.validateInput(e, 'artistName');
+              }
+            })), React.createElement('div', { className: 'field textarea', style: {
+                display: this.state.itemsToSave[this.state.selectedIndex].type === 'video' ? 'none' : 'flex'
+              } }, React.createElement('label', null, 'Description'), React.createElement('input', {
               type: 'text',
               placeholder: '( ' + (this.props.options.descriptionMaxLength || 250) + ' characters max)',
               value: this.state.itemsToSave[this.state.selectedIndex].description || '',
@@ -38321,7 +38335,7 @@ $__System.register('1', ['16', 'a6', 'a7', 'a9', 'be'], function (_export, _cont
               onChange: function onChange(e) {
                 return _this2.validateInput(e, 'description');
               },
-              required: true
+              required: this.state.itemsToSave[this.state.selectedIndex].type !== 'video'
             })), React.createElement('div', { className: 'upl-btn-group upl-btn-group-right' }, React.createElement('button', {
               type: 'button',
               className: 'upl-btn upl-btn-default',
