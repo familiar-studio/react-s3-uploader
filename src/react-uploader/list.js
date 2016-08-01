@@ -86,7 +86,15 @@ export default class List extends React.Component {
                 <h3>Uploaded Images ({items.length})</h3>
                 <div className="upl-btn-group upl-btn-group-right" style={{float: 'right'}}>
                   {/*<button className="upl-btn upl-btn-default" onClick={this.props.showSlideshow}>View Slideshow</button>*/}
-                  <button className="upl-btn upl-btn-default" onClick={this.props.uploadVideo} type="button">Upload Video Link</button>
+                  <button 
+                    className="upl-btn upl-btn-default" 
+                    onClick={this.props.uploadVideo} 
+                    type="button"
+                    style={{
+                      display: this.props.options.allowVideoUploads ? 'inline' :'none'
+                    }}>
+                    Upload Video Link
+                  </button>
                   <button className="upl-btn upl-btn-default" onClick={this.props.showUploadcare} type="button">Upload More Images</button>
                 </div>
               </div>
@@ -98,7 +106,15 @@ export default class List extends React.Component {
         {items.length ? null :
           <span>          
             <button className="upl-btn upl-btn-primary" onClick={this.props.showUploadcare} type="button">Upload Images</button>
-            <button className="upl-btn upl-btn-primary" onClick={this.props.uploadVideo} type="button">Upload Video</button>
+            <button
+              style={{
+                display: this.props.options.allowVideoUploads ? 'inline' :'none'
+              }} 
+              className="upl-btn upl-btn-primary" 
+              onClick={this.props.uploadVideo} 
+              type="button">
+              Upload Video
+            </button>
           </span>
         }
       </section>

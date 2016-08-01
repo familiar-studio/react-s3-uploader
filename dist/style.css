@@ -431,7 +431,9 @@ ul#uploaderList:empty {
   align-items: center; }
   #uploadVideoForm .content {
     width: 100%;
-    max-width: 600px; }
+    max-width: 600px;
+    padding: 50px;
+    box-shadow: -2px 2px 14px 4px rgba(0, 0, 0, 0.1); }
     #uploadVideoForm .content fieldset {
       padding: 0; }
       #uploadVideoForm .content fieldset .field {

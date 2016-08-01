@@ -7,7 +7,6 @@ SystemJS.config({
   devConfig: {
     "map": {
       "babel-plugin-transform-react-jsx": "npm:babel-plugin-transform-react-jsx@6.7.5",
-      "plugin-babel": "npm:systemjs-plugin-babel@0.0.9",
       "tty": "github:jspm/nodelibs-tty@0.2.0-alpha"
     },
     "packages": {
@@ -144,6 +143,7 @@ SystemJS.config({
     "github:*/*.json"
   ],
   map: {
+    "plugin-babel": "npm:systemjs-plugin-babel@0.0.13",
     "assert": "github:jspm/nodelibs-assert@0.2.0-alpha",
     "buffer": "github:jspm/nodelibs-buffer@0.2.0-alpha",
     "child_process": "github:jspm/nodelibs-child_process@0.2.0-alpha",

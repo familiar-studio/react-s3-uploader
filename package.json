@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js & gulp",
-    "build": "jspm build dist/react-uploader.js --format umd --global-name ReactUploader --skip-source-maps"
+    "build": "jspm build react-uploader dist/react-uploader.js --format umd --global-name ReactUploader --skip-source-maps"
   },
   "dependencies": {},
   "devDependencies": {
@@ -25,11 +25,11 @@
       "flickity": "npm:flickity@^1.2.1",
       "jquery-ui": "github:components/jqueryui@^1.11.4",
       "lodash": "npm:lodash@^4.11.0",
+      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.13",
       "react-dom": "npm:react-dom@^15.0.1"
     },
     "devDependencies": {
       "babel-plugin-transform-react-jsx": "npm:babel-plugin-transform-react-jsx@^6.7.5",
-      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.9",
       "tty": "github:jspm/nodelibs-tty@^0.2.0-alpha"
     },
     "buildConfig": {

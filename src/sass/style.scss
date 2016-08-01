@@ -362,7 +362,6 @@ ul#uploaderList:empty {
   border: none;
 }
 
-
 .img-center {
   display: flex;
   align-items: center;
@@ -386,6 +385,8 @@ ul#uploaderList:empty {
   .content {
     width: 100%;
     max-width: 600px;
+    padding: 50px;
+    box-shadow: -2px 2px 14px 4px rgba(0,0,0,0.1);   
     fieldset {
       padding: 0;
       .field {

@@ -124,7 +124,8 @@ class Uploader extends React.Component {
             editingIndex: index,
             showFormModal: true
           })}
-          reOrderItems={items => this.setState({items: items})}>
+          reOrderItems={items => this.setState({items: items})}
+          options={this.props.options}>
         </List>
 
         {this.state.showFormModal ?

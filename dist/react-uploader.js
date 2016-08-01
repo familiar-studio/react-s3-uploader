@@ -1,4 +1,4 @@
-!function(e){function r(e,r,o){return 4===arguments.length?t.apply(this,arguments):void n(e,{declarative:!0,deps:r,declare:o})}function t(e,r,t,o){n(e,{declarative:!1,deps:r,executingRequire:t,execute:o})}function n(e,r){r.name=e,e in v||(v[e]=r),r.normalizedDeps=r.deps}function o(e,r){if(r[e.groupIndex]=r[e.groupIndex]||[],-1==g.call(r[e.groupIndex],e)){r[e.groupIndex].push(e);for(var t=0,n=e.normalizedDeps.length;n>t;t++){var a=e.normalizedDeps[t],u=v[a];if(u&&!u.evaluated){var d=e.groupIndex+(u.declarative!=e.declarative);if(void 0===u.groupIndex||u.groupIndex<d){if(void 0!==u.groupIndex&&(r[u.groupIndex].splice(g.call(r[u.groupIndex],u),1),0==r[u.groupIndex].length))throw new TypeError("Mixed dependency cycle detected");u.groupIndex=d}o(u,r)}}}}function a(e){var r=v[e];r.groupIndex=0;var t=[];o(r,t);for(var n=!!r.declarative==t.length%2,a=t.length-1;a>=0;a--){for(var u=t[a],i=0;i<u.length;i++){var s=u[i];n?d(s):l(s)}n=!n}}function u(e){return y[e]||(y[e]={name:e,dependencies:[],exports:{},importers:[]})}function d(r){if(!r.module){var t=r.module=u(r.name),n=r.module.exports,o=r.declare.call(e,function(e,r){if(t.locked=!0,"object"==typeof e)for(var o in e)n[o]=e[o];else n[e]=r;for(var a=0,u=t.importers.length;u>a;a++){var d=t.importers[a];if(!d.locked)for(var i=0;i<d.dependencies.length;++i)d.dependencies[i]===t&&d.setters[i](n)}return t.locked=!1,r},r.name);t.setters=o.setters,t.execute=o.execute;for(var a=0,i=r.normalizedDeps.length;i>a;a++){var l,s=r.normalizedDeps[a],c=v[s],f=y[s];f?l=f.exports:c&&!c.declarative?l=c.esModule:c?(d(c),f=c.module,l=f.exports):l=p(s),f&&f.importers?(f.importers.push(t),t.dependencies.push(f)):t.dependencies.push(null),t.setters[a]&&t.setters[a](l)}}}function i(e){var r,t=v[e];if(t)t.declarative?f(e,[]):t.evaluated||l(t),r=t.module.exports;else if(r=p(e),!r)throw new Error("Unable to load dependency "+e+".");return(!t||t.declarative)&&r&&r.__useDefault?r["default"]:r}function l(r){if(!r.module){var t={},n=r.module={exports:t,id:r.name};if(!r.executingRequire)for(var o=0,a=r.normalizedDeps.length;a>o;o++){var u=r.normalizedDeps[o],d=v[u];d&&l(d)}r.evaluated=!0;var c=r.execute.call(e,function(e){for(var t=0,n=r.deps.length;n>t;t++)if(r.deps[t]==e)return i(r.normalizedDeps[t]);throw new TypeError("Module "+e+" not declared as a dependency.")},t,n);c&&(n.exports=c),t=n.exports,t&&t.__esModule?r.esModule=t:r.esModule=s(t)}}function s(r){var t={};if(("object"==typeof r||"function"==typeof r)&&r!==e)if(m)for(var n in r)"default"!==n&&c(t,r,n);else{var o=r&&r.hasOwnProperty;for(var n in r)"default"===n||o&&!r.hasOwnProperty(n)||(t[n]=r[n])}return t["default"]=r,x(t,"__useDefault",{value:!0}),t}function c(e,r,t){try{var n;(n=Object.getOwnPropertyDescriptor(r,t))&&x(e,t,n)}catch(o){return e[t]=r[t],!1}}function f(r,t){var n=v[r];if(n&&!n.evaluated&&n.declarative){t.push(r);for(var o=0,a=n.normalizedDeps.length;a>o;o++){var u=n.normalizedDeps[o];-1==g.call(t,u)&&(v[u]?f(u,t):p(u))}n.evaluated||(n.evaluated=!0,n.module.execute.call(e))}}function p(e){if(I[e])return I[e];if("@node/"==e.substr(0,6))return D(e.substr(6));var r=v[e];if(!r)throw"Module "+e+" not present.";return a(e),f(e,[]),v[e]=void 0,r.declarative&&x(r.module.exports,"__esModule",{value:!0}),I[e]=r.declarative?r.module.exports:r.esModule}var v={},g=Array.prototype.indexOf||function(e){for(var r=0,t=this.length;t>r;r++)if(this[r]===e)return r;return-1},m=!0;try{Object.getOwnPropertyDescriptor({a:0},"a")}catch(h){m=!1}var x;!function(){try{Object.defineProperty({},"a",{})&&(x=Object.defineProperty)}catch(e){x=function(e,r,t){try{e[r]=t.value||t.get.call(e)}catch(n){}}}}();var y={},D="undefined"!=typeof System&&System._nodeRequire||"undefined"!=typeof require&&require.resolve&&"undefined"!=typeof process&&require,I={"@empty":{}};return function(e,n,o,a){return function(u){u(function(u){for(var d={_nodeRequire:D,register:r,registerDynamic:t,get:p,set:function(e,r){I[e]=r},newModule:function(e){return e}},i=0;i<n.length;i++)(function(e,r){r&&r.__esModule?I[e]=r:I[e]=s(r)})(n[i],arguments[i]);a(d);var l=p(e[0]);if(e.length>1)for(var i=1;i<e.length;i++)p(e[i]);return o?l["default"]:l})}}}("undefined"!=typeof self?self:global)
+!function(e){function r(e,r,o){return 4===arguments.length?t.apply(this,arguments):void n(e,{declarative:!0,deps:r,declare:o})}function t(e,r,t,o){n(e,{declarative:!1,deps:r,executingRequire:t,execute:o})}function n(e,r){r.name=e,e in v||(v[e]=r),r.normalizedDeps=r.deps}function o(e,r){if(r[e.groupIndex]=r[e.groupIndex]||[],-1==g.call(r[e.groupIndex],e)){r[e.groupIndex].push(e);for(var t=0,n=e.normalizedDeps.length;n>t;t++){var a=e.normalizedDeps[t],u=v[a];if(u&&!u.evaluated){var d=e.groupIndex+(u.declarative!=e.declarative);if(void 0===u.groupIndex||u.groupIndex<d){if(void 0!==u.groupIndex&&(r[u.groupIndex].splice(g.call(r[u.groupIndex],u),1),0==r[u.groupIndex].length))throw new TypeError("Mixed dependency cycle detected");u.groupIndex=d}o(u,r)}}}}function a(e){var r=v[e];r.groupIndex=0;var t=[];o(r,t);for(var n=!!r.declarative==t.length%2,a=t.length-1;a>=0;a--){for(var u=t[a],i=0;i<u.length;i++){var s=u[i];n?d(s):l(s)}n=!n}}function u(e){return y[e]||(y[e]={name:e,dependencies:[],exports:{},importers:[]})}function d(r){if(!r.module){var t=r.module=u(r.name),n=r.module.exports,o=r.declare.call(e,function(e,r){if(t.locked=!0,"object"==typeof e)for(var o in e)n[o]=e[o];else n[e]=r;for(var a=0,u=t.importers.length;u>a;a++){var d=t.importers[a];if(!d.locked)for(var i=0;i<d.dependencies.length;++i)d.dependencies[i]===t&&d.setters[i](n)}return t.locked=!1,r},{id:r.name});t.setters=o.setters,t.execute=o.execute;for(var a=0,i=r.normalizedDeps.length;i>a;a++){var l,s=r.normalizedDeps[a],c=v[s],f=y[s];f?l=f.exports:c&&!c.declarative?l=c.esModule:c?(d(c),f=c.module,l=f.exports):l=p(s),f&&f.importers?(f.importers.push(t),t.dependencies.push(f)):t.dependencies.push(null),t.setters[a]&&t.setters[a](l)}}}function i(e){var r,t=v[e];if(t)t.declarative?f(e,[]):t.evaluated||l(t),r=t.module.exports;else if(r=p(e),!r)throw new Error("Unable to load dependency "+e+".");return(!t||t.declarative)&&r&&r.__useDefault?r["default"]:r}function l(r){if(!r.module){var t={},n=r.module={exports:t,id:r.name};if(!r.executingRequire)for(var o=0,a=r.normalizedDeps.length;a>o;o++){var u=r.normalizedDeps[o],d=v[u];d&&l(d)}r.evaluated=!0;var c=r.execute.call(e,function(e){for(var t=0,n=r.deps.length;n>t;t++)if(r.deps[t]==e)return i(r.normalizedDeps[t]);throw new TypeError("Module "+e+" not declared as a dependency.")},t,n);c&&(n.exports=c),t=n.exports,t&&t.__esModule?r.esModule=t:r.esModule=s(t)}}function s(r){var t={};if(("object"==typeof r||"function"==typeof r)&&r!==e)if(m)for(var n in r)"default"!==n&&c(t,r,n);else{var o=r&&r.hasOwnProperty;for(var n in r)"default"===n||o&&!r.hasOwnProperty(n)||(t[n]=r[n])}return t["default"]=r,x(t,"__useDefault",{value:!0}),t}function c(e,r,t){try{var n;(n=Object.getOwnPropertyDescriptor(r,t))&&x(e,t,n)}catch(o){return e[t]=r[t],!1}}function f(r,t){var n=v[r];if(n&&!n.evaluated&&n.declarative){t.push(r);for(var o=0,a=n.normalizedDeps.length;a>o;o++){var u=n.normalizedDeps[o];-1==g.call(t,u)&&(v[u]?f(u,t):p(u))}n.evaluated||(n.evaluated=!0,n.module.execute.call(e))}}function p(e){if(I[e])return I[e];if("@node/"==e.substr(0,6))return D(e.substr(6));var r=v[e];if(!r)throw"Module "+e+" not present.";return a(e),f(e,[]),v[e]=void 0,r.declarative&&x(r.module.exports,"__esModule",{value:!0}),I[e]=r.declarative?r.module.exports:r.esModule}var v={},g=Array.prototype.indexOf||function(e){for(var r=0,t=this.length;t>r;r++)if(this[r]===e)return r;return-1},m=!0;try{Object.getOwnPropertyDescriptor({a:0},"a")}catch(h){m=!1}var x;!function(){try{Object.defineProperty({},"a",{})&&(x=Object.defineProperty)}catch(e){x=function(e,r,t){try{e[r]=t.value||t.get.call(e)}catch(n){}}}}();var y={},D="undefined"!=typeof System&&System._nodeRequire||"undefined"!=typeof require&&require.resolve&&"undefined"!=typeof process&&require,I={"@empty":{}};return function(e,n,o,a){return function(u){u(function(u){for(var d={_nodeRequire:D,register:r,registerDynamic:t,get:p,set:function(e,r){I[e]=r},newModule:function(e){return e}},i=0;i<n.length;i++)(function(e,r){r&&r.__esModule?I[e]=r:I[e]=s(r)})(n[i],arguments[i]);a(d);var l=p(e[0]);if(e.length>1)for(var i=1;i<e.length;i++)p(e[i]);return o?l["default"]:l})}}}("undefined"!=typeof self?self:global)
 
 (["1"], [], false, function($__System) {
 var require = this.require, exports = this.exports, module = this.module;
@@ -38112,23 +38112,7 @@ $__System.registerDynamic("be", ["ae", "ad", "b1", "b4", "b5", "b6", "bd", "3"],
 $__System.register('1', ['16', 'a6', 'a7', 'a9', 'be'], function (_export, _context) {
   "use strict";
 
-  var React, ReactDOM, _$1, Flickity, _classCallCheck, _possibleConstructorReturn, _inherits, List, MetadataForm, Modal, Slideshow, Uploader;
-
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];
-      descriptor.enumerable = descriptor.enumerable || false;
-      descriptor.configurable = true;
-      if ("value" in descriptor) descriptor.writable = true;
-      Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }
-
-  function _createClass(Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);
-    if (staticProps) defineProperties(Constructor, staticProps);
-    return Constructor;
-  }
+  var React, ReactDOM, _$1, Flickity, _classCallCheck, _createClass, _possibleConstructorReturn, _inherits, List, MetadataForm, Modal, Slideshow, UploadVideoForm, Uploader;
 
   function ReactUploader(initialItems, options, notifier) {
     return ReactDOM.render(React.createElement(Uploader, { options: options, items: initialItems, notifier: notifier }), document.getElementsByTagName('uploader')[0]);
@@ -38151,7 +38135,23 @@ $__System.register('1', ['16', 'a6', 'a7', 'a9', 'be'], function (_export, _cont
         }
       };
 
-      ;
+      _createClass = function () {
+        function defineProperties(target, props) {
+          for (var i = 0; i < props.length; i++) {
+            var descriptor = props[i];
+            descriptor.enumerable = descriptor.enumerable || false;
+            descriptor.configurable = true;
+            if ("value" in descriptor) descriptor.writable = true;
+            Object.defineProperty(target, descriptor.key, descriptor);
+          }
+        }
+
+        return function (Constructor, protoProps, staticProps) {
+          if (protoProps) defineProperties(Constructor.prototype, protoProps);
+          if (staticProps) defineProperties(Constructor, staticProps);
+          return Constructor;
+        };
+      }();
 
       _possibleConstructorReturn = function (self, call) {
         if (!self) {
@@ -38202,7 +38202,9 @@ $__System.register('1', ['16', 'a6', 'a7', 'a9', 'be'], function (_export, _cont
                     _this2.props.items.splice(index, 1);
                     _this2.props.reOrderItems(_this2.props.items);
                   }
-                } }, 'delete item')), React.createElement('div', { className: 'upl-list-metadata' }, React.createElement('div', { className: 'upl-list-row-1c lg' }, React.createElement('div', { className: 'field' }, React.createElement('label', null, 'Title'), React.createElement('p', null, item.artworkTitle))), React.createElement('div', { className: 'upl-list-row-2c' }, React.createElement('div', { className: 'field' }, React.createElement('label', null, 'Year'), React.createElement('p', null, item.artworkYear)), React.createElement('div', { className: 'field' }, React.createElement('label', null, 'Media'), React.createElement('p', null, item.artworkMedia))), React.createElement('div', { className: 'upl-list-row-2c' }, React.createElement('div', { className: 'field' }, React.createElement('label', null, 'Artwork Dimensions'), React.createElement('p', null, item.artworkDimensions))), React.createElement('div', { className: 'upl-list-row-1c' }, React.createElement('div', { className: 'field' }, React.createElement('label', null, 'Description'), React.createElement('p', null, item.description)))), React.createElement('div', { className: 'upl-list-btn-group' }, React.createElement('button', {
+                } }, 'delete item')), React.createElement('div', { className: 'upl-list-metadata' }, React.createElement('div', { className: 'upl-list-row-1c lg' }, React.createElement('div', { className: 'field' }, React.createElement('label', null, 'Title'), React.createElement('p', null, item.artworkTitle))), React.createElement('div', { className: 'upl-list-row-2c' }, React.createElement('div', { className: 'field' }, React.createElement('label', null, 'Year'), React.createElement('p', null, item.artworkYear)), React.createElement('div', { className: 'field' }, React.createElement('label', null, 'Media'), React.createElement('p', null, item.artworkMedia))), React.createElement('div', { className: 'upl-list-row-2c', style: {
+                  display: item.type === 'video' ? 'none' : 'block'
+                } }, React.createElement('div', { className: 'field' }, React.createElement('label', null, 'Artwork Dimensions'), React.createElement('p', null, item.artworkDimensions))), React.createElement('div', { className: 'upl-list-row-1c' }, React.createElement('div', { className: 'field' }, React.createElement('label', null, 'Description'), React.createElement('p', null, item.description)))), React.createElement('div', { className: 'upl-list-btn-group' }, React.createElement('button', {
                 className: 'upl-btn upl-btn-default',
                 onClick: function onClick() {
                   return _this2.props.startEditing(item, index);
@@ -38210,18 +38212,27 @@ $__System.register('1', ['16', 'a6', 'a7', 'a9', 'be'], function (_export, _cont
                 type: 'button' }, 'Edit info'), React.createElement('img', { src: 'data:image/png;base64,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', className: 'upl-list-item-handle' })));
             });
 
-            return React.createElement('section', { id: 'uploaderListContainer' }, React.createElement('div', null, items.length ? React.createElement('div', { className: 'uploader-list-header' }, React.createElement('h3', null, 'Uploaded Images (', items.length, ')'), React.createElement('div', { className: 'upl-btn-group upl-btn-group-right', style: { float: 'right' } }, React.createElement('button', { className: 'upl-btn upl-btn-default', onClick: this.props.showModal, type: 'button' }, 'Upload More Images'))) : null, React.createElement('ul', { id: 'uploaderList', ref: 'list' }, items)), items.length ? null : React.createElement('button', { className: 'upl-btn upl-btn-primary', onClick: this.props.showModal, type: 'button' }, 'Upload Images'));
+            return React.createElement('section', { id: 'uploaderListContainer' }, React.createElement('div', null, items.length ? React.createElement('div', { className: 'uploader-list-header' }, React.createElement('h3', null, 'Uploaded Images (', items.length, ')'), React.createElement('div', { className: 'upl-btn-group upl-btn-group-right', style: { float: 'right' } }, React.createElement('button', {
+              className: 'upl-btn upl-btn-default',
+              onClick: this.props.uploadVideo,
+              type: 'button',
+              style: {
+                display: this.props.options.allowVideoUploads ? 'inline' : 'none'
+              } }, 'Upload Video Link'), React.createElement('button', { className: 'upl-btn upl-btn-default', onClick: this.props.showUploadcare, type: 'button' }, 'Upload More Images'))) : null, React.createElement('ul', { id: 'uploaderList', ref: 'list' }, items)), items.length ? null : React.createElement('span', null, React.createElement('button', { className: 'upl-btn upl-btn-primary', onClick: this.props.showUploadcare, type: 'button' }, 'Upload Images'), React.createElement('button', {
+              style: {
+                display: this.props.options.allowVideoUploads ? 'inline' : 'none'
+              },
+              className: 'upl-btn upl-btn-primary',
+              onClick: this.props.uploadVideo,
+              type: 'button' }, 'Upload Video')));
           }
         }, {
           key: 'componentDidMount',
           value: function componentDidMount() {
             this.placeholder = document.createElement('li');
             this.placeholder.className = 'placeholder';
-            console.log('mounted', this, this.refs.list);
             setTimeout(function () {
               var _this3 = this;
-
-              console.log('timeout', this, this.refs.list);
 
               $(this.refs.list).sortable({
                 start: function start(e, ui) {
@@ -38294,13 +38305,14 @@ $__System.register('1', ['16', 'a6', 'a7', 'a9', 'be'], function (_export, _cont
                 return _this2.validateInput(e, 'artworkMedia');
               },
               required: true
-            })), React.createElement('div', { className: 'field' }, React.createElement('label', null, 'Dimensions'), React.createElement('input', {
+            })), React.createElement('div', { className: 'field', style: {
+                display: this.state.itemsToSave[this.state.selectedIndex].type === 'video' ? 'none' : 'flex'
+              } }, React.createElement('label', null, 'Dimensions'), React.createElement('input', {
               type: 'text',
               value: this.state.itemsToSave[this.state.selectedIndex].artworkDimensions || '',
               onChange: function onChange(e) {
                 return _this2.validateInput(e, 'artworkDimensions');
               }
-
             })), React.createElement('div', { className: 'field textarea' }, React.createElement('label', null, 'Description'), React.createElement('input', {
               type: 'text',
               placeholder: '( ' + (this.props.options.descriptionMaxLength || 250) + ' characters max)',
@@ -38455,6 +38467,57 @@ $__System.register('1', ['16', 'a6', 'a7', 'a9', 'be'], function (_export, _cont
         return Slideshow;
       }(React.Component);
 
+      UploadVideoForm = function (_React$Component) {
+        _inherits(UploadVideoForm, _React$Component);
+
+        function UploadVideoForm(props) {
+          _classCallCheck(this, UploadVideoForm);
+
+          var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(UploadVideoForm).call(this, props));
+
+          _this.state = {
+            formValid: false
+          };
+          return _this;
+        }
+
+        _createClass(UploadVideoForm, [{
+          key: "render",
+          value: function render() {
+            var _this2 = this;
+
+            return React.createElement("div", { id: "uploadVideoForm" }, React.createElement("div", { className: "content" }, React.createElement("form", {
+              ref: function ref(r) {
+                return _this2.formRef = r;
+              },
+              onSubmit: function onSubmit(e) {
+                e.preventDefault();
+                _this2.props.submitVideoUrl(_this2.formRef.url.value);
+              } }, React.createElement("fieldset", null, React.createElement("div", { className: "field" }, React.createElement("label", null, "Link to Video on Vimeo or Youtube"), React.createElement("input", { type: "text", name: "url", onChange: this.validateUrl.bind(this) }))), React.createElement("div", { className: "upl-btn-group upl-btn-group-right" }, React.createElement("button", {
+              type: "button",
+              className: "upl-btn upl-btn-default",
+              onClick: this.props.cancelVideoUpload }, "Cancel"), React.createElement("button", {
+              type: "submit",
+              className: "upl-btn upl-btn-primary",
+              disabled: !this.state.formValid }, "Save and Continue")))));
+          }
+        }, {
+          key: "validateUrl",
+          value: function validateUrl(e) {
+            var url = e.target.value;
+            var urlRegex = new RegExp(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)/);
+            var isUrl = urlRegex.test(url);
+            var isVimeoOrYoutube = url.includes('you') || url.includes('vimeo');
+
+            this.setState({
+              formValid: isUrl && isVimeoOrYoutube
+            });
+          }
+        }]);
+
+        return UploadVideoForm;
+      }(React.Component);
+
       Uploader = function (_React$Component) {
         _inherits(Uploader, _React$Component);
 
@@ -38468,8 +38531,9 @@ $__System.register('1', ['16', 'a6', 'a7', 'a9', 'be'], function (_export, _cont
             rollbackItemsState: props.items || [],
             editing: [],
             editingIndex: null,
-            showModal: false,
-            showSlideshow: false
+            showFormModal: false,
+            showSlideshow: false,
+            uploadingVideo: false
           };
           return _this;
         }
@@ -38487,6 +38551,46 @@ $__System.register('1', ['16', 'a6', 'a7', 'a9', 'be'], function (_export, _cont
             });
           }
         }, {
+          key: 'uploadVideo',
+          value: function uploadVideo() {
+            this.setState({
+              uploadingVideo: true
+            });
+          }
+        }, {
+          key: 'submitVideoUrl',
+          value: function submitVideoUrl(url) {
+            var id = void 0,
+                endpoint = void 0;
+
+            if (url.includes('you')) {
+              id = url.slice(url.lastIndexOf('v=') + 2);
+              endpoint = 'http://img.youtube.com/vi/' + id + '/0.jpg';
+              updateState.call(this, endpoint);
+            } else if (url.includes('vimeo')) {
+              id = url.slice(url.lastIndexOf('/') + 1);
+              endpoint = 'http://vimeo.com/api/v2/video/' + id + '.json';
+              getVimeoThumbnail(endpoint).then(updateState.bind(this));
+            }
+
+            function updateState(thumbnailUrl) {
+              console.log(thumbnailUrl);
+              this.saveItems({
+                srcUrl: url, // vimeo or youtube page url
+                cdnUrl: thumbnailUrl, //thumbnail of video frame
+                type: 'video'
+              });
+            }
+
+            function getVimeoThumbnail(endpoint) {
+              return fetch(endpoint).then(function (res) {
+                return res.json();
+              }).then(function (res) {
+                return res[0].thumbnail_large;
+              });
+            }
+          }
+        }, {
           key: 'saveItems',
           value: function saveItems(data) {
             var toSave = Array.isArray(data) ? data : [data];
@@ -38498,17 +38602,19 @@ $__System.register('1', ['16', 'a6', 'a7', 'a9', 'be'], function (_export, _cont
               this.setState({
                 rollbackItemsState: rollbackItemsState,
                 items: this.state.items,
-                showModal: false,
+                showFormModal: false,
                 editing: [],
-                editingIndex: null
+                editingIndex: null,
+                uploadingVideo: false
               });
             } else {
               this.setState({
                 rollbackItemsState: rollbackItemsState,
                 items: this.state.items.concat(toSave),
-                showModal: true,
+                showFormModal: true,
                 editing: toSave,
-                editingIndex: this.state.items.length
+                editingIndex: this.state.items.length,
+                uploadingVideo: false
               });
             }
           }
@@ -38536,7 +38642,8 @@ $__System.register('1', ['16', 'a6', 'a7', 'a9', 'be'], function (_export, _cont
 
             return React.createElement('section', { id: 'uploader' }, React.createElement(List, {
               items: this.state.items,
-              showModal: this.showUploadcare.bind(this),
+              showUploadcare: this.showUploadcare.bind(this),
+              uploadVideo: this.uploadVideo.bind(this),
               showSlideshow: function showSlideshow() {
                 return _this3.setState({ showSlideshow: true });
               },
@@ -38544,12 +38651,13 @@ $__System.register('1', ['16', 'a6', 'a7', 'a9', 'be'], function (_export, _cont
                 return _this3.setState({
                   editing: [itemsToEdit],
                   editingIndex: index,
-                  showModal: true
+                  showFormModal: true
                 });
               },
               reOrderItems: function reOrderItems(items) {
                 return _this3.setState({ items: items });
-              } }), this.state.showModal ? React.createElement(Modal, {
+              },
+              options: this.props.options }), this.state.showFormModal ? React.createElement(Modal, {
               items: this.state.items,
               options: this.props.options,
               saveItems: this.saveItems.bind(this),
@@ -38561,11 +38669,15 @@ $__System.register('1', ['16', 'a6', 'a7', 'a9', 'be'], function (_export, _cont
               },
               cancelModal: function cancelModal() {
                 _this3.setState({
-                  showModal: false,
+                  showFormModal: false,
                   editing: [],
                   editingIndex: null,
                   items: _this3.state.rollbackItemsState
                 });
+              } }) : null, this.state.uploadingVideo ? React.createElement(UploadVideoForm, {
+              submitVideoUrl: this.submitVideoUrl.bind(this),
+              cancelVideoUpload: function cancelVideoUpload() {
+                _this3.setState({ uploadingVideo: false });
               } }) : null, this.state.showSlideshow ? React.createElement(Slideshow, {
               hideSlideshow: function hideSlideshow() {
                 return _this3.setState({ showSlideshow: false });
