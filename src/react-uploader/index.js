@@ -40,7 +40,7 @@ class Uploader extends React.Component {
     })
   }
 
-  submitVideoUrl(url) {    
+  submitVideoUrl(url) {
     let id, endpoint
 
     if ( url.includes('you') ) {
@@ -52,7 +52,7 @@ class Uploader extends React.Component {
       endpoint = `http://vimeo.com/api/v2/video/${id}.json`
       getVimeoThumbnail(endpoint).then(updateState.bind(this))
     }
-    
+
     function updateState(thumbnailUrl) {
       console.log(thumbnailUrl)
       this.saveItems({
@@ -61,7 +61,7 @@ class Uploader extends React.Component {
         type: 'video'
       })
     }
-    
+
     function getVimeoThumbnail(endpoint) {
       return fetch(endpoint).then(res => res.json()).then(res => {
         return res[0].thumbnail_large
@@ -151,13 +151,13 @@ class Uploader extends React.Component {
         : null
         }
 
-        {this.state.uploadingVideo ? 
+        {this.state.uploadingVideo ?
         <UploadVideoForm
           submitVideoUrl={this.submitVideoUrl.bind(this)}
           cancelVideoUpload={() => {
             this.setState({ uploadingVideo: false })
           }}>
-        </UploadVideoForm>  
+        </UploadVideoForm>
         : null
         }
 
@@ -174,5 +174,5 @@ class Uploader extends React.Component {
 }
 
 export default function ReactUploader(initialItems, options, notifier) {
-  return ReactDOM.render( <Uploader options={options}  items={initialItems} notifier={notifier}  />, document.getElementsByTagName('uploader')[0] )
+  return ReactDOM.render( <Uploader options={options}  items={initialItems} notifier={notifier}  />, document.getElementById('uploader'))
 }
