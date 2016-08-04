@@ -80,9 +80,7 @@ export default class MetadataForm extends React.Component {
                   onChange={e => this.validateInput(e, 'artistName')}
                 />
               </div>              
-              <div className="field textarea" style={{
-                display: this.state.itemsToSave[this.state.selectedIndex].type === 'video' ? 'none' : 'flex'
-              }}>
+              <div className="field textarea">
                 <label>Description</label>
                 <input
                   type="text"
