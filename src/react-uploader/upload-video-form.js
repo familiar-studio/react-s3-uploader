@@ -22,7 +22,7 @@ export default class UploadVideoForm extends React.Component {
 						}}>
 						<fieldset>	
 							<div className="field">
-								<label>Link to Video on Vimeo or Youtube</label>							
+								<label>Link to Media on Vimeo, Youtube, or Soundcloud</label>							
 								<input type="text" name="url" onChange={this.validateUrl.bind(this)}/>
 							</div>
 						</fieldset>
@@ -52,10 +52,10 @@ export default class UploadVideoForm extends React.Component {
 		const url = e.target.value
 		const urlRegex = new RegExp(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)/)
 		const isUrl = urlRegex.test(url)
-		const isVimeoOrYoutube = url.includes('you') || url.includes('vimeo')
+		const isApprovedProvider = url.includes('you') || url.includes('vimeo') || url.includes('soundcloud')
 
 		this.setState({
-			formValid: isUrl && isVimeoOrYoutube
+			formValid: isUrl && isApprovedProvider
 		})
 	}
 }

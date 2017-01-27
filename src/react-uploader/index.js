@@ -51,10 +51,15 @@ class Uploader extends React.Component {
       id = url.slice( url.lastIndexOf('/') + 1 )
       endpoint = `http://vimeo.com/api/v2/video/${id}.json`
       getVimeoThumbnail(endpoint).then(updateState.bind(this))
+    } else {
+      endpoint = `http://soundcloud.com/oembed?url=${url}&format=json`
+
+      fetch(endpoint).then(r => r.json()).then(res => {
+        updateState.call(this, res.thumbnail_url)
+      })
     }
     
     function updateState(thumbnailUrl) {
-      console.log(thumbnailUrl)
       this.saveItems({
         srcUrl: url, // vimeo or youtube page url
         cdnUrl: thumbnailUrl, //thumbnail of video frame

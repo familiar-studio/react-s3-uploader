@@ -11,4 +11,4 @@ app.get('*', function(req, res) {
   res.sendfile('dist/index.html')
 })
 
-app.listen(8000)
+app.listen(8080)

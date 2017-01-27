@@ -62,12 +62,19 @@ export default class List extends React.Component {
                 <p>{item.description}</p>
               </div>
             </div>
-            <div className="upl-list-row-1c" style={{
+            <div className="upl-list-row-2c" style={{
               display: item.type !== 'video' ? 'none' : 'block'
             }}>
               <div className="field">
                 <label>Artist Name</label>
                 <p>{item.artistName}</p>
+              </div>
+
+              <div className="field" style={{
+                display: item.password ? 'flex' : 'none'
+              }}>
+                <label>Password</label>
+                <p>{item.password}</p>
               </div>
             </div>
           </div>
@@ -101,7 +108,7 @@ export default class List extends React.Component {
                     style={{
                       display: this.props.options.allowVideoUploads ? 'inline' :'none'
                     }}>
-                    Upload Video Link
+                    Upload Video/Audio
                   </button>
                   <button className="upl-btn upl-btn-default" onClick={this.props.showUploadcare} type="button">Upload More Images</button>
                 </div>
@@ -121,7 +128,7 @@ export default class List extends React.Component {
               className="upl-btn upl-btn-primary" 
               onClick={this.props.uploadVideo} 
               type="button">
-              Upload Video
+              Upload Video/Audio
             </button>
           </span>
         }

@@ -25,7 +25,23 @@
 
       System.import('react-uploader').then(function(ReactUploader) {
 
-      var mockData = [];
+      //var mockData = [];
+      var mockData = [
+        {
+          "description": "1\"The memories themselves\", Redcat 2012 | 2. \"Tell me not to be afraid\" Honor Fraser Gallery 2013 | 3.\"A chain of memory thaws in the woods\", PAM 2015 performed by Drew Woods and Emily Jane Rosen.",
+          "url": "http://www.youtube.com/watch?v=C_yJLR4h7DE",
+          "title": "Three performance projects",
+          "artistName": "Brian Getnick",
+          "year": "2012-2014"
+        },
+        {
+          "url": "http://https://youtu.be/-tGwD1uqumo",
+          "title": "Moonchops",
+          "artistName": "Brian Getnick",
+          "year": "2016-ongoing",
+          "description": "Excerpts from a work in progress showing at Automata Theater, LA, 2016. Staged in a set evoking a winter woods, Moonchops is a solo performance that mythologizes a theater below a highschool stage where queer chops (skills) are honed."
+        }
+      ];
       var options = {
         descriptionMaxLength: 1000,
         allowVideoUploads: true

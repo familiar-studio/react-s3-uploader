@@ -91,6 +91,17 @@ export default class MetadataForm extends React.Component {
                   required={this.state.itemsToSave[this.state.selectedIndex].type !== 'video'}
                 />
               </div>
+              <div className="field password" style={{
+                display: this.state.itemsToSave[this.state.selectedIndex].type !== 'video' ? 'none' : 'flex'
+              }}>
+                <label>Password</label>
+                <input
+                  type="text"
+                  placeholder={`password (optional)`}
+                  value={this.state.itemsToSave[this.state.selectedIndex].password || ''}
+                  onChange={e => this.validateInput(e, 'password')}                  
+                />
+              </div>
 
               <div className="upl-btn-group upl-btn-group-right">
                 <button
