@@ -1,10 +1,17 @@
+import './style.scss';
+
 import React from 'react'
 import ReactDOM from 'react-dom'
+
+import $ from 'jquery';
+import 'jquery-ui';
 
 import List from './list.js'
 import Modal from './modal.js'
 import Slideshow from './slideshow.js'
 import UploadVideoForm from './upload-video-form.js'
+
+
 
 
 class Uploader extends React.Component {

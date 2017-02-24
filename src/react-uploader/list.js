@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import _ from 'lodash'
-import 'jquery-ui'
+
 
 export default class List extends React.Component {
   render() {
