@@ -14,7 +14,7 @@ export default class List extends React.Component {
 
           <div className="upl-list-img">
             <div className="img-center">
-              {item.cdnUrl || item.url ?
+              {item.isImage && (item.cdnUrl || item.url) ?
                 <img src={item.cdnUrl || item.url} />
                 :
                 <div className="preview-not-available">preview not available</div>

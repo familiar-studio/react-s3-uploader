@@ -12,8 +12,6 @@ import Slideshow from './slideshow.js'
 import UploadVideoForm from './upload-video-form.js'
 
 
-
-
 class Uploader extends React.Component {
   constructor(props) {
 
@@ -32,9 +30,7 @@ class Uploader extends React.Component {
 
   showUploadcare() {
     uploadcare.openDialog(null, {
-      multiple: true,
-      imagesOnly: true,
-      // imageShrink: true
+      multiple: true
     })
     .done( (file) => {
       Promise.all(file.files()).then(this.saveItems.bind(this))
