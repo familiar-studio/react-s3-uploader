@@ -57,22 +57,23 @@ class Uploader extends React.Component {
     } else if ( url.includes('vimeo') ) {
       id = url.slice( url.lastIndexOf('/') + 1 )
       endpoint = `http://vimeo.com/api/v2/video/${id}.json`
-      getVimeoThumbnail(endpoint).then(updateState.bind(this))
+      getVimeoThumbnail(endpoint)
+        .then(updateState.bind(this))
     }
     
     function updateState(thumbnailUrl) {
-      console.log(thumbnailUrl)
       this.saveItems({
         srcUrl: url, // vimeo or youtube page url
         cdnUrl: thumbnailUrl, //thumbnail of video frame
         type: 'video'
       })
     }
-    
+
     function getVimeoThumbnail(endpoint) {
-      return fetch(endpoint).then(res => res.json()).then(res => {
-        return res[0].thumbnail_large
-      })
+      return fetch(endpoint)
+        .then(res => res.json())
+        .then(res => res[0].thumbnail_large)
+        .catch((err) => console.log(err))
     }
   }
 
