@@ -16,7 +16,11 @@ export default class MetadataForm extends React.Component {
     const slides = this.props.editing.map(function(item, index) {
       return (
         <div className="gallery-cell" key={index}>
-          <img src={item.cdnUrl || item.url} />
+          {item.cdnUrl || item.url ?
+            <img src={item.cdnUrl || item.url} />
+            :
+            <div className="preview-not-available">preview not available</div>
+          }
         </div>
       )
     })

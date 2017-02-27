@@ -20,6 +20,8 @@ module.exports = {
     }
   },
 
+  devtool: 'source-map',
+
   module: {
     loaders: [
       {
