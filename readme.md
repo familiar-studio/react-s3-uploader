@@ -34,7 +34,7 @@ UPLOADCARE_TABS = "file url facebook gdrive dropbox instagram evernote flickr sk
 UPLOADCARE_PUBLIC_KEY = "38a39e1da7c78a598632";
 ```
 
-### Step 4: Create an instance of ReactUploader
+#### Step 4: Create an instance of ReactUploader
 `var uploader = new ReactUploader.default(initialData, options, notifier)`
 
 * initialData (ARRAY) should include data from the server if it exists. If data does not exist, pass an empty array.
