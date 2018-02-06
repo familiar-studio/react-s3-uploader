@@ -1,49 +1,50 @@
 <!doctype html>
 <html>
 
-  <head>
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="/react-uploader.css">
-  </head>
+    <head>
+        <link rel="shortcut icon" href="/favicon.ico"/>
+        <link rel="stylesheet" href="/react-uploader.css">
+    </head>
 
-  <body>
-    <div class="container" style="max-width: 800px; margin: 0 auto">
-      <h1>React Uploader</h1>
-      <uploader test="something"></uploader>
-    </div>
+    <body>
+        <div class="container" style="max-width: 800px; margin: 0 auto">
+            <h1>React Uploader</h1>
+            <uploader test="something"></uploader>
+        </div>
 
-    <!-- include UploadCare and ReactUploader as script tag in project -->
-    <script charset="utf-8" src="//ucarecdn.com/widget/2.8.2/uploadcare/uploadcare.full.min.js"></script>
-    <script src="/react-uploader.js"></script>
+        <!-- include UploadCare and ReactUploader as script tag in project -->
+        <script charset="utf-8" src="//ucarecdn.com/widget/2.8.2/uploadcare/uploadcare.full.min.js"></script>
+        <script src="/react-uploader.js"></script>
 
-    <script>
-      // include config vars for UploadCare
-      UPLOADCARE_LIVE = false;
-      UPLOADCARE_LOCALE = "en";
-      UPLOADCARE_TABS = "file url facebook gdrive dropbox instagram evernote flickr skydrive";
-      UPLOADCARE_PUBLIC_KEY = "38a39e1da7c78a598632";
+        <script>
+            // include config vars for UploadCare
+            UPLOADCARE_LIVE = false;
+            UPLOADCARE_LOCALE = "en";
+            UPLOADCARE_TABS = "file url facebook gdrive dropbox instagram evernote flickr skydrive";
+            UPLOADCARE_PUBLIC_KEY = "38a39e1da7c78a598632";
 
+            // instantiate ReactUploader with desired options
+            var mockData = [];
+            var options = {
+                descriptionMaxLength: 1000,
+                allowVideoUploads: true,
+                mediaOptional: true,
+                yearOptional: true
+            };
 
-      // instantiate ReactUploader with desired options
-      var mockData = [];
-      var options = {
-        descriptionMaxLength: 1000,
-        allowVideoUploads: true
-      };
+            var uploader = new ReactUploader.default(mockData, options, function (cancelUpdate) {
 
-      var uploader = new ReactUploader.default(mockData, options, function (cancelUpdate) {
-
-        /******************************************************************
+                /******************************************************************
           EXAMPLE: Call cancelUpdate to prevent react state from updating.
           This can be useful when implementing validation
         ******************************************************************/
-        // if (uploader.state.items.length > 5) {
-        //   cancelUpdate()
-        //   alert('maximum reached')
-        // }
+                // if (uploader.state.items.length > 5) {
+                //   cancelUpdate()
+                //   alert('maximum reached')
+                // }
 
-      });
-    </script>
-  </body>
+            });
+        </script>
+    </body>
 
 </html>
