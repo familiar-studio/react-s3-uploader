@@ -117,7 +117,7 @@ export default class MetadataForm extends React.Component {
                 />
               </div>
               <div className="field textarea">
-                <label>Description</label>
+                <label>Description and Credits</label>
                 <input
                   type="text"
                   placeholder={`( ${this.props.options.descriptionMaxLength ||

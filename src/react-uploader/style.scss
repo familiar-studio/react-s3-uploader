@@ -115,7 +115,7 @@ $darkgray: #666666;
 
 form fieldset {
   border: none;
-  padding: 15px 50px 0 15px;
+  //padding: 15px 50px 0 15px;
   .field {
     display: flex;
     margin: 15px 0;
@@ -128,13 +128,13 @@ form fieldset {
       width: calc(100% - 100px);
     }
     label {
-      width: 100px;
+      width: 150px;
       margin-right: 5px;
       text-align: right;
       text-transform: uppercase;
       color: $darkgray;
-      white-space: nowrap;
-      overflow: hidden;
+      //white-space: nowrap;
+      //overflow: hidden;
       font-size: 10px;
       font-weight: bold;
       padding-top: 11px;
