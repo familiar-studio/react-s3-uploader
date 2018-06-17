@@ -16,7 +16,7 @@
 $default: white;
 $primary: #337ab7;
 $highlight: #5bc0de;
-$danger: maroon;
+$danger: red;
 
 $lightergray: #EFEFEF;
 $lightgray: #EFEFEF;
@@ -24,6 +24,12 @@ $translightgray: rgba(204,204,204, 0.5);
 $mediumgray: #D8D8D8;
 $darkgray: #666666;
 
+
+.required {
+  color: $danger;
+  font-size: 18px;
+  font-weight: bold;
+}
 
 .upl-btn-group {
   display: flex;
@@ -131,12 +137,12 @@ form fieldset {
       width: 150px;
       margin-right: 5px;
       text-align: right;
-      text-transform: uppercase;
+      //text-transform: uppercase;
       color: $darkgray;
       //white-space: nowrap;
       //overflow: hidden;
-      font-size: 10px;
-      font-weight: bold;
+      font-size: 14px;
+      //font-weight: bold;
       padding-top: 11px;
     }
   }
@@ -195,7 +201,7 @@ form fieldset {
     width: 450px;
     max-height: 100vh;
     overflow: scroll;
-    padding: 60px 50px 10px 50px;
+    padding: 60px 20px 10px 20px;
     background-color: $default;
     box-shadow: -2px 2px 14px 4px rgba(0,0,0,0.1);
     .upl-modal-header {
