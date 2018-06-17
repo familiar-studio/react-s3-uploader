@@ -40,7 +40,7 @@ export default class MetadataForm extends React.Component {
           <form ref="form">
             <fieldset>
               <div className="field">
-                <label>Title</label>
+                <label>Title <span className="required">*</span></label>
                 <input
                   ref="title"
                   type="text"
@@ -53,7 +53,11 @@ export default class MetadataForm extends React.Component {
                 />
               </div>
               <div className="field">
-                <label>Year</label>
+                <label>Year
+                {!this.props.options.yearOptional ? (
+                  <span className="required"> *</span>
+                ): null}
+                </label>
                 <input
                   type="text"
                   value={
@@ -61,11 +65,15 @@ export default class MetadataForm extends React.Component {
                       .artworkYear || ""
                   }
                   onChange={e => this.validateInput(e, "artworkYear")}
-                  required={this.props.options.mediaOptional ? false : true}
+                  required={this.props.options.yearOptional ? false : true}
                 />
               </div>
               <div className="field">
-                <label>Media</label>
+                <label>Media
+                  {!this.props.options.mediaOptional ? (
+                    <span className="required"> *</span>
+                  ): null}
+                </label>
                 <input
                   type="text"
                   value={
@@ -94,6 +102,7 @@ export default class MetadataForm extends React.Component {
                       .artworkDimensions || ""
                   }
                   onChange={e => this.validateInput(e, "artworkDimensions")}
+                  
                 />
               </div>
               <div
@@ -117,7 +126,10 @@ export default class MetadataForm extends React.Component {
                 />
               </div>
               <div className="field textarea">
-                <label>Description</label>
+                <label>Description{!this.props.options.descriptionOptional ? (
+                    <span className="required"> *</span>
+                  ): null}<br/>and Credits  
+                  </label> 
                 <input
                   type="text"
                   placeholder={`( ${this.props.options.descriptionMaxLength ||
@@ -128,10 +140,8 @@ export default class MetadataForm extends React.Component {
                   }
                   maxLength={this.props.options.descriptionMaxLength || 250}
                   onChange={e => this.validateInput(e, "description")}
-                  required={
-                    this.state.itemsToSave[this.state.selectedIndex].type !==
-                    "video"
-                  }
+                  required={this.props.options.descriptionOptional ? false : true}
+
                 />
               </div>
 

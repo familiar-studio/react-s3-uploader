@@ -1,5 +1,3 @@
-*** WORKING FROM THE un-required branch ** 
-
 # React Uploader
 
 react component that depends on UploadCare to persist uploads.
