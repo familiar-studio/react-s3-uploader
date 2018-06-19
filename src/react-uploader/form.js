@@ -126,9 +126,9 @@ export default class MetadataForm extends React.Component {
                 />
               </div>
               <div className="field textarea">
-                <label>Description{!this.props.options.descriptionOptional ? (
+                <label>Description<br/>and Credits {!this.props.options.descriptionOptional ? (
                     <span className="required"> *</span>
-                  ): null}<br/>and Credits  
+                  ): null}
                   </label> 
                 <input
                   type="text"
