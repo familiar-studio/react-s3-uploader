@@ -95,7 +95,7 @@ export default class List extends React.Component {
           <div>
             {items.length ?
               <div className="uploader-list-header">
-                <h3>Uploaded Images ({items.length})</h3>
+                <h3>Uploaded Work Samples ({items.length})</h3>
                 <div className="upl-btn-group upl-btn-group-right" style={{float: 'right'}}>
                   {/*<button className="upl-btn upl-btn-default" onClick={this.props.showSlideshow}>View Slideshow</button>*/}
                   <button 
